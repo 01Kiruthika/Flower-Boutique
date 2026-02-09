@@ -4,9 +4,10 @@
     box-sizing: border-box;
 }
 
-.container {
+header {
     /* border: 2px solid black; */
     width: 100%;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     background-color: #aece89;
@@ -15,53 +16,57 @@
     z-index: 100;
 }
 
-.logo {
+.img-logo {
     /* border: 3px solid yellow; */
     width: 100px;
-    height: auto;
+    height: 80px;
 }
 
-.logo img {
+.img-logo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-nav {
-    /* border: 2px solid blue; */
-    width: 400px;
-    padding: 15px;
+.menu {
+    /* border: 2px solid; */
+    width: 350px;
+    height: 50px;
+    margin: 20px;
+    padding: 5px;
+
 }
 
 nav ul {
     list-style: none;
+    padding: 0;
     display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    font-size: 20px;
+    gap: 15px;
+    font-weight: 900;
+
 }
 
 nav ul li a {
     text-decoration: none;
     color: beige;
-    /* padding: 5   px; */
+    /* padding: 5px; */
 }
 
 
 /* Image */
-.image {
-    margin-top: 76px;
-    /* border: 2px solid black; */
+.carousel-item  {
+    /* border: 2px solid rgb(72, 13, 207); */
     width: 100%;
     height: 500px;
-    position: relative
+    position: relative;
+    
 }
 
 .image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* transition: 0.5s; */
 }
 
 .image-inside {
@@ -73,17 +78,27 @@ nav ul li a {
     color: white;
 }
 
-.btn {
+.btn{
+    /* border: 2px solid black; */
+    position: absolute;
     top: 60%;
-    padding: 10px;
-    background-color: #eeaa9c;
-
+    left: 50%;
+    transform: translate(-60%,-50%);
+    transition: 0.5s;
 }
-
-.btn a {
-    color: white;
+   
+.btn a{
     text-decoration: none;
+    color: white;
+     background-color: #eeaa9c;
+     padding: 10px 22px;
 }
+
+.btn:hover a{
+    background-color: palevioletred;
+    color: white;
+}
+
 
 .image-foot {
     /* border: 2px solid; */
@@ -184,7 +199,8 @@ nav ul li a {
     padding: 15px;
     display: flex;
 }
-.inside-box{
+
+.inside-box {
     border: 2px solid slateblue;
     width: 60%;
     height: 100%;
@@ -196,9 +212,9 @@ nav ul li a {
     width: 100%;
     height: 200px;
     display: flex;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     padding: 5px;
-    
+
 }
 
 .content {
@@ -224,43 +240,51 @@ nav ul li a {
     font-size: 19px;
     color: rgba(0, 0, 0, 0.719);
 }
-.content2{
+
+.content2 {
     /* border: 2px solid red; */
     padding: 15px;
     text-align: justify;
     margin: 5px;
     color: rgba(0, 0, 0, 0.521);
 }
-.inside-foot{
+
+.inside-foot {
     /* border: 2px solid; */
-     padding: 15px;
+    padding: 15px;
 }
-.inside-foot button{
+
+.inside-foot button {
     padding: 20px;
     background-color: #eeaa9c;
     color: white;
     border: none;
     border-radius: 3px;
 }
-.image-scroll{
+
+.image-scroll {
     border: 2px solid;
     width: 40%;
     height: 400px;
     margin: 20px;
 }
+
 .pagination {
-  display: flex;
-  justify-content: center;
-  list-style: none; /* remove list bullets */
-  padding: 0px;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    /* remove list bullets */
+    padding: 0px;
 }
 
 .pagination li a {
-  display: block; /* let links fill the list item */
-  padding: 8px 12px;
-  text-decoration: none;
-  border: 1px solid gray;
-  color: black;  
-  margin: 0 4px;
-  border-radius: 5px; /* add rounded borders */
+    display: block;
+    /* let links fill the list item */
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid gray;
+    color: black;
+    margin: 0 4px;
+    border-radius: 5px;
+    /* add rounded borders */
 }
