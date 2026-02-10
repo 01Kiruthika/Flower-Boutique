@@ -10,7 +10,7 @@ header {
     height: 80px;
     display: flex;
     justify-content: space-between;
-    background-color: #aece89;
+    background-color: #ebdddd;
     position: fixed;
     top: 0;
     z-index: 100;
@@ -48,18 +48,36 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: beige;
-    /* padding: 5px; */
+    color: black
+        /* padding: 5px; */
+}
+
+#product-count {
+    /* border: 2px solid seagreen; */
+    position: fixed;
+    right: 80px;
+    top: 10px;
 }
 
 
+
 /* Image */
-.carousel-item  {
+.carousel {
+    margin-top: 80px;
+}
+
+.carousel-item {
     /* border: 2px solid rgb(72, 13, 207); */
     width: 100%;
-    height: 500px;
+    height: 585px;
     position: relative;
-    
+
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .image img {
@@ -75,43 +93,37 @@ nav ul li a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+
 }
 
-.btn{
+.btn {
     /* border: 2px solid black; */
     position: absolute;
     top: 60%;
     left: 50%;
-    transform: translate(-60%,-50%);
+    transform: translate(-60%, -50%);
     transition: 0.5s;
 }
-   
-.btn a{
+
+.btn a {
     text-decoration: none;
     color: white;
-     background-color: #eeaa9c;
-     padding: 10px 22px;
+    background-color: #eeaa9c;
+    padding: 10px 22px;
 }
 
-.btn:hover a{
+.btn:hover a {
     background-color: palevioletred;
     color: white;
 }
 
 
-.image-foot {
-    /* border: 2px solid; */
-    background-color: #aece89;
-    padding: 40px 10px;
-}
 
-.image-foot h4 {
-    text-align: center;
-}
+
+
 
 .Container {
-    /* border: 2px solid; */
+    border: 2px solid;
     padding: 5px 10px;
 }
 
@@ -126,6 +138,7 @@ nav ul li a {
     display: flex;
     justify-content: center;
     gap: 5px;
+    position: relative;
 }
 
 .foot {
@@ -133,56 +146,69 @@ nav ul li a {
     padding: 10px;
 }
 
+
+
+
+.body-1 {
+    border: 4px solid gold;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    grid-template-rows: repeat(3, 300px);
+}
+
 .box {
-    /* border: 2px solid black; */
-    width: 400px;
-    height: 400px;
-    padding: 10px;
+    border: 2px solid black;
+    width: 300px;
+    height: 300px;
     position: relative;
-
 }
-
+.box1{
+   border: 2px solid; 
+}
 .box-head {
-    /* border: 3px solid seagreen; */
-    width: 380px;
-    height: 250px;
+    border: 3px solid seagreen;
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    top: -35px;
 }
 
-.box-head img {
+.box-in {
+    /* border: 2px solid rebeccapurple; */
+    position: absolute;
+    right: 10px;
+    top: 150px;
+}
+
+.box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .box-head-inside {
-    border: 3px solid rgb(253, 253, 253);
-    width: 359px;
-    height: 231px;
+    border: 4px solid #deb5b2;
+    width: 380px;
+    height: 460px;
     position: absolute;
-    top: 7px;
-    left: 7px;
+    top: -19px;
+    left: -32px;
     margin: 13px;
+    z-index: -1;
 }
 
 .box-body {
-    /* border: 2px solid; */
+    border: 2px solid orange;
+    width: 800px;
     text-align: center;
     padding: 10px;
 }
 
-.box-foot {
-    /* border: 2px solid; */
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
-}
 
-.box-foot button {
-    padding: 15px 20px;
-    color: white;
-    background-color: #eeaa9c;
-    border: none;
-}
+
+
+
+
 
 .card1 {
     border: 4px solid blue;
