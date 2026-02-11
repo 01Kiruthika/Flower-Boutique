@@ -128,56 +128,47 @@ nav ul li a {
 }
 
 .head {
-    /* border: 2px solid red; */
+    border: 2px solid red;
     padding: 10px;
 }
 
+.head h3 {
+    text-align: center;
+}
+
 .body {
-    /* border: 2px solid blue; */
+    border: 2px solid blue;
     padding: 5px 10px;
     display: flex;
     justify-content: center;
-    gap: 5px;
+    gap: 30px;
     position: relative;
 }
 
 .foot {
-    /* border: 2px solid yellow; */
+    border: 2px solid yellow;
     padding: 10px;
 }
 
 
 
+.con-1 {
+    background-color: rgba(216, 112, 147, 0.274);
+}
 
 .body-1 {
     border: 4px solid gold;
-    display: grid;
-    grid-template-columns: repeat(3, 300px);
-    grid-template-rows: repeat(3, 300px);
+    justify-content: space-between;
+    height: auto;
+
 }
 
 .box {
-    border: 2px solid black;
-    width: 300px;
-    height: 300px;
+    /* border: 2px solid black; */
+    width: 400px;
+    height: 500px;
+    padding: 10px;
     position: relative;
-}
-.box1{
-   border: 2px solid; 
-}
-.box-head {
-    border: 3px solid seagreen;
-    width: 600px;
-    height: 400px;
-    position: absolute;
-    top: -35px;
-}
-
-.box-in {
-    /* border: 2px solid rebeccapurple; */
-    position: absolute;
-    right: 10px;
-    top: 150px;
 }
 
 .box img {
@@ -186,8 +177,21 @@ nav ul li a {
     object-fit: cover;
 }
 
+.box1 {
+    /* border: 2px solid red; */
+    width: 800px;
+    height: 250px;
+    align-self: center;
+    margin: 20px;
+}
+
+.box1 h4 {
+    color: rgba(0, 0, 0, 0.568);
+    text-align: justify;
+}
+
 .box-head-inside {
-    border: 4px solid #deb5b2;
+    border: 4px solid #fdbdb8;
     width: 380px;
     height: 460px;
     position: absolute;
@@ -197,120 +201,181 @@ nav ul li a {
     z-index: -1;
 }
 
-.box-body {
-    border: 2px solid orange;
-    width: 800px;
-    text-align: center;
+
+
+/*  Card Design   */
+
+.line {
+    /* border: 2px solid ; */
     padding: 10px;
+}
+
+.line hr {
+    border: 2px solid;
+    width: 90px;
+    margin: 0 auto;
+    color: #b12016;
+    transition: 1s;
+}
+
+.line:hover hr {
+    width: 150px;
+}
+
+.c-body {
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    grid-template-rows: repeat(2, 450px);
+    gap: 10px;
+    padding: 10px;
+}
+
+.card-des {
+    /* border: 2px solid black; */
+    padding: 5px;
+}
+
+.c-inside-1 {
+    /* border: 2px solid yellow; */
+    width: inherit;
+    height: 300px;
+}
+
+.c-inside-1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.inside-2 {
+    height: 150px;
+    padding: 20px;
+}
+
+.star-icon {
+    /* border: 2px solid red; */
+    width: max-content;
+    margin: 0 auto;
+}
+
+.fa {
+    color: #dfc1d2;
+    display: flex;
+    margin: 0 auto;
+}
+
+.inside-2 h5,
+h6 {
+    text-align: center;
+    font-weight: 900;
+}
+
+.c-foot {
+    display: flex;
+    justify-content: center;
+}
+
+.butt {
+    padding: 10px 35px;
+    border: none;
+    background-color: #deb5b2;
+    color: white;
+    transition: 1s;
+}
+
+.butt:hover {
+    background-color: black;
 }
 
 
 
 
-
-
-
-.card1 {
-    border: 4px solid blue;
-    width: 100%;
-    background-image: url(../image/bg1.jpg);
+/* Poster */
+.con-3 {
+    background-image: url(../image/background-img.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.card-box {
-    border: 2px solid black;
-    width: 100%;
-    height: 500px;
-    padding: 15px;
-    display: flex;
-}
-
-.inside-box {
-    border: 2px solid slateblue;
-    width: 60%;
-    height: 100%;
-    padding: 10px;
-}
-
-.image-box {
-    /* border: 2px solid yellow; */
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 5px;
+.poster {
+    /* border: 2px solid red; */
+    width: 580px;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
 
 }
 
-.content {
-    /* border: 2px solid brown; */
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-}
-
-.content img {
+.poster img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
-
+    transition: 1s;
 }
 
-.content1 {
-    /* border: 2px solid green; */
-    width: 400px;
-    height: 150px;
-    padding: 10px;
-    font-size: 19px;
-    color: rgba(0, 0, 0, 0.719);
+.poster-content {
+    /* border: 2px solid yellowgreen; */
+    height: 100px;
+    position: absolute;
+    top: 100px;
+    left: 10px;
 }
 
-.content2 {
-    /* border: 2px solid red; */
-    padding: 15px;
-    text-align: justify;
-    margin: 5px;
-    color: rgba(0, 0, 0, 0.521);
+.poster-content h3 {
+    color: #dd0b0b;
 }
 
-.inside-foot {
-    /* border: 2px solid; */
-    padding: 15px;
-}
-
-.inside-foot button {
-    padding: 20px;
-    background-color: #eeaa9c;
-    color: white;
-    border: none;
-    border-radius: 3px;
-}
-
-.image-scroll {
-    border: 2px solid;
-    width: 40%;
-    height: 400px;
-    margin: 20px;
-}
-
-.pagination {
+.poster-but {
+    /* border: 2px solid saddlebrown; */
+    width: 250px;
+    height: max-content;
     display: flex;
     justify-content: center;
-    list-style: none;
-    /* remove list bullets */
-    padding: 0px;
+    position: absolute;
+    top: 200px;
 }
 
-.pagination li a {
-    display: block;
-    /* let links fill the list item */
-    padding: 8px 12px;
-    text-decoration: none;
-    border: 1px solid gray;
-    color: black;
-    margin: 0 4px;
-    border-radius: 5px;
-    /* add rounded borders */
+.pos-butt {
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 5px 15px;
+    transition: 1s;
+}
+
+.pos-butt:hover {
+    background-color: #deb5b2;
+}
+
+.poster:hover img {
+    transform: scale(1.05, 1.05);
+
+}
+
+
+/* Customer support */
+.cust-supp{
+    /* border: 2px solid yellow; */
+    width: 300px;
+    height: 80px;
+    display: flex;
+}
+.cus-icon{
+    /* border: 2px solid green; */
+    width: 80px;
+    height: 80px;
+    background-color: white;
+}
+.cus-icon img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cus-content{
+    /* border: 2px solid green; */
+    width: 220px;
+    height: 80px;
+}
+.cus-content p{
+    text-align: center;
 }
