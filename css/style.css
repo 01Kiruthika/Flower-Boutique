@@ -92,20 +92,21 @@ nav ul li a {
 .btn {
     /* border: 2px solid black; */
     position: absolute;
-    top: 60%;
+    top: 70%;
     left: 50%;
-    transform: translate(-60%, -50%);
+    transform: translate(-70%, -50%);
     transition: 0.5s;
 }
 
-.btn a {
+.btn button {
+    border: none;
     text-decoration: none;
     color: white;
     background-color: #eeaa9c;
     padding: 10px 22px;
 }
 
-.btn:hover a {
+.btn:hover button {
     background-color: palevioletred;
     color: white;
 }
@@ -212,7 +213,7 @@ nav ul li a {
 .c-body {
     display: grid;
     grid-template-columns: repeat(4, 300px);
-    grid-template-rows: repeat(2, 450px);
+    grid-template-rows: repeat(2, 550px);
     gap: 10px;
     padding: 10px;
 }
@@ -226,6 +227,7 @@ nav ul li a {
     /* border: 2px solid yellow; */
     width: inherit;
     height: 300px;
+    
 }
 
 .inside-2 {
@@ -268,7 +270,17 @@ h6 {
 .butt:hover {
     background-color: black;
 }
-
+.c-foot button{
+    border: 2px solid;
+    border: none;
+    color: white;
+    background-color:#deb5b2 ;
+    padding: 8px 15px;
+    transition: 1s;
+}
+.c-foot:hover button{
+    background-color: black;
+}
 
 
 
