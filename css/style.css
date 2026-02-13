@@ -94,13 +94,13 @@ nav ul li a {
     position: absolute;
     top: 70%;
     left: 50%;
-    transform: translate(-70%, -50%);
+    transform: translate(-60%, -50%);
     transition: 0.5s;
 }
 
 .btn button {
     border: none;
-    text-decoration: none;
+    /* text-decoration: none; */
     color: white;
     background-color: #eeaa9c;
     padding: 10px 22px;
@@ -116,22 +116,22 @@ nav ul li a {
 
 
 
- /* .Container {
+.Container {
     border: 2px solid;
     padding: 5px 10px;
-} */
+}
 
 .head {
-    /* border: 2px solid red; */
-    padding: 30px; 
-} 
+    border: 2px solid red;
+    padding: 30px;
+}
 
 .head h3 {
     text-align: center;
 }
 
 .body {
-    /* border: 2px solid blue; */
+    border: 2px solid blue;
     padding: 5px 10px;
     display: flex;
     justify-content: center;
@@ -140,7 +140,7 @@ nav ul li a {
 }
 
 .foot {
-    /* border: 2px solid yellow; */
+    border: 2px solid yellow;
     padding: 40px;
 }
 
@@ -189,7 +189,10 @@ nav ul li a {
     z-index: -1;
 }
 
-
+.box-foot .btnn{
+    bottom: 10px;
+    background-color: black;
+}
 
 /*  Card Design   */
 
@@ -227,7 +230,84 @@ nav ul li a {
     /* border: 2px solid yellow; */
     width: inherit;
     height: 300px;
-    
+
+}
+.card-backimg{
+    /* border: 2px solid; */
+    background-image: url(../image/card-image/1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.5s;
+}
+.card-backimg:hover {
+    background-image: url(../image/card-image/1.1.jpg);
+}
+
+
+
+.card-backimg1{
+    background-image: url(../image/card-image/2.jpg);
+}
+.card-backimg1:hover {
+    background-image: url(../image/card-image/2.1.jpg);
+}
+
+
+
+.card-backimg2{
+    background-image: url(../image/card-image/3.jpg);
+}
+.card-backimg2:hover {
+    background-image: url(../image/card-image/3.1.jpg);
+}
+
+
+
+.card-backimg3{
+    background-image: url(../image/card-image/4.jpg);
+}
+.card-backimg3:hover {
+    background-image: url(../image/card-image/4.1.jpg);
+}
+
+
+.card-backimg4{
+    background-image: url(../image/card-image/5.jpg);
+}
+.card-backimg4:hover {
+    background-image: url(../image/card-image/5.1.jpg);
+}
+
+
+
+
+.card-backimg5{
+    background-image: url(../image/card-image/6.jpg);
+}
+.card-backimg5:hover {
+    background-image: url(../image/card-image/6.1.jpg);
+}
+
+
+.card-backimg6{
+    background-image: url(../image/card-image/7.jpg);
+}
+.card-backimg6:hover {
+    background-image: url(../image/card-image/7.1.jpg);
+}
+
+
+.card-backimg7{
+    background-image: url(../image/card-image/8.jpg);
+}
+.card-backimg7:hover {
+    background-image: url(../image/card-image/8.1.jpg);
+}
+
+.c-inside-1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .inside-2 {
@@ -256,10 +336,10 @@ h6 {
 .c-foot {
     display: flex;
     justify-content: center;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 
-.butt {
+.btnn {
     padding: 10px 35px;
     border: none;
     background-color: #deb5b2;
@@ -267,18 +347,21 @@ h6 {
     transition: 1s;
 }
 
-.butt:hover {
+.btnn:hover {
     background-color: black;
 }
-.c-foot button{
+
+.c-foot a {
+    text-decoration: none;
     border: 2px solid;
     border: none;
     color: white;
-    background-color:#deb5b2 ;
-    padding: 8px 15px;
-    transition: 1s;
+    background-color: #deb5b2;
+    padding: 10px 25px;
+    transition: 0.5s;
 }
-.c-foot:hover button{
+
+.c-foot:hover a {
     background-color: black;
 }
 
@@ -447,7 +530,7 @@ h6 {
 }
 
 .sign-in {
-    /* border: 2px solid yellowgreen; */
+    border: 2px solid yellowgreen;
     background-image: url(../image/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -463,14 +546,14 @@ h6 {
 }
 
 .form-foot {
-    /* border: 2px solid black; */
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-self: center;
 }
 
-input[type=submit] {
-    /* border: 2px solid black; */
+.form-foot button {
+    border: 2px solid black;
     background-color: #04AA6D;
     color: white;
     padding: 10px 40px;
@@ -659,18 +742,6 @@ input[type=submit]:hover {
     z-index: 50;
 }
 
-/* .prev-icon{
-    color: black;
-}
-.carousel-control-prev-icon{
-    border: 2px solid ;
-    background-color: black;
-}
-.carousel-control-next-icon{
-    border: 2px solid;
-    background-color: black;
-} */
-
 
 
 /* Shop Page */
@@ -679,7 +750,7 @@ input[type=submit]:hover {
 }
 
 .price {
-    border: 2px solid;
+    /* border: 2px solid; */
     width: 400px;
     height: auto;
     padding: 20px;
@@ -687,14 +758,14 @@ input[type=submit]:hover {
 }
 
 .filter {
-    border: 2px solid;
+    /* border: 2px solid; */
     width: 350px;
     height: 180px;
     padding: 10px;
 }
 
 .color {
-    border: 2px solid;
+    /* border: 2px solid; */
     width: 20px;
     height: 20px;
 }
@@ -711,32 +782,35 @@ input[type=submit]:hover {
 }
 
 .filter1 {
-    border: 2px solid;
+    /* border: 2px solid; */
     width: 350px;
     height: 400px;
 }
-.price1{
-    border: 2px solid yellow;
+
+.price1 {
+    /* border: 2px solid yellow; */
     width: 85%;
 }
-.image{
-    border: 2px solid red;
+
+.image {
+    /* border: 2px solid red; */
     width: 100%;
     height: 200px;
 }
 
 
 /* Contact Page */
-.contact-box{
+.contact-box {
     /* border: 2px solid; */
     width: 350px;
     height: 200px;
     margin: 25px;
     background-color: #eff4f3;
-    display:flex;
+    display: flex;
     align-items: end;
 }
-.contact-img{
+
+.contact-img {
     /* border: 2px solid; */
     width: 100px;
     height: 100px;
@@ -745,20 +819,34 @@ input[type=submit]:hover {
     position: absolute;
     top: -10px;
 }
-.contact-img1{
+
+.contact-img1 {
     left: 180px;
 }
-.contact-img2{
+
+.contact-img2 {
     left: 615px;
 }
-.contact-img3{
+
+.contact-img3 {
     left: 1050px;
 }
-.contact-content{
+
+.contact-content {
     /* border: 2px solid; */
     width: 350px;
     height: 100px;
     text-align: center;
     /* padding-bottom: 100px; */
     margin: 20px;
+}
+
+/* Shop Page */
+.shop-card-body{
+    /* border: 2px solid; */
+    display: grid;
+    grid-template-columns: repeat(3, 280px);
+    grid-template-rows: repeat(3, 550px);
+    /* gap: 10px; */
+    /* padding: 10px; */
 }
