@@ -7,8 +7,7 @@
     <title>Admin Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
-    <script src="script/script.js" async></script>
+    <link rel="stylesheet" href="admin-css/style.css">
 
 </head>
 
@@ -42,7 +41,7 @@
             </div>
             <div class="admin-options">
                 <ul>
-                    <li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                    <li><a href="dashboard.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                     <li><a href="category.html"><i class="fa fa-th-list"></i> Customer</a></li>
                     <li><a href="product.html"><i class="fa fa-cubes"></i> Products</a></li>
                     <li><a href="" onclick="logout()" button="submit"><i class="fa fa-sign-out"></i> Logout</a></li>
@@ -57,24 +56,33 @@
     <main>
         <h1>Customer Details</h1>
 
-        <!-- <div class="product-main"> -->
-        <div class="cutomer">
-            <table>
-                <thead>
-                    <tr>
-                        <th>S.No</th>
-                        <th>Customer Name</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-                <tbody id="customerTable">
-                    <tr>
-                        <td>1</td>
-                    </tr>
-                </tbody>
-            </table>
 
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+
+            <tbody id="customerTable">
+                <!-- JS will insert rows here -->
+            </tbody>
+        </table>
+
+        <!-- <div class="product-main"> -->
+        <!-- <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="customerTable"></tbody>
+        </table> -->
+
 
         <!-- </div> -->
 
@@ -84,11 +92,55 @@
 
     </main>
     <footer>
-         <div class="footer">
+        <div class="footer">
             <h5>Copyright ©2025 All rights reserved </h5>
         </div>
     </footer>
 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            console.log("Customer JS loaded");
+
+            let tableBody = document.getElementById("customerTable");
+            console.log("Table body:", tableBody);
+
+            let users = JSON.parse(localStorage.getItem("users"));
+            console.log("Users:", users);
+
+            if (!tableBody) {
+                alert("customerTable not found in HTML");
+                return;
+            }
+
+            tableBody.innerHTML = "";
+
+            if (!users || users.length === 0) {
+                tableBody.innerHTML = `
+            <tr>
+                <td colspan="3">No Customers Found</td>
+            </tr>
+        `;
+                return;
+            }
+
+            users.forEach((cust, index) => {
+                let tr = document.createElement("tr");
+
+                tr.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${cust.name}</td>
+            <td>${cust.email}</td>
+        `;
+
+                tableBody.appendChild(tr);
+            });
+        });
+    </script>
+
+
+    <script src="script/admin-script.js"></script>
 </body>
 
 </html>

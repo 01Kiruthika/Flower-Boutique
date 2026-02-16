@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 270px auto;
+    grid-template-areas: ' sidemenu header'
+        'sidemenu main'
+        'sidemenu footer'
+    ;
+    grid-template-rows: 40px auto 40px;
+}
+
+header {
+    grid-area: header;
+    border-bottom: 2px solid;
+    display: flex;
+    justify-content: end;
+}
+
+aside {
+    border: 2px solid white;
+    grid-area: sidemenu;
+    /* background: #3784d1; */
+    background-image: url(../admin-images/bg-1.avif);
+    color: white;
+
+}
+
+main {
+    grid-area: main;
+    overflow: auto;
+    padding: 20px;
+
+}
+
+footer {
+    grid-area: footer;
+    border-top: 2px solid;
+}
+
+.company-name {
+    /* border: 2px solid blue; */
+    height: 40px;
+    display: flex;
+    gap: 5px;
+}
+
+.company-name h2 {
+    align-self: center;
+}
+
+.head-icons {
+    /* border: 2px solid black; */
+    width: 300px;
+    padding: 10px;
+    display: flex;
+}
+
+.head-icons .fa {
+    /* border: 2px solid saddlebrown; */
+    height: 25px;
+    margin: 0px 8px;
+    /* margin-bottom: 0px; */
+}
+
+.time {
+    margin: 0 8px;
+}
+
+
+.menu {
+    /* border: 2px solid white; */
+    width: 250px;
+    height: 550px;
+    margin: 20px 10px;
+}
+
+.admin-logo {
+    /* border: 2px solid white; */
+    width: 100px;
+    height: 100px;
+    /* border-radius: 50%; */
+    font-size: 80px;
+    padding: 5px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.admin-options {
+    /* border: 2px solid white; */
+    width: 250px;
+    height: 300px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.admin-options ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.admin-options ul li a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    /* gap:20px;   */
+}
+
+#click-bars {
+    display: none;
+}
+
+.fa-bars {
+    display: none;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.box {
+    /* border: 2px solid black; */
+    width: 250px;
+    /* height: 130px; */
+    color: white;
+    border-radius: 5px;
+
+}
+
+.box .head {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    padding: 0 20px;
+}
+
+.left,
+.right {
+    /* border: 2px solid black; */
+    width: 110px;
+    padding: 5px;
+}
+
+.left h1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.box1 {
+    background: #17a2b8;
+}
+
+.foot {
+    background: #1591a5;
+    text-align: center;
+    padding: 8px 0px;
+    border-radius: 5px;
+}
+
+.foot a {
+    text-decoration: none;
+    color: white;
+}
+
+.box2 {
+    background: #28a745;
+}
+
+.box2 .right {
+    border: 2pxs solid black;
+    background: #28a745;
+}
+
+.box2 .foot {
+    background: #24963e;
+}
+
+.box3 {
+    background-color: #ffc107;
+    color: black;
+}
+
+.box3 .foot a {
+    color: black;
+}
+
+.box3 .foot {
+    background: #e5ad06;
+}
+
+.box4 {
+    background: #da3545;
+}
+
+.box4 .foot {
+    background-color: #c6303e;
+}
+
+.right {
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: end;
+    align-self: center;
+    font-size: 50px;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.right .fa {
+    /* background: #17a2b8; */
+    color: rgba(0, 0, 0, 0.212);
+}
+
+.right:hover .fa {
+    transform: scale(1.05, 1.05)
+}
+
+
+
+
+/* Product page */
+.product-main {
+     /*border: 2px solid;*/ 
+    display: flex;
+}
+
+.product-form {
+   /* border: 2px solid;*/ 
+    width: 380px;
+    height: 450px;
+    background-color: teal;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: -6px 6px 20px 0px black;
+    margin-top: 10px;
+    margin: 25px;
+}
+
+.product-form input {
+    outline: none;
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+}
+
+.product-form label {
+    margin: 5px;
+
+}
+
+.Pro-btn {
+    /* border: 2px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.pbtn {
+    padding: 8px 20px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+
+}
+
+#updateBtn {
+    padding: 8px 20px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+.table-div {
+    /* border: 2px solid; */
+    display: flex;
+    align-self: center;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 2px solid;
+    width: 80px;
+    height: 100px;
+    padding: 5px;
+}
+
+td button {
+    border: 2px solid black;
+    margin: 5px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+td img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+}
+
+/*Customer page  */
+.cutomer table {
+    /* border: 2px solid black; */
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10px;
+    /* border-collapse: collapse; */
+}
+
+.cutomer th,
+td {
+    border: 2px solid black;
+    height: 50px;
+    /* padding: 5px; */
+    text-align: center;
+}
+
+
+/* Footer */
+.footer {
+    /* border: 2px solid; */
+    height: 40px;
+    text-align: center;
+}
+
+
+@media screen and (max-width:768px) {
+
+    body {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: auto;
+        grid-template-areas: 'header'
+            'main'
+            'footer'
+        ;
+        grid-template-rows: 60px auto 50px;
+
+    }
+
+    aside {
+
+        grid-area: sidemenu;
+        background: url(../admin-images/bg-1.avif);
+        position: absolute;
+        width: 250px;
+        left: -250px;
+        margin-top: 60px;
+        height: calc(100% - 60px);
+        transition: 1s;
+    }
+
+    header {
+        display: flex;
+    }
+
+    .admin-options ul li a {
+        gap: 15px;
+    }
+
+    .admin-logo {
+        font-size: 50px;
+        /* border: 2px solid; */
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .company-name {
+        /* border: 2px solid; */
+        width: 50px;
+        /* position: relative; */
+        align-self: center;
+    }
+
+    .fa-bars {
+        position: absolute;
+        top: 8px;
+        left: 15px;
+        display: block;
+        font-size: 30px;
+    }
+
+
+    #click-bars:checked~aside {
+        left: 0;
+    }
+
+    .head-icons {
+        /* border: 2px solid; */
+        width: 40%;
+        /* justify-content:space-between; */
+        padding: 8px;
+    }
+
+    .head-icons .fa {
+        margin: 0 6px;
+        font-size: 16px;
+    }
+
+    .time {
+        font-size: 18px;
+    }
+
+    .product-main{
+        /* border: 2px solid; */
+        display: flex;
+        flex-direction: column;
+    }
+}

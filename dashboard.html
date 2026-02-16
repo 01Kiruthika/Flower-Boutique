@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="admin-css/style.css">
+
+
+</head>
+
+<body>
+    <header>
+
+        <div class="head-icons">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <i class="fa fa-comments" aria-hidden="true"></i>
+            <i class="fa fa-bell-o" aria-hidden="true"></i>
+            <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+            <div class="time">
+                <span id="timehr">HR</span> : <span id="timemin">MIN</span> : <span id="timesec">SEC</span>
+                <span id="ampm">AM</span>
+            </div>
+        </div>
+
+        <div class="company-name">
+            <label for="click-bars">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </label>
+        </div>
+    </header>
+
+
+    <input type="checkbox" id="click-bars">
+    <aside>
+        <div class="menu">
+            <div class="admin-logo">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </div>
+            <div class="admin-options">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                    <li><a href="category.html"><i class="fa fa-th-list"></i> Customer</a></li>
+                    <li><a href="product.html"><i class="fa fa-cubes"></i> Products</a></li>
+                    <li><a href="" onclick="logout()" button="submit"><i class="fa fa-sign-out"></i> Logout</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </aside>
+
+
+    <main>
+        <h1>Dashboard</h1>
+
+        <div class="container">
+            <div class="box box1">
+                <div class="head">
+                    <div class="left">
+                        <h1 id="productCount">0</h1>
+                        <p>New Products</p>
+                    </div>
+                    <div class="right">
+                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="foot">
+                    <a href="#">More info</a>
+                </div>
+            </div>
+
+            <div class="box box3">
+                <div class="head">
+                    <div class="left">
+                        <h1 id="userCount">0</h1>
+                        <p>User Registrations</p>
+                    </div>
+                    <div class="right">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="foot">
+                    <a href="#">More info </a>
+                </div>
+            </div>
+            <div class="box box4">
+                <div class="head">
+                    <div class="left">
+                        <h1 id="uniqueuser">0</h1>
+                        <p>Unique Visitors</p>
+                    </div>
+                    <div class="right">
+                        <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                    </div>
+                </div>
+                <div class="foot">
+                    <a href="#">More info </a>
+                </div>
+            </div>
+
+        </div>
+
+
+    </main>
+    <footer>
+        <div class="footer">
+            <h5>Copyright ©2025 All rights reserved </h5>
+        </div>
+
+    </footer>
+
+
+     <script src="script/admin-script.js"></script>
+</body>
+
+</html>

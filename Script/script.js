@@ -59,71 +59,75 @@ window.addEventListener("scroll", () => {
     lastScrollY = currentScroll;
 });
 
-
-
 //admin page
-debugger
-let adminpage = (event) => {
-    event.preventDefault(); // VERY IMPORTANT
+// debugger;
 
-    let isvalid = true;
+document.addEventListener("DOMContentLoaded", () => {
 
-    let aemailInput = document.querySelector("#admin-email");
-    let apassInput = document.querySelector("#admin-password");
+    document.querySelector("form").addEventListener("submit", adminpage);
 
-    let erEmail = document.querySelector("#er-email");
-    let erPass = document.querySelector("#er-pass");
+    function adminpage(event) {
+        event.preventDefault();
 
-    let aemail = aemailInput.value.trim();
-    let apass = apassInput.value.trim();
+        let isvalid = true;
 
-    let mailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let aemailInput = document.querySelector("#admin-email");
+        let apassInput = document.querySelector("#admin-password");
 
-    // Reset errors
-    erEmail.innerText = "";
-    erPass.innerText = "";
+        let erEmail = document.querySelector("#er-email");
+        let erPass = document.querySelector("#er-pass");
 
-    // Email validation
-    if (aemail === "") {
-        erEmail.innerText = "Please enter admin email";
-        erEmail.style.color = "red";
-        aemailInput.style.border = "2px solid red";
-        isvalid = false;
-    } else if (!mailPattern.test(aemail)) {
-        erEmail.innerText = "Invalid email format";
-        erEmail.style.color = "red";
-        aemailInput.style.border = "2px solid red";
-        isvalid = false;
-    } else {
-        aemailInput.style.border = "2px solid green";
+        let aemail = aemailInput.value.trim();
+        let apass = apassInput.value.trim();
+
+        let mailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Reset errors
+        erEmail.innerText = "";
+        erPass.innerText = "";
+
+        // Email validation
+        if (aemail === "") {
+            erEmail.innerText = "Please enter admin email";
+            erEmail.style.color = "red";
+            aemailInput.style.border = "2px solid red";
+            isvalid = false;
+        } else if (!mailPattern.test(aemail)) {
+            erEmail.innerText = "Invalid email format";
+            erEmail.style.color = "red";
+            aemailInput.style.border = "2px solid red";
+            isvalid = false;
+        } else {
+            aemailInput.style.border = "2px solid green";
+        }
+
+        // Password validation
+        if (apass === "") {
+            erPass.innerText = "Please enter password";
+            erPass.style.color = "red";
+            apassInput.style.border = "2px solid red";
+            isvalid = false;
+        } else if (apass.length < 8) {
+            erPass.innerText = "Password must be at least 8 characters";
+            erPass.style.color = "red";
+            apassInput.style.border = "2px solid red";
+            isvalid = false;
+        } else {
+            apassInput.style.border = "2px solid green";
+        }
+
+        if (!isvalid) return;
+
+        // Admin credentials check
+        if (aemail === "kiruthika@gmail.com" && apass === "admin2004") {
+            alert("Admin Login Successful!!");
+            window.location.href = "dashboard.html";
+        } else {
+            alert("Only Admin is allowed to login!");
+        }
     }
 
-    // Password validation
-    if (apass === "") {
-        erPass.innerText = "Please enter password";
-        erPass.style.color = "red";
-        apassInput.style.border = "2px solid red";
-        isvalid = false;
-    } else if (apass.length < 8) {
-        erPass.innerText = "Password must be at least 8 characters";
-        erPass.style.color = "red";
-        apassInput.style.border = "2px solid red";
-        isvalid = false;
-    } else {
-        apassInput.style.border = "2px solid green";
-    }
-
-    if (!isvalid) return;
-
-    // Admin credentials check
-    if (aemail === "kiruthika@gmail.com" && apass === "admin2004") {
-        alert("Admin Login Successful!!");
-        // window.location.href = "admin-dashboard.html";
-    } else {
-        alert("Only Admin is allowed to login!");
-    }
-};
-
+});
 
 
 
@@ -200,14 +204,43 @@ let loginpage = (ev) => {
         user.email.toLowerCase() === email &&
         user.password === pass
     );
-
+    localStorage.removeItem("loggedInUser");
     if (validUser) {
         alert("Login Successfully!!");
-        localStorage.setItem("loggedInUser", JSON.stringify(validUser));
+
+        // Get existing logged-in users
+        let loggedUsers = localStorage.getItem("loggedInUser");
+
+        // Parse it safely
+        try {
+            loggedUsers = JSON.parse(loggedUsers);
+        } catch {
+            loggedUsers = null; // in case localStorage has invalid data
+        }
+
+        // Make sure loggedUsers is an array
+        if (loggedUsers === null || typeof loggedUsers !== "object") {
+            loggedUsers = [];
+        } else if (loggedUsers.id !== undefined) {
+            // old single object format -> wrap into array
+            loggedUsers = [loggedUsers];
+        }
+
+        // Push the new logged-in user
+        loggedUsers.push(validUser);
+
+        // Save back to localStorage
+        localStorage.setItem("loggedInUser", JSON.stringify(loggedUsers));
+
+        // Redirect
         window.location.href = "index.html";
     } else {
         alert("Invalid Email or Password");
     }
+
+
+
+
 };
 
 

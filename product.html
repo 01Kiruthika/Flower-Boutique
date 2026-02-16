@@ -7,8 +7,8 @@
     <title>Admin Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
-    <script src="script/script.js" async></script>
+    <link rel="stylesheet" href="admin-css/style.css">
+
 </head>
 
 <body>
@@ -39,7 +39,7 @@
             </div>
             <div class="admin-options">
                 <ul>
-                    <li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                    <li><a href="dashboard.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                     <li><a href="category.html"><i class="fa fa-th-list"></i> Customer</a></li>
                     <li><a href="product.html"><i class="fa fa-cubes"></i> Products</a></li>
                     <li><a href="" onclick="logout()" button="submit"><i class="fa fa-sign-out"></i> Logout</a></li>
@@ -55,42 +55,39 @@
         <div class="product-main">
 
             <div class="product-form">
-                <form action="">
+                <form id="productForm" action="">
                     <input type="hidden" id="pid">
-                    <label for="">Enter Product Image URL:</label><br>
+
+                    <label>Enter Product Image URL:</label><br>
                     <input type="url" id="url" placeholder="Enter Image URL"><br>
                     <span id="urlerror"></span><br>
 
-
-                    <label for="">Enter Product Name:</label><br>
+                    <label>Enter Product Name:</label><br>
                     <input type="text" id="PName" placeholder="Enter product Name"><br>
                     <span id="nameerror"></span><br>
 
-
-                    <label for="">Enter price:</label><br>
+                    <label>Enter price:</label><br>
                     <input type="number" id="price" placeholder="Enter price"><br>
                     <span id="Priceerror"></span><br>
 
-
-                    <label for="">Enter Stock:</label><br>
+                    <label>Enter Stock:</label><br>
                     <input type="number" id="stock" placeholder="Enter Stock"><br>
                     <span id="Stockerror"></span><br>
 
-
-                    <label for="">Enter Offer:</label><br>
+                    <label>Enter Offer:</label><br>
                     <input type="number" id="offer" placeholder="Enter offer"><br>
                     <span id="Offerror"></span><br>
 
                     <div class="Pro-btn">
                         <button type="submit" onclick="sub(event)" class="pbtn">Submit</button>
-                        <button type="submit" onclick="updateForm()" id="updateBtn"
-                            style="display: none;">Update</button>
-
+                        <button id="updateBtn" type="button" onclick="updateForm()" style="display:none;">
+                            Update
+                        </button>
                     </div>
-                </form>
             </div>
+
             <div class="table-div">
-                <table border="2">
+                <table>
                     <thead>
                         <tr>
                             <th>Product Id</th>
@@ -103,31 +100,24 @@
                         </tr>
                     </thead>
                     <tbody id="tableBody">
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <!-- <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr> -->
                     </tbody>
                 </table>
             </div>
-        </div>
+            </form>
+
 
         </div>
     </main>
     <footer>
-         <div class="footer">
+        <div class="footer">
             <h5>Copyright ©2025 All rights reserved </h5>
         </div>
     </footer>
 
 
 
-
+    <script src="script/admin-script.js"></script>
 </body>
 
 </html>
