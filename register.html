@@ -11,6 +11,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="Script/script.js"></script>
 
 </head>
 
@@ -21,19 +22,23 @@
             <form action="">
                 <h3>Register Now</h3>
                 <label for="">User Name:</label><br>
-                <input type="name" id="uname"><br>
+                <input type="name" id="user-name"><br>
+                <span id="ename"></span><br>
 
                 <label for="">User Email:</label><br>
-                <input type="email" id="uemail"><br>
+                <input type="email" id="user-email"><br>
+                <span id="eemail"></span><br>
 
                 <label for="">Password:</label><br>
-                <input type="password" id="upass"><br>
+                <input type="password" id="user-password"><br>
+                <span id="epass"></span><br>
 
                  <label for="">Conform Password:</label><br>
-                <input type="password" id="ucpass"><br>
+                <input type="password" id="user-conform-password"><br>
+                <span id="ecpass"></span>
 
                 <div class="sub">
-                    <button type="submit">Submit</button>
+                    <button type="button" onclick="registerUser(event)">Submit</button>
                 </div>
                 <div class="acc">
                     <h6>You have an account?</h6>
@@ -41,7 +46,7 @@
                 </div>
                 <div class="acc">
                     <h6>Admin</h6>
-                    <a href="">login here</a>
+                    <a href="adminlogin.html">login here</a>
                 </div>
 
             </form>
