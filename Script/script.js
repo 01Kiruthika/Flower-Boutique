@@ -6,7 +6,7 @@ let atc = document.getElementById("product-count")
 let addtocart = () => {
     debugger;
 
-    if (count < 1) {
+    if (count < 10) {
         count++
         atc.innerText = count;
     }

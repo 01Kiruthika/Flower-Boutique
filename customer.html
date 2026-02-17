@@ -55,49 +55,37 @@
 
 
     <main>
-        <h1>Category</h1>
-        <div class="category-main">
+        <h1>Customer Details</h1>
 
-            <div class="product-form cate-from">
-                <form id="categoryForm" action="">
-                    <input type="hidden" id="pid">
 
-                    <label>Enter Category Image URL:</label><br>
-                    <input type="url" id="curl" placeholder="Enter Image URL"><br>
-                    <span id="cate-urlerror"></span><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
 
-                    <label>Enter Category Name:</label><br>
-                    <input type="text" id="CName" placeholder="Enter Category Name"><br>
-                    <span id="cate-nameerror"></span><br>
+            <tbody id="customerTable">
+                <!-- JS will insert rows here -->
+            </tbody>
+        </table>
 
-                    <label>Enter Stock:</label><br>
-                    <input type="number" id="cstock" placeholder="Enter Stock"><br>
-                    <span id="cate-Stockerror"></span><br>
+        <!-- <div class="product-main"> -->
+        <!-- <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="customerTable"></tbody>
+        </table> -->
 
-                    <div class="Pro-btn">
-                        <button type="submit" onclick="categorysubmit(event)" class="pbtn">Submit</button>
-                        <button id="updateBtn" type="button" onclick="updateCategory()"
-                            style="display:none;">Update</button>
-                    </div>
-                </form>
-            </div>
-            <div class="table-div">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Category Id</th>
-                            <th>Category URL</th>
-                            <th>Category Name</th>
-                            <th>Stock</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="categoryTableBody">
-                        <!-- rows will be generated dynamically -->
-                    </tbody>
-                </table>
-            </div>
 
+        <!-- </div> -->
 
 
 
@@ -111,8 +99,49 @@
     </footer>
 
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
-    <script src="script/admin-script.js"></script>
+            console.log("Customer JS loaded");
+
+            let tableBody = document.getElementById("customerTable");
+            console.log("Table body:", tableBody);
+
+            let users = JSON.parse(localStorage.getItem("users"));
+            console.log("Users:", users);
+
+            if (!tableBody) {
+                alert("customerTable not found in HTML");
+                return;
+            }
+
+            tableBody.innerHTML = "";
+
+            if (!users || users.length === 0) {
+                tableBody.innerHTML = `
+            <tr>
+                <td colspan="3">No Customers Found</td>
+            </tr>
+        `;
+                return;
+            }
+
+            users.forEach((cust, index) => {
+                let tr = document.createElement("tr");
+
+                tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${cust.name}</td>
+                     <td>${cust.email}</td>
+                   `;
+
+                tableBody.appendChild(tr);
+            });
+        });
+    </script>
+
+
+    <script src="script/admin-script.js" async></script>
 </body>
 
 </html>

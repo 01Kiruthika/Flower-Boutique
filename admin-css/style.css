@@ -234,14 +234,20 @@ footer {
 
 
 
-/* Product page */
+/* Product page and category page*/
 .product-main {
-     /*border: 2px solid;*/ 
+    /*border: 2px solid;*/
     display: flex;
 }
 
+.category-main {
+    /* border: 2px solid; */
+    display: flex;
+    justify-content: space-around;
+}
+
 .product-form {
-   /* border: 2px solid;*/ 
+    /* border: 2px solid;*/
     width: 380px;
     height: 450px;
     background-color: teal;
@@ -251,6 +257,10 @@ footer {
     box-shadow: -6px 6px 20px 0px black;
     margin-top: 10px;
     margin: 25px;
+}
+
+.cate-from {
+    height: 400px;
 }
 
 .product-form input {
@@ -431,9 +441,29 @@ td {
         font-size: 18px;
     }
 
-    .product-main{
+    .product-main {
         /* border: 2px solid; */
         display: flex;
         flex-direction: column;
+    }
+
+    .product-form {
+        /* border: 2px solid; */
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+
+    .category-main {
+        /* border: 2px solid; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cate-from {
+        /* border: 2px solid; */
+        margin: 0 auto;
+        margin-bottom: 50px;
+        height: 300px;
     }
 }
