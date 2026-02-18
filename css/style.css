@@ -220,14 +220,14 @@ nav ul li a {
 .line:hover hr {
     width: 150px;
 }
-
+/* 
 .c-body {
     display: grid;
     grid-template-columns: repeat(4, 300px);
     grid-template-rows: repeat(2, 550px);
     gap: 10px;
     padding: 10px;
-}
+} */
 
 .card-des {
     /* border: 2px solid black; */
@@ -547,7 +547,7 @@ h6 {
 }
 
 .sign-in {
-    border: 2px solid yellowgreen;
+    /* border: 2px solid yellowgreen; */
     background-image: url(../image/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -563,7 +563,7 @@ h6 {
 }
 
 .form-foot {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: center;
     align-self: center;
@@ -856,6 +856,99 @@ input[type=submit]:hover {
     text-align: center;
     /* padding-bottom: 100px; */
     margin: 20px;
+}
+.catt-body{
+    /* border: 2px solid blue; */
+    display: block;
+}
+.rose-cat{
+    /* border: 2px solid; */
+    /* width: 100%; */
+    text-align: center;
+}
+.cattt{
+    /* border: 2px solid; */
+    width: 100%;
+}
+
+.rose-backimg {
+    /* border: 2px solid; */
+    background-image: url(../image/rose-image/1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.8s;
+}
+
+.rose-backimg:hover {
+    background-image: url(../image/rose-image/1.1.webp);
+}
+
+
+
+.rose-backimg1 {
+    background-image: url(../image/rose-image/2.jfif);
+}
+
+.rose-backimg1:hover {
+    background-image: url(../image/rose-image/2.1.webp);
+}
+
+
+
+.rose-backimg2 {
+    background-image: url(../image/rose-image/3.jpg);
+}
+
+.rose-backimg2:hover {
+    background-image: url(../image/rose-image/3.1.jpg);
+}
+
+
+
+.rose-backimg3 {
+    background-image: url(../image/rose-image/4.jfif);
+}
+
+.rose-backimg3:hover {
+    background-image: url(../image/rose-image/4.1.jfif);
+}
+
+
+.rose-backimg4 {
+    background-image: url(../image/rose-image/5.jfif);
+}
+
+.rose-backimg4:hover {
+    background-image: url(../image/rose-image/5.1.jfif);
+}
+
+
+
+
+.rose-backimg5 {
+    background-image: url(../image/rose-image/6.jfif);
+}
+
+.rose-backimg5:hover {
+    background-image: url(../image/rose-image/6.1.jfif);
+}
+
+
+.rose-backimg6 {
+    background-image: url(../image/rose-image/7.jfif);
+}
+
+.rose-backimg6:hover {
+    background-image: url(../image/rose-image/7.1.jfif);
+}
+
+
+.rose-backimg7 {
+    background-image: url(../image/rose-image/8.jfif);
+}
+
+.rose-backimg7:hover {
+    background-image: url(../image/rose-image/8.1.jfif);
 }
 
 /* Shop Page */
