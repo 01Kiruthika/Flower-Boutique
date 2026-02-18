@@ -31,49 +31,42 @@ setInterval(() => {
     showtime()
 }, 1000);
 
-// ================= DASHBOARD PAGE=================
 
+// =============================== DASHBOARD ===================================
 
-// ================= UPDATE PRODUCT COUNT =================
+// PRODUCT COUNT
 let updateProductCount = () => {
-    const countEl = document.querySelector("#productCount");
-    if (!countEl) {
-        console.log("Product count element not found!");
-        return;
-    }
+    let el = document.querySelector("#productCount");
+    if (!el) return;
     let products = JSON.parse(localStorage.getItem("products")) || [];
-    countEl.innerText = products.length;
+    el.innerText = products.length;
 };
 
-
-// ================= UPDATE USER COUNT =================
+// USER COUNT
 let updateUserCount = () => {
-    const countEl = document.querySelector("#userCount");
-    if (!countEl) {
-        console.log("User count element not found!");
-        return;
-    }
+    let el = document.querySelector("#userCount");
+    if (!el) return;
     let users = JSON.parse(localStorage.getItem("users")) || [];
-    countEl.innerText = users.length;
+    el.innerText = users.length;
 };
 
+// TOTAL PRODUCT STOCK
+let updateTotalStock = () => {
+    let el = document.querySelector("#totalStock");
+    if (!el) return;
 
-// ================= UPDATE LOGGED-IN USER COUNT =================
-let updateUniqueUserCount = () => {
-    const countEl = document.querySelector("#uniqueuser");
-    if (!countEl) {
-        console.log("Unique user element not found!");
-        return;
-    }
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    let total = 0;
 
-    let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    products.forEach(p => {
+        let s = Number(p.stock);
+        if (!isNaN(s) && s >= 0) total += s;
+    });
 
-    // loggedInUser is OBJECT → count is 1 or 0
-    countEl.innerText = loggedUser ? 1 : 0;
+    el.innerText = total;
 };
 
-
-// ================= UPDATE CATEGORY COUNT =================
+// CATEGORY COUNT
 let updateCategoryCount = () => {
     let el = document.getElementById("categoryCount");
     if (!el) return;
@@ -81,306 +74,139 @@ let updateCategoryCount = () => {
     el.innerText = categories.length;
 };
 
+//============================ DASHBOARD END ===========================================
 
 
 
+// =========================== PRODUCT PAGE ===========================================
 
-// ================= PRODUCT PAGE=================
-
-
-// ================= CALL ON PAGE LOAD =================
-document.addEventListener("DOMContentLoaded", () => {
-    updateProductCount(); // existing
-    updateUserCount(); // new
-});
-
-
-// ================= LOAD PRODUCTS =================
+// LOAD PRODUCTS
 let loadData = () => {
     let products = JSON.parse(localStorage.getItem("products")) || [];
-    let rows = "";
+    let tbody = document.getElementById("tableBody");
+    if (!tbody) return;
+    tbody.innerHTML = "";
 
-    products.forEach(ele => {
-        rows += `
+
+    if (products.length > 0) {
+        products.forEach((p, i) => {
+            tbody.innerHTML += `
         <tr>
-            <td>${ele.id}</td>
-            <td><img src="${ele.url}" width="60"></td>
-            <td>${ele.name}</td>
-            <td>${ele.price}</td>
-            <td>${ele.stock}</td>
-            <td>${ele.offer}</td>
+            <td>${i + 1}</td>
+            <td><img src="${p.url}"></td>
+            <td>${p.name}</td>
+            <td>${p.price}</td>
+            <td>${p.stock}</td>
+            <td>${p.offer}</td>
             <td>
-                <button type="button" onclick="setSelectedPro(${ele.id})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                <button type="button" onclick="deletePro(${ele.id})"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                </button>
+                <button onclick="setSelectedPro(${p.id})"><i class="fa fa-pencil-square-o"></i></button>
+                <button onclick="deletePro(${p.id})"><i class="fa fa-trash-o"></i></button>
             </td>
         </tr>`;
-    });
+        })
+    } else {
+        tbody.innerHTML = `<tr>
+                            <td colspan="7" align="center">No Record Found</td>
+                            
+                        </tr>`
+    }
+    // console.log(tbody.innerHTML);
 
-    document.querySelector("#tableBody").innerHTML = rows;
+
     updateProductCount();
+    updateTotalStock();
 };
 
-
-
-// ================= ADD PRODUCT =================
+// ADD PRODUCT
 let addProduct = () => {
     let products = JSON.parse(localStorage.getItem("products")) || [];
 
-    let product = {
+    products.push({
         id: Date.now(),
-        url: document.getElementById("url").value,
-        name: document.getElementById("PName").value,
-        price: document.getElementById("price").value,
-        stock: document.getElementById("stock").value,
-        offer: document.getElementById("offer").value
-    };
-
-    products.push(product);
-    localStorage.setItem("products", JSON.stringify(products));
-
-    document.querySelector("form").reset();
-    loadData();
-};
-
-// ================= SET DATA FOR UPDATE =================
-let setSelectedPro = (id) => {
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-    let p = products.find(ele => ele.id === id);
-
-    if (!p) {
-        return;
-    }
-
-    document.getElementById("pid").value = p.id;
-    document.getElementById("url").value = p.url;
-    document.getElementById("PName").value = p.name;
-    document.getElementById("price").value = p.price;
-    document.getElementById("stock").value = p.stock;
-    document.getElementById("offer").value = p.offer;
-
-    document.querySelector("#updateBtn").style.display = "inline";
-    document.querySelector(".pbtn").style.display = "none";
-};
-
-// ================= UPDATE PRODUCT =================
-let updateForm = () => {
-    let pid = Number(document.getElementById("pid").value);
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-
-    let updatedProducts = products.map(ele => {
-        if (ele.id === pid) {
-            return {
-                id: pid,
-                url: document.getElementById("url").value,
-                name: document.getElementById("PName").value,
-                price: document.getElementById("price").value,
-                stock: document.getElementById("stock").value,
-                offer: document.getElementById("offer").value
-            };
-        }
-        return ele;
+        url: url.value,
+        name: PName.value,
+        price: Number(price.value),
+        stock: Number(stock.value),
+        offer: offer.value
     });
 
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
-
-    document.querySelector("form").reset();
-    document.querySelector("#updateBtn").style.display = "none";
-    document.querySelector(".pbtn").style.display = "inline";
-
+    localStorage.setItem("products", JSON.stringify(products));
+    resetForm();
     loadData();
 };
 
-// ================= DELETE PRODUCT =================
-let deletePro = (id) => {
-    if (confirm("Do you want to Delete Product?")) {
-        let products = JSON.parse(localStorage.getItem("products")) || [];
-        let fpl = products.filter(ele => ele.id !== id);
-        localStorage.setItem("products", JSON.stringify(fpl));
-        loadData();
-    }
+// SELECT PRODUCT
+let setSelectedPro = (id) => {
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    let p = products.find(x => x.id === id);
+    if (!p) return;
+
+    pid.value = p.id;
+    url.value = p.url;
+    PName.value = p.name;
+    price.value = p.price;
+    stock.value = p.stock;
+    offer.value = p.offer;
+
+    document.querySelector(".pbtn").style.display = "none";
+    updateBtn.style.display = "inline";
 };
 
-// ================= VALIDATION & FORM SUBMIT =================
+// UPDATE PRODUCT
+let updateForm = () => {
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    let id = Number(pid.value);
+
+    products = products.map(p =>
+        p.id === id ? {
+            id,
+            url: url.value,
+            name: PName.value,
+            price: Number(price.value),
+            stock: Number(stock.value),
+            offer: offer.value
+        } :
+        p
+    );
+
+    localStorage.setItem("products", JSON.stringify(products));
+    resetForm();
+    loadData();
+};
+
+// DELETE PRODUCT
+let deletePro = (id) => {
+    if (!confirm("Delete this product?")) return;
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    products = products.filter(p => p.id !== id);
+    localStorage.setItem("products", JSON.stringify(products));
+    loadData();
+};
+
+// RESET FORM
+let resetForm = () => {
+    document.querySelector("form").reset();
+    pid.value = "";
+    updateBtn.style.display = "none";
+    document.querySelector(".pbtn").style.display = "inline";
+};
+
+// PRODUCT VALIDATION
 let sub = (ev) => {
     ev.preventDefault();
 
-    let isvalid = true;
+    let valid = true;
     let arrid = ["url", "PName", "price", "stock", "offer"];
     let arrerr = ["urlerror", "nameerror", "Priceerror", "Stockerror", "Offerror"];
 
-    //  check each input
     for (let i = 0; i < arrid.length; i++) {
         let input = document.getElementById(arrid[i]);
         let error = document.getElementById(arrerr[i]);
 
-        if (input.value == "") {
+        if (input.value.trim() === "") {
             error.innerText = "Please fill the " + arrid[i];
             input.style.border = "2px solid red";
-            error.style.color = "red";
-            isvalid = false; // stop update/add if empty
-        } else {
-            error.innerText = "";
-            input.style.border = "2px solid green";
-        }
-    }
-
-    //  If any input is empty, stop here
-    if (!isvalid) return;
-
-    //  Decide add or update
-    let pid = document.getElementById("pid").value;
-    if (pid === "") {
-        addProduct(); // Add product
-    } else {
-        updateForm(); // Update product only if validation passes
-    }
-};
-
-
-
-
-// ================= lOG OUT PAGE=================
-
-let logout = () => {
-    let confirmLogout = confirm("Do you want to logout?");
-    if (confirmLogout) {
-        alert("Logged out successfully");
-        window.location.href = "http://127.0.0.1:5502/index.html";
-    } else {
-        alert("you are Login remains")
-    }
-}
-
-
-
-// ================= CATEGORY PAGE=================
-
-// ================= LOAD CATEGORY DATA =================
-let loadCategoryData = () => {
-    let categories = JSON.parse(localStorage.getItem("categories")) || [];
-    let tbody = document.getElementById("categoryTableBody");
-    tbody.innerHTML = "";
-
-    categories.forEach(cat => {
-        let row = `
-            <tr>
-                <td>${cat.id}</td>
-                <td><img src="${cat.url}" width="60"></td>
-                <td>${cat.name}</td>
-                <td>${cat.stock}</td>
-                <td>
-                    <button onclick="setSelectedCategory(${cat.id})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                    <button onclick="deleteCategory(${cat.id})"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                </td>
-            </tr>
-        `;
-        tbody.innerHTML += row;
-    });
-
-     updateCategoryCount();
-};
-
-
-// ================= ADD CATEGORY =================
-let addCategory = () => {
-    let categories = JSON.parse(localStorage.getItem("categories")) || [];
-
-    let category = {
-        id: Date.now(),
-        url: document.getElementById("curl").value,
-        name: document.getElementById("CName").value,
-        stock: document.getElementById("cstock").value
-    };
-
-    categories.push(category);
-    localStorage.setItem("categories", JSON.stringify(categories));
-
-    document.getElementById("categoryForm").reset();
-    loadCategoryData();
-
-    localStorage.setItem("categories", JSON.stringify(categories));
-    updateCategoryCount();
-
-};
-
-
-// ================= SET CATEGORY FOR UPDATE =================
-window.setSelectedCategory = (id) => {
-    debugger;
-    let categories = JSON.parse(localStorage.getItem("categories")) || [];
-    let cat = categories.find(c => c.id === id);
-    if (!cat) return;
-
-    document.getElementById("pid").value = cat.id;
-    document.getElementById("curl").value = cat.url;
-    document.getElementById("CName").value = cat.name;
-    document.getElementById("cstock").value = cat.stock;
-
-    document.getElementById("updateBtn").style.display = "inline";
-    document.querySelector(".pbtn").style.display = "none";
-};
-
-// ================= UPDATE CATEGORY =================
-window.updateCategory = () => {
-    debugger;
-    let pid = Number(document.getElementById("pid").value);
-    let categories = JSON.parse(localStorage.getItem("categories")) || [];
-
-    let updatedCategories = categories.map(cat => {
-        if (cat.id === pid) {
-            return {
-                id: pid,
-                url: document.getElementById("curl").value,
-                name: document.getElementById("CName").value,
-                stock: document.getElementById("cstock").value
-            };
-        }
-        return cat;
-    });
-
-    localStorage.setItem("categories", JSON.stringify(updatedCategories));
-    document.getElementById("categoryForm").reset();
-    document.getElementById("updateBtn").style.display = "none";
-    document.querySelector(".pbtn").style.display = "inline";
-    loadCategoryData();
-    
-};
-
-// ================= DELETE CATEGORY =================
-window.deleteCategory = (id) => {
-    debugger;
-    if (confirm("Do you want to delete this category?")) {
-        let categories = JSON.parse(localStorage.getItem("categories")) || [];
-        let filtered = categories.filter(cat => cat.id !== id);
-        localStorage.setItem("categories", JSON.stringify(filtered));
-        loadCategoryData();
-       
-    }
-
-
-};
-
-// ================= CATEGORY FORM SUBMIT =================
-let categorysubmit = (ev) => {
-    debugger;
-    ev.preventDefault();
-    alert("hello")
-
-    let valid = true;
-    let catarrinput = ["curl", "CName", "cstock"];
-    let catarrerror = ["cate-urlerror", "cate-nameerror", "cate-Stockerror"];
-
-    // validation
-    for (let k = 0; k < catarrinput.length; k++) {
-        let input = document.getElementById(catarrinput[k]);
-        let error = document.getElementById(catarrerror[k]);
-
-        if (input.value == "") {
-            error.innerText = "Please fill the " + catarrinput[k];
-            input.style.border = "2px solid red";
-            error.style.color = "red";
+            error.style.color = "red"
             valid = false;
         } else {
             error.innerText = "";
@@ -390,28 +216,222 @@ let categorysubmit = (ev) => {
 
     if (!valid) return;
 
-    // add or update
-    let pid = document.getElementById("pid").value;
-    if (pid === "") {
-        addCategory();
-    } else {
-        updateCategory();
+    if (Number(price.value) < 0) {
+        Priceerror.innerText = "Price cannot be negative";
+        price.style.border = "2px solid red";
+        priceerror.style = "red"
+        return;
     }
+
+    if (Number(stock.value) < 0) {
+        Stockerror.innerText = "Stock cannot be negative";
+        stock.style.border = "2px solid red";
+        Stockerror.style = "red"
+        return;
+    }
+
+    pid.value === "" ? addProduct() : updateForm();
 };
 
-// ================= INITIAL LOAD =================
-window.addEventListener("DOMContentLoaded", () => {
-    loadData();
-    loadCategoryData();
-    updateProductCount();
-    updateUserCount();
-    updateUniqueUserCount();
+// =========================== PRODUCT PAGE RND ===========================================
+
+
+// ============================= CATEGORY PAGE ===========================================
+
+// LOAD CATEGORY
+let loadCategoryData = () => {
+    let categories = JSON.parse(localStorage.getItem("categories")) || [];
+    let tbody = document.getElementById("categoryTableBody");
+    if (!tbody) return;
+    tbody.innerHTML = "";
+
+
+    if (categories.length > 0) {
+        categories.forEach(cat => {
+            tbody.innerHTML += `
+        <tr>
+            <td>${cat.id}</td>
+            <td><img src="${cat.url}" width="60"></td>
+            <td>${cat.name}</td>
+            <td>${cat.stock}</td>
+            <td>
+                <button onclick="setSelectedCategory(${cat.id})"><i class="fa fa-pencil-square-o"></i></button>
+                <button onclick="deleteCategory(${cat.id})"><i class="fa fa-trash-o"></i></button>
+            </td>
+        </tr>`;
+        })
+    } else {
+        tbody.innerHTML = `<tr>
+                            <td colspan="5" align="center">No Record Found</td>
+                            
+                        </tr>`
+    }
+    // console.log(tbody.innerHTML);
+
     updateCategoryCount();
-});
+};
+
+// ADD CATEGORY
+let addCategory = () => {
+    let categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+    categories.push({
+        id: Date.now(),
+        url: curl.value,
+        name: CName.value,
+        stock: Number(cstock.value)
+    });
+
+    localStorage.setItem("categories", JSON.stringify(categories));
+    categoryForm.reset();
+    loadCategoryData();
+};
+
+// SELECT CATEGORY
+let setSelectedCategory = (id) => {
+    let categories = JSON.parse(localStorage.getItem("categories")) || [];
+    let cat = categories.find(c => c.id === id);
+    if (!cat) return;
+
+    pid.value = cat.id;
+    curl.value = cat.url;
+    CName.value = cat.name;
+    cstock.value = cat.stock;
+
+    updateBtn.style.display = "inline";
+    document.querySelector(".pbtn").style.display = "none";
+};
+
+// UPDATE CATEGORY
+let updateCategory = () => {
+    let categories = JSON.parse(localStorage.getItem("categories")) || [];
+    let id = Number(pid.value);
+
+    categories = categories.map(cat =>
+        cat.id === id ? {
+            id,
+            url: curl.value,
+            name: CName.value,
+            stock: Number(cstock.value)
+        } :
+        cat
+    );
+
+    localStorage.setItem("categories", JSON.stringify(categories));
+    categoryForm.reset();
+    pid.value = "";
+    updateBtn.style.display = "none";
+    document.querySelector(".pbtn").style.display = "inline";
+    loadCategoryData();
+};
+
+// DELETE CATEGORY
+let deleteCategory = (id) => {
+    if (!confirm("Delete this category?")) return;
+    let categories = JSON.parse(localStorage.getItem("categories")) || [];
+    categories = categories.filter(c => c.id !== id);
+    localStorage.setItem("categories", JSON.stringify(categories));
+    loadCategoryData();
+};
+
+// CATEGORY VALIDATION
+let categorysubmit = (ev) => {
+    ev.preventDefault();
+
+    let valid = true;
+    let ids = ["curl", "CName", "cstock"];
+    let errs = ["cate-urlerror", "cate-nameerror", "cate-Stockerror"];
+
+    for (let i = 0; i < ids.length; i++) {
+        let input = document.getElementById(ids[i]);
+        let error = document.getElementById(errs[i]);
+
+        if (input.value.trim() === "") {
+            error.innerText = "Please fill the " + ids[i];
+            input.style.border = "2px solid red";
+            valid = false;
+        } else {
+            error.innerText = "";
+            input.style.border = "2px solid green";
+        }
+    }
+
+    if (!valid) return;
+
+    let err = document.getElementById("cate-Stockerror");
+
+    if (Number(cstock.value) < 0) {
+        err.innerText = "Stock cannot be negative";
+        err.style.color = "red";
+        cstock.style.border = "2px solid red";
+        return;
+    }
 
 
-// ================= CUSTOMER PAGE=================
+    pid.value === "" ? addCategory() : updateCategory();
+};
+// ============================= CATEGORY PAGE END ===========================================
 
+
+
+// ============================== lOG OUT PAGE =============================================
+let logout = (enn) => {
+    // alert("hi")
+    enn.preventDefault()
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+        title: "Are you sure?",
+        text: "You won't be able to remain here!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Logout Me!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire({
+                title: "Logout!",
+                text: "Your Successfully has been logout here.",
+                icon: "success"
+            });
+
+
+            setTimeout(() => {
+                window.location.href = "http://127.0.0.1:5502/index.html";
+            }, 1000);
+
+
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "You  are safe ",
+                icon: "error"
+            });
+        }
+    });
+    // let confirmLogout = confirm("Do you want to logout?");
+    // if (confirmLogout) {
+    //     alert("Logged out successfully");
+    //     window.location.href = "http://127.0.0.1:5502/index.html";
+    // } else {
+    //     alert("you are Login remains")
+    // }
+}
+// ============================== lOG OUT PAGE END =============================================
+
+
+
+
+// ============================== CUSTOMER PAGE  =============================================
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Customer JS loaded");
@@ -451,8 +471,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// ============================== CUSTOMER PAGE END  =============================================
 
 
-window.addEventListener("DOMContentLoaded", () => {
+
+// ================= PAGE LOAD =================
+window.onload = () => {
+    loadData();
+    loadCategoryData();
+    updateProductCount();
+    updateUserCount();
     updateCategoryCount();
-});
+    updateTotalStock();
+};
