@@ -403,7 +403,7 @@ let logout = (enn) => {
 
 
             setTimeout(() => {
-                window.location.href = "http://127.0.0.1:5502/index.html";
+                window.location.href = "http://127.0.0.1:5502/home.html";
             }, 1000);
 
 
