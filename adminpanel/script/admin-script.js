@@ -207,6 +207,7 @@ let sub = (ev) => {
             error.innerText = "Please fill the " + arrid[i];
             input.style.border = "2px solid red";
             error.style.color = "red"
+            error.style.fontSize = "15px"
             valid = false;
         } else {
             error.innerText = "";
@@ -251,9 +252,8 @@ let loadCategoryData = () => {
             tbody.innerHTML += `
         <tr>
             <td>${cat.id}</td>
-            <td><img src="${cat.url}" width="60"></td>
+            <td><img src="${cat.url}"></td>
             <td>${cat.name}</td>
-            <td>${cat.stock}</td>
             <td>
                 <button onclick="setSelectedCategory(${cat.id})"><i class="fa fa-pencil-square-o"></i></button>
                 <button onclick="deleteCategory(${cat.id})"><i class="fa fa-trash-o"></i></button>
@@ -279,7 +279,6 @@ let addCategory = () => {
         id: Date.now(),
         url: curl.value,
         name: CName.value,
-        stock: Number(cstock.value)
     });
 
     localStorage.setItem("categories", JSON.stringify(categories));
@@ -289,14 +288,25 @@ let addCategory = () => {
 
 // SELECT CATEGORY
 let setSelectedCategory = (id) => {
+
     let categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+      // 2. Remove stock property from each object
+    categories.forEach(category => {
+        delete category.stock;
+    });
+
+    // 3. Save updated data back to localStorage
+    localStorage.setItem("categories", JSON.stringify(categories));
+
+    console.log("Stock column removed successfully");
+
     let cat = categories.find(c => c.id === id);
     if (!cat) return;
 
     pid.value = cat.id;
     curl.value = cat.url;
     CName.value = cat.name;
-    cstock.value = cat.stock;
 
     updateBtn.style.display = "inline";
     document.querySelector(".pbtn").style.display = "none";
@@ -312,7 +322,6 @@ let updateCategory = () => {
             id,
             url: curl.value,
             name: CName.value,
-            stock: Number(cstock.value)
         } :
         cat
     );
@@ -336,19 +345,22 @@ let deleteCategory = (id) => {
 
 // CATEGORY VALIDATION
 let categorysubmit = (ev) => {
+    debugger;
     ev.preventDefault();
 
     let valid = true;
-    let ids = ["curl", "CName", "cstock"];
-    let errs = ["cate-urlerror", "cate-nameerror", "cate-Stockerror"];
+    let ids = ["curl", "CName"];
+    let errs = ["cate-urlerror", "cate-nameerror"];
 
     for (let i = 0; i < ids.length; i++) {
         let input = document.getElementById(ids[i]);
         let error = document.getElementById(errs[i]);
 
-        if (input.value.trim() === "") {
+        if (input.value === "") {
             error.innerText = "Please fill the " + ids[i];
             input.style.border = "2px solid red";
+            error.style.color = "red"
+            error.style.fontSize = "15px"
             valid = false;
         } else {
             error.innerText = "";
@@ -359,13 +371,6 @@ let categorysubmit = (ev) => {
     if (!valid) return;
 
     let err = document.getElementById("cate-Stockerror");
-
-    if (Number(cstock.value) < 0) {
-        err.innerText = "Stock cannot be negative";
-        err.style.color = "red";
-        cstock.style.border = "2px solid red";
-        return;
-    }
 
 
     pid.value === "" ? addCategory() : updateCategory();
@@ -403,7 +408,7 @@ let logout = (enn) => {
 
 
             setTimeout(() => {
-                window.location.href = "http://127.0.0.1:5502/home.html";
+                window.location.href = "http://127.0.0.1:5502/index.html";
             }, 1000);
 
 
