@@ -215,7 +215,7 @@ nav ul li a {
 
 .c-body {
     gap: 20px;
-} 
+}
 
 .card-des {
     /* border: 2px solid black; */
@@ -881,18 +881,26 @@ input[type=submit]:hover {
     text-align: center;
 }
 
+.lilies-cat {
+    text-align: center;
+
+}
+
 .cattt {
     /* border: 2px solid; */
     width: 100%;
+    
 }
 
 .rose-backimg {
-    /* border: 2px solid; */
+    border: 2px solid;
+    height: 300px;
     background-image: url(../image/rose-image/1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     transition: 0.8s;
 }
+
 
 .rose-backimg:hover {
     background-image: url(../image/rose-image/1.1.webp);
@@ -965,6 +973,55 @@ input[type=submit]:hover {
 .rose-backimg7:hover {
     background-image: url(../image/rose-image/8.1.jfif);
 }
+
+
+.lilie-backimg {
+    /* border: 2px solid; */
+    height: 300px;
+    background-image: url(../image/Lilies-image/1.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.8s;
+}
+
+
+.lilie-backimg1 {
+    background-image: url(../image/Lilies-image/2.jfif);
+}
+
+.lilie-backimg2 {
+    background-image: url(../image/Lilies-image/2.2.jfif);
+}
+
+.lilie-backimg3 {
+    background-image: url(../image/Lilies-image/3.jfif);
+}
+
+.lilie-backimg4 {
+    background-image: url(../image/Lilies-image/4.1.jfif);
+}
+
+.lilie-backimg5 {
+    background-image: url(../image/Lilies-image/4.jfif);
+}
+
+.lilie-backimg6 {
+    background-image: url(../image/Lilies-image/5.1.jfif);
+}
+
+.lilie-backimg7 {
+    background-image: url(../image/Lilies-image/5.jfif);
+}
+
+.lilie-backimg8 {
+    background-image: url(../image/Lilies-image/6.jfif);
+}
+
+
+
+
+
+
 
 /* Shop Page */
 .shop-card-body {

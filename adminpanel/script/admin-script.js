@@ -80,41 +80,42 @@ let updateCategoryCount = () => {
 
 // =========================== PRODUCT PAGE ===========================================
 
+let updateBtn = document.getElementById("updateBtn");
+
 // LOAD PRODUCTS
 let loadData = () => {
     let products = JSON.parse(localStorage.getItem("products")) || [];
     let tbody = document.getElementById("tableBody");
     if (!tbody) return;
-    tbody.innerHTML = "";
 
+    tbody.innerHTML = "";
 
     if (products.length > 0) {
         products.forEach((p, i) => {
             tbody.innerHTML += `
-        <tr>
-            <td>${i + 1}</td>
-            <td><img src="${p.url}"></td>
-            <td>${p.name}</td>
-            <td>${p.price}</td>
-            <td>${p.stock}</td>
-            <td>${p.offer}</td>
-            <td>
-                <button onclick="setSelectedPro(${p.id})"><i class="fa fa-pencil-square-o"></i></button>
-                <button onclick="deletePro(${p.id})"><i class="fa fa-trash-o"></i></button>
-            </td>
-        </tr>`;
-        })
+            <tr>
+                <td>${i + 1}</td>
+                <td><img src="${p.url}" width="60"></td>
+                <td>${p.name}</td>
+                <td>${p.price}</td>
+                <td>${p.stock}</td>
+                <td>${p.offer}</td>
+                <td>
+                    <button onclick="setSelectedPro(${p.id})">
+                        <i class="fa fa-pencil-square-o"></i>
+                    </button>
+                    <button onclick="deletePro(${p.id})">
+                        <i class="fa fa-trash-o"></i>
+                    </button>
+                </td>
+            </tr>`;
+        });
     } else {
-        tbody.innerHTML = `<tr>
-                            <td colspan="7" align="center">No Record Found</td>
-                            
-                        </tr>`
+        tbody.innerHTML = `
+        <tr>
+            <td colspan="7" align="center">No Record Found</td>
+        </tr>`;
     }
-    // console.log(tbody.innerHTML);
-
-
-    updateProductCount();
-    updateTotalStock();
 };
 
 // ADD PRODUCT
@@ -158,15 +159,16 @@ let updateForm = () => {
     let id = Number(pid.value);
 
     products = products.map(p =>
-        p.id === id ? {
-            id,
-            url: url.value,
-            name: PName.value,
-            price: Number(price.value),
-            stock: Number(stock.value),
-            offer: offer.value
-        } :
-        p
+        p.id === id
+            ? {
+                id,
+                url: url.value,
+                name: PName.value,
+                price: Number(price.value),
+                stock: Number(stock.value),
+                offer: offer.value
+            }
+            : p
     );
 
     localStorage.setItem("products", JSON.stringify(products));
@@ -177,8 +179,10 @@ let updateForm = () => {
 // DELETE PRODUCT
 let deletePro = (id) => {
     if (!confirm("Delete this product?")) return;
+
     let products = JSON.parse(localStorage.getItem("products")) || [];
     products = products.filter(p => p.id !== id);
+
     localStorage.setItem("products", JSON.stringify(products));
     loadData();
 };
@@ -191,7 +195,7 @@ let resetForm = () => {
     document.querySelector(".pbtn").style.display = "inline";
 };
 
-// PRODUCT VALIDATION
+// FORM SUBMIT + VALIDATION
 let sub = (ev) => {
     ev.preventDefault();
 
@@ -204,10 +208,9 @@ let sub = (ev) => {
         let error = document.getElementById(arrerr[i]);
 
         if (input.value.trim() === "") {
-            error.innerText = "Please fill the " + arrid[i];
+            error.innerText = "Please fill the field";
             input.style.border = "2px solid red";
             error.style.color = "red"
-            error.style.fontSize = "15px"
             valid = false;
         } else {
             error.innerText = "";
@@ -217,24 +220,17 @@ let sub = (ev) => {
 
     if (!valid) return;
 
-    if (Number(price.value) < 0) {
-        Priceerror.innerText = "Price cannot be negative";
-        price.style.border = "2px solid red";
-        priceerror.style = "red"
-        return;
-    }
-
-    if (Number(stock.value) < 0) {
-        Stockerror.innerText = "Stock cannot be negative";
-        stock.style.border = "2px solid red";
-        Stockerror.style = "red"
+    if (price.value < 0 || stock.value < 0) {
+        alert("Price and Stock cannot be negative");
         return;
     }
 
     pid.value === "" ? addProduct() : updateForm();
 };
 
-// =========================== PRODUCT PAGE RND ===========================================
+// LOAD DATA ON PAGE LOAD
+loadData();
+
 
 
 // ============================= CATEGORY PAGE ===========================================

@@ -45,7 +45,8 @@
                     <li><a href="category.html"><i class="fa fa-th-list"></i> Category</a></li>
                     <li><a href="customer.html"><i class="fa fa-users" aria-hidden="true"></i> Customer</a></li>
                     <li><a href="product.html"><i class="fa fa-cubes"></i> Products</a></li>
-                    <li><a href="" onclick="logout(event)" button="submit"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    <li><a href="" onclick="logout(event)" button="submit"><i class="fa fa-sign-out"></i> Logout</a>
+                    </li>
                 </ul>
             </div>
 
@@ -58,8 +59,11 @@
         <div class="product-main">
 
             <div class="product-form">
-                <form id="productForm" action="">
-                    
+
+                <form onsubmit="sub(event)">
+
+                    <!-- Hidden ID -->
+                    <input type="hidden" id="pid">
 
                     <label>Enter Product Image URL:</label><br>
                     <input type="url" id="url" placeholder="Enter Image URL"><br>
@@ -82,14 +86,16 @@
                     <span id="Offerror"></span><br>
 
                     <div class="Pro-btn">
-                        <button type="submit" onclick="sub(event)" class="pbtn">Submit</button>
-                        <button type="submit" id="updateBtn" onclick="sub(event)" style="display:none;">
+                        <button type="submit" class="pbtn">Submit</button>
+                        <button type="submit" id="updateBtn" style="display:none;">
                             Update
                         </button>
-
                     </div>
+
+                </form>
             </div>
 
+            <!-- TABLE SHOULD BE OUTSIDE FORM -->
             <div class="table-div">
                 <table class="p-table">
                     <thead>
@@ -103,19 +109,14 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody">
-                        <!-- <tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr> -->
-                    </tbody>
+                    <tbody id="tableBody"></tbody>
                 </table>
             </div>
-            </form>
 
-
-        </div>
     </main>
     <footer>
         <div class="footer">
-            <h5>Copyright ©2025 All rights reserved.     
+            <h5>Copyright ©2025 All rights reserved.
                 <span>Website Login?</span><span><a href="../index.html" class="clickme">Click Me!!</a></span> </h5>
         </div>
     </footer>

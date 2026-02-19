@@ -1,9 +1,9 @@
 // Add to cart
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart1 = JSON.parse(localStorage.getItem("cart")) || [];
 
 function addToCart(btn) {
     debugger;
-    
+
     let card = btn.closest(".card-des");
 
     let id = Number(card.dataset.id);
@@ -16,7 +16,7 @@ function addToCart(btn) {
     if (existing) {
         existing.qty += 1;
     } else {
-        cart.push({
+        cart1.push({
             id,
             name,
             price,
@@ -25,15 +25,176 @@ function addToCart(btn) {
         });
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart1));
     updateCartCount();
 }
 
 function updateCartCount() {
-    let count = cart.reduce((sum, p) => sum + p.qty, 0);
+    let count = cart1.reduce((sum, p) => sum + p.qty, 0);
     let el = document.getElementById("cartCount");
     if (el) el.innerText = count;
 }
+
+
+// ================= CART DATA =================
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+// ================= ADD TO CART =================
+function addtocart(product) {
+    let existing = cart.find(item => item.id === product.id);
+
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            img: product.img,
+            qty: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    alert("Product added to cart");
+}
+
+
+// ================= UPDATE CART COUNT =================
+function updateCartCount() {
+    let countEl = document.getElementById("cartCount");
+    if (!countEl) return;
+
+    let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+    countEl.innerText = totalQty;
+}
+
+
+// ================= LOAD CART PAGE =================
+function renderCart() {
+    let container = document.getElementById("cartContainer");
+    let totalEl = document.getElementById("totalAmount");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    if (cart.length === 0) {
+        container.innerHTML = `
+            <h3 style="color:white;text-align:center">
+                No records found
+            </h3>
+        `;
+        if (totalEl) totalEl.innerText = "0";
+        updateCartCount();
+        return;
+    }
+
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.qty;
+
+        container.innerHTML += `
+            <div class="card-des">
+                <img src="${item.img}" alt="${item.name}">
+                
+                <div class="inside-2">
+                    <h5>${item.name}</h5>
+                    <h6>Rs.${item.price}</h6>
+
+                    <div>
+                        <button onclick="decreaseQty(${item.id})">-</button>
+                        <span>${item.qty}</span>
+                        <button onclick="increaseQty(${item.id})">+</button>
+                        <button onclick="removeItem(${item.id})">Delete</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    if (totalEl) totalEl.innerText = total;
+    updateCartCount();
+}
+
+
+// ================= INCREASE QTY =================
+function increaseQty(id) {
+    let item = cart.find(p => p.id === id);
+    if (item) {
+        item.qty += 1;
+        saveCart();
+    }
+}
+
+
+// ================= DECREASE QTY =================
+function decreaseQty(id) {
+    let item = cart.find(p => p.id === id);
+
+    if (!item) return;
+
+    if (item.qty > 1) {
+        item.qty -= 1;
+    } else {
+        removeItem(id);
+        return;
+    }
+
+    saveCart();
+}
+
+
+// ================= REMOVE ITEM =================
+function removeItem(id) {
+    let confirmDelete = confirm("Do you want to delete this product?");
+    if (!confirmDelete) return;
+
+    cart = cart.filter(item => item.id !== id);
+    saveCart();
+}
+
+
+// ================= SAVE CART =================
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+
+// ================= BUY NOW =================
+function buyNow() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    let total = cart.reduce(
+        (sum, item) => sum + item.price * item.qty,
+        0
+    );
+
+    let confirmBuy = confirm(
+        "Do you want to purchase?\n\nTotal Amount: Rs." + total
+    );
+
+    if (confirmBuy) {
+        alert("Thank you for your purchase");
+        localStorage.removeItem("cart");
+        cart = [];
+        renderCart();
+    }
+}
+
+
+// ================= PAGE LOAD =================
+window.addEventListener("DOMContentLoaded", () => {
+    updateCartCount();
+    renderCart();
+});
 
 
 
@@ -360,3 +521,59 @@ let registerUser = (evnt) => {
 
     alert("Registration Successful. Please Login");
 };
+
+
+
+// ================= LOAD PRODUCTS FROM ADMIN PANEL =================
+let loadShopProducts = () => {
+    let container = document.getElementById("shopProducts");
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    container.innerHTML = "";
+
+    // NO PRODUCTS CASE
+    if (products.length === 0) {
+        container.innerHTML = `
+            <div style="text-align:center; width:100%; padding:30px;">
+                <h3>No Products Found</h3>
+            </div>`;
+        return;
+    }
+
+    products.forEach(p => {
+        container.innerHTML += `
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card-des"
+                data-id="${p.id}"
+                data-name="${p.name}"
+                data-price="${p.price}"
+                data-img="${p.url}">
+
+                <div class="c-inside-1 card-backimg"
+                     style="background-image:url('${p.url}')">
+                </div>
+
+                <div class="c-inside-1 inside-2">
+                    <div class="star-icon">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <h5>${p.name}</h5>
+                    <h6>Rs.${p.price}</h6>
+                </div>
+
+                <div class="c-foot">
+                    <button type="button" class="btnn" onclick="addToCart(this)">
+                        Add To Cart
+                    </button>
+                </div>
+            </div>
+        </div>`;
+    });
+};
+
+// ================= CALL ON PAGE LOAD =================
+document.addEventListener("DOMContentLoaded", loadShopProducts);
