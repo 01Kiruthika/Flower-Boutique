@@ -1,16 +1,40 @@
 // Add to cart
-debugger;
-let count = 0
-let atc = document.getElementById("product-count")
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-let addtocart = () => {
+function addToCart(btn) {
     debugger;
+    
+    let card = btn.closest(".card-des");
 
-    if (count < 10) {
-        count++
-        atc.innerText = count;
+    let id = Number(card.dataset.id);
+    let name = card.dataset.name;
+    let price = Number(card.dataset.price);
+    let img = card.dataset.img;
+
+    let existing = cart.find(p => p.id === id);
+
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({
+            id,
+            name,
+            price,
+            img,
+            qty: 1
+        });
     }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
 }
+
+function updateCartCount() {
+    let count = cart.reduce((sum, p) => sum + p.qty, 0);
+    let el = document.getElementById("cartCount");
+    if (el) el.innerText = count;
+}
+
 
 
 // Redirect to Shop page

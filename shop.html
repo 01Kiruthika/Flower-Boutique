@@ -19,14 +19,20 @@
             <img src="image/logo (2).png" alt="">
         </div>
         <div class="menu">
+            <div class="co-name">
+                <label for="click-bars">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </label>
+            </div>
+            <input type="checkbox" id="click-bars">
             <nav>
                 <ul>
                     <li><a href="home.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="contact.html">Contacts</a></li>
-                    <p id="product-count">0</p>
-                    <li><a href=""><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <li><a href="card.html"><span id="cartCount">0</span></a></li>
+                    <li><a href="card.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         </a></li>
                     <li><a href=""><i class="fa fa-heart-o" aria-hidden="true"></i>
                         </a></li>
@@ -88,247 +94,240 @@
                     <img src="image/Shop-page/1.jpg" alt="">
 
                 </div>
-                <div class="Container">
-                    <div class="head">
-                        <!-- <h3>New Products</h3>
-                        <div class="line">
-                            <hr>
-                        </div> -->
-                    </div>
-                    <div class="body c-body ">
-                        <div class="body c-body">
 
-                            <div class="row ">
-                                <div class="col-lg-4 col-md-6 col-sm-12  ">
-                                    <div class="card-des">
-                                        <div class="c-inside-1 card-backimg">
-                                            <!-- <img src="image/card-image/1.jpg" alt="" > -->
-                                            <!-- <img src="image/card-image/1.1.jpg" alt="" class="img-hover"> -->
-                                        </div>
+                <div class="body1">
 
-                                        <div class="c-inside-1 inside-2">
-                                            <div class="star-icon">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                            </div>
-                                            <h5>Consectetur Hampden</h5>
-                                            <h6>Rs.300</h6>
-                                        </div>
-                                        <div class="c-foot">
-                                            <button type="button" onclick="addtocart()" class="btnn">Add To
-                                                Cart</button>
-                                        </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12  ">
+                            <div class="card-des" data-id="101" data-name="Consectetur Hampden" data-price="300"
+                                data-img="image/card-image/1.jpg">
 
+                                <div class="c-inside-1 card-backimg"></div>
+
+                                <div class="c-inside-1 inside-2">
+                                    <div class="star-icon">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
                                     </div>
+                                    <h5>Consectetur Hampden</h5>
+                                    <h6>Rs.300</h6>
                                 </div>
 
-                                <!-- Card 2 -->
-                                <div class="col-lg-4 col-md-6 col-sm-12 ">
-                                    <div class="card-des">
-                                        <div class="c-inside-1 card-backimg card-backimg1">
-                                            <!-- <img src="image/card-image/2.jpg" alt=""> -->
-                                        </div>
-                                        <div class="c-inside-1 inside-2">
-                                            <div class="star-icon">
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <h5>Exercitat Virginia</h5>
-                                            <h6>Rs.500</h6>
-                                        </div>
-                                        <div class="c-foot">
-                                            <button type="button" onclick="addtocart()" class="btnn">Add To
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card 3 -->
-                                <div class="col-lg-4  col-md-6 col-sm-12 ">
-                                    <div class="card-des">
-                                        <div class="c-inside-1 card-backimg card-backimg2">
-                                            <!-- <img src="image/card-image/3.jpg" alt=""> -->
-                                        </div>
-                                        <div class="c-inside-1 inside-2">
-                                            <div class="star-icon">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-
-                                            </div>
-                                            <h5>Accusantium doloremque</h5>
-                                            <h6>Rs.400</h6>
-
-                                        </div>
-                                        <div class="c-foot">
-                                            <button type="button" onclick="addtocart()" class="btnn">Add To
-                                                Cart</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!-- Card 4 -->
-                                <div class="col-lg-4  col-md-6 col-sm-12 ">
-                                    <div class="card-des">
-                                        <div class="c-inside-1 card-backimg card-backimg3">
-                                            <!-- <img src="image/card-image/4.jpg" alt=""> -->
-                                        </div>
-                                        <div class="c-inside-1 inside-2">
-                                            <div class="star-icon">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <h5>Voluptas assumenda</h5>
-                                            <h6>Rs.250</h6>
-                                        </div>
-                                        <div class="c-foot">
-                                            <button type="button" onclick="addtocart()" class="btnn">Add To
-                                                Cart</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- Card 5 -->
-                                <div class="col-lg-4  col-md-6 col-sm-12 ">
-                                    <div class="card-des">
-                                        <div class="c-inside-1 card-backimg card-backimg4">
-                                            <!-- <img src="image/card-image/5.jpg" alt=""> -->
-                                        </div>
-                                        <div class="c-inside-1 inside-2">
-                                            <div class="star-icon">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <h5>Nostrud exercitation</h5>
-                                            <h6>Rs.700</h6>
-                                        </div>
-                                        <div class="c-foot">
-                                            <button type="button" onclick="addtocart()" class="btnn">Add To
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card 6 -->
-                                <div class="col-lg-4  col-md-6 col-sm-12 ">
-                                    <div class="card-des">
-                                        <div class="c-inside-1 card-backimg card-backimg5">
-                                            <!-- <img src="image/card-image/6.jpg" alt=""> -->
-                                        </div>
-                                        <div class="c-inside-1 inside-2">
-                                            <div class="star-icon">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <h5>Commodi consequatur</h5>
-                                            <h6>Rs.350</h6>
-                                        </div>
-                                        <div class="c-foot">
-                                            <button type="button" onclick="addtocart()" class="btnn">Add To
-                                                Cart</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- Card 2 -->
-                                <div class="col-lg-4 col-md-6 col-sm-12 ">
-                                    <div class="card-des">
-                                        <div class="c-inside-1 card-backimg card-backimg1">
-                                            <!-- <img src="image/card-image/2.jpg" alt=""> -->
-                                        </div>
-                                        <div class="c-inside-1 inside-2">
-                                            <div class="star-icon">
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <h5>Exercitat Virginia</h5>
-                                            <h6>Rs.500</h6>
-                                        </div>
-                                        <div class="c-foot">
-                                            <button type="button" onclick="addtocart()" class="btnn">Add To
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card 7 -->
-                                <div class="col-lg-4  col-md-6 col-sm-12 ">
-                                    <div class="card-des">
-                                        <div class="c-inside-1 card-backimg card-backimg6">
-                                            <!-- <img src="image/card-image/7.jpg" alt=""> -->
-                                        </div>
-                                        <div class="c-inside-1 inside-2">
-                                            <div class="star-icon">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                            </div>
-                                            <h5>Praesentium voluptatum</h5>
-                                            <h6>Rs.600</h6>
-                                        </div>
-                                        <div class="c-foot">
-                                            <button type="button" onclick="addtocart()" class="btnn">Add To
-                                                Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card 8 -->
-                                <div class="col-lg-4  col-md-6 col-sm-12 ">
-                                    <div class="card-des">
-                                        <div class="c-inside-1 card-backimg card-backimg7">
-                                            <!-- <img src="image/card-image/8.jpg" alt=""> -->
-                                        </div>
-                                        <div class="c-inside-1 inside-2">
-                                            <div class="star-icon">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <h5>Voluptates repudiandae</h5>
-                                            <h6>Rs.550</h6>
-                                        </div>
-                                        <div class="c-foot">
-                                            <button type="button" onclick="addtocart()" class="btnn">Add To
-                                                Cart</button>
-                                        </div>
-                                    </div>
+                                <div class="c-foot">
+                                    <button type="button" class="btnn" onclick="addToCart(this)">
+                                        Add To Cart
+                                    </button>
                                 </div>
                             </div>
 
                         </div>
+
+                        <!-- Card 2 -->
+                        <div class="col-lg-4 col-md-6 col-sm-12 ">
+                            <div class="card-des" data-id="102" data-name="Exercitat Virginia" data-price="500"
+                                data-img="image/card-image/2.jpg">
+                                <div class="c-inside-1 card-backimg card-backimg1">
+                                    <!-- <img src="image/card-image/2.jpg" alt=""> -->
+                                </div>
+                                <div class="c-inside-1 inside-2">
+                                    <div class="star-icon">
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                    <h5>Exercitat Virginia</h5>
+                                    <h6>Rs.500</h6>
+                                </div>
+                                <div class="c-foot">
+                                    <button type="button" onclick="addToCart(this)" class="btnn">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="col-lg-4  col-md-6 col-sm-12 ">
+                            <div class="card-des" data-id="103" data-name="Accusantium doloremque" data-price="400"
+                                data-img="image/card-image/3.jpg">
+                                <div class="c-inside-1 card-backimg card-backimg2">
+                                    <!-- <img src="image/card-image/3.jpg" alt=""> -->
+                                </div>
+                                <div class="c-inside-1 inside-2">
+                                    <div class="star-icon">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+
+                                    </div>
+                                    <h5>Accusantium doloremque</h5>
+                                    <h6>Rs.400</h6>
+
+                                </div>
+                                <div class="c-foot">
+                                    <button type="button" onclick="addToCart(this)" class="btnn">Add To Cart</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="col-lg-4  col-md-6 col-sm-12 ">
+                            <div class="card-des" data-id="104" data-name="Voluptas assumenda" data-price="250"
+                                data-img="image/card-image/4.jpg">
+                                <div class="c-inside-1 card-backimg card-backimg3">
+                                    <!-- <img src="image/card-image/4.jpg" alt=""> -->
+                                </div>
+                                <div class="c-inside-1 inside-2">
+                                    <div class="star-icon">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                    <h5>Voluptas assumenda</h5>
+                                    <h6>Rs.250</h6>
+                                </div>
+                                <div class="c-foot">
+                                    <button type="button" onclick="addToCart(this)" class="btnn">Add To Cart</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="col-lg-4  col-md-6 col-sm-12 ">
+                            <div class="card-des" data-id="105" data-name="Nostrud exercitation" data-price="700"
+                                data-img="image/card-image/5.jpg">
+                                <div class="c-inside-1 card-backimg card-backimg4">
+                                    <!-- <img src="image/card-image/5.jpg" alt=""> -->
+                                </div>
+                                <div class="c-inside-1 inside-2">
+                                    <div class="star-icon">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                    <h5>Nostrud exercitation</h5>
+                                    <h6>Rs.700</h6>
+                                </div>
+                                <div class="c-foot">
+                                    <button type="button" onclick="addToCart(this)" class="btnn">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 6 -->
+                        <div class="col-lg-4  col-md-6 col-sm-12 ">
+                            <div class="card-des" data-id="106" data-name="Commodi consequatur" data-price="350"
+                                data-img="image/card-image/6.jpg">
+                                <div class="c-inside-1 card-backimg card-backimg5">
+                                    <!-- <img src="image/card-image/6.jpg" alt=""> -->
+                                </div>
+                                <div class="c-inside-1 inside-2">
+                                    <div class="star-icon">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                    <h5>Commodi consequatur</h5>
+                                    <h6>Rs.350</h6>
+                                </div>
+                                <div class="c-foot">
+                                    <button type="button" onclick="addToCart(this)" class="btnn">Add To Cart</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="col-lg-4 col-md-6 col-sm-12 ">
+                            <div class="card-des" data-id="109" data-name="Exercitat Virginia" data-price="500"
+                                data-img="image/card-image/2.jpg">
+                                <div class="c-inside-1 card-backimg card-backimg1">
+                                    <!-- <img src="image/card-image/2.jpg" alt=""> -->
+                                </div>
+                                <div class="c-inside-1 inside-2">
+                                    <div class="star-icon">
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                    <h5>Exercitat Virginia</h5>
+                                    <h6>Rs.500</h6>
+                                </div>
+                                <div class="c-foot">
+                                    <button type="button" onclick="addToCart(this)" class="btnn">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 7 -->
+                        <div class="col-lg-4  col-md-6 col-sm-12 ">
+                            <div class="card-des" data-id="107" data-name="Praesentium voluptatum" data-price="600"
+                                data-img="image/card-image/7.jpg">
+
+                                <div class="c-inside-1 card-backimg card-backimg6">
+                                    <!-- <img src="image/card-image/7.jpg" alt=""> -->
+                                </div>
+                                <div class="c-inside-1 inside-2">
+                                    <div class="star-icon">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                    </div>
+                                    <h5>Praesentium voluptatum</h5>
+                                    <h6>Rs.600</h6>
+                                </div>
+                                <div class="c-foot">
+                                    <button type="button" onclick="addToCart(this)" class="btnn">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 8 -->
+                        <div class="col-lg-4  col-md-6 col-sm-12 ">
+                            <div class="card-des" data-id="108" data-name="Voluptates repudiandae" data-price="550"
+                                data-img="image/card-image/8.jpg">
+                                <div class="c-inside-1 card-backimg card-backimg7">
+                                    <!-- <img src="image/card-image/8.jpg" alt=""> -->
+                                </div>
+                                <div class="c-inside-1 inside-2">
+                                    <div class="star-icon">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                    <h5>Voluptates repudiandae</h5>
+                                    <h6>Rs.550</h6>
+                                </div>
+                                <div class="c-foot">
+                                    <button type="button" onclick="addToCart(this)" class="btnn">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="foot">
                     </div>
+
                 </div>
             </div>
+
+
         </div>
+        <div class="foot">
 
-
-    </div>
-    <div class="foot">
-
-    </div>
+        </div>
     </div>
     <!-- <div class="Container">
         <div class="head">
@@ -412,6 +411,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+
+    <script src="Script/script.js"></script>
 </body>
 
 </html>
