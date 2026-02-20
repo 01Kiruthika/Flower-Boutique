@@ -60,14 +60,18 @@
 
             <div class="product-form">
 
-                <form onsubmit="sub(event)">
+                <form id="productForm" onsubmit="sub(event)">
 
-                    <!-- Hidden ID -->
                     <input type="hidden" id="pid">
 
                     <label>Enter Product Image URL:</label><br>
                     <input type="url" id="url" placeholder="Enter Image URL"><br>
                     <span id="urlerror"></span><br>
+
+                    <label>Enter Hover Image URL:</label><br>
+                    <input type="url" id="hoverUrl" placeholder="Enter Hover Image URL"><br>
+                    <span id="hoverurlerror"></span><br>
+
 
                     <label>Enter Product Name:</label><br>
                     <input type="text" id="PName" placeholder="Enter product Name"><br>
@@ -102,6 +106,7 @@
                         <tr>
                             <th>Product Id</th>
                             <th>Product URL</th>
+                            <th>Hover Image</th>
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Stock</th>
@@ -112,6 +117,7 @@
                     <tbody id="tableBody"></tbody>
                 </table>
             </div>
+        </div>
 
     </main>
     <footer>
@@ -124,6 +130,7 @@
 
 
     <script src="script/admin-script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

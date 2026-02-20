@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "DM Sans", sans-serif;
 }
 
 header {
@@ -111,6 +114,7 @@ nav ul li a {
     /* text-decoration: none; */
     color: white;
     background-color: #eeaa9c;
+    border-radius: 25px;
     padding: 10px 22px;
 }
 
@@ -221,17 +225,23 @@ nav ul li a {
     padding: 5px;
     height: 480px;
     margin: 10px;
+    padding: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    box-shadow: 1px 7px 25px rgb(0 0 0 / 66%);
+    border-radius: 12px;
 }
 
 
 
 .card-backimg {
     /* border: 2px solid; */
-    height: 300px;
+    height: 280px;
     background-image: url(../image/card-image/1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     transition: 0.5s;
+    border-radius: 12px;
 }
 
 .card-backimg:hover {
@@ -345,9 +355,12 @@ h6 {
 .btnn {
     padding: 10px 35px;
     border: none;
-    background-color: #deb5b2;
-    color: white;
+    background-color: #ffffff;
+    color: #764ba2;
     transition: 1s;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btnn:hover {
@@ -422,6 +435,7 @@ h6 {
     color: white;
     padding: 5px 15px;
     transition: 1s;
+    border-radius: 25px;
 }
 
 .pos-butt:hover {
@@ -475,20 +489,28 @@ h6 {
     /* border: 2px solid black; */
     width: 380px;
     height: 400px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
 }
 
 .blog-img {
     /* border: 2px solid blue; */
     width: 380px;
     height: 300px;
+    border-radius: 12px;
 }
 
+
 .blog-date {
-    border: 2px solid;
+    /* border: 2px solid; */
     height: 30px;
     position: absolute;
     bottom: 0px;
     background-color: #deb5b2;
+    border-radius: 12px;
+    padding: 2px;
     color: white;
     /* padding: 5px; */
     text-align: center;
@@ -560,10 +582,10 @@ h6 {
 .form-foot button {
     /* border: 2px solid black; */
     background-color: #04AA6D;
+    border-radius: 25px;
     color: white;
     padding: 10px 40px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -888,91 +910,8 @@ input[type=submit]:hover {
 .cattt {
     /* border: 2px solid; */
     width: 100%;
-    
+
 }
-
-.rose-backimg {
-    border: 2px solid;
-    height: 300px;
-    background-image: url(../image/rose-image/1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition: 0.8s;
-}
-
-
-.rose-backimg:hover {
-    background-image: url(../image/rose-image/1.1.webp);
-}
-
-
-
-.rose-backimg1 {
-    background-image: url(../image/rose-image/2.jfif);
-}
-
-.rose-backimg1:hover {
-    background-image: url(../image/rose-image/2.1.webp);
-}
-
-
-
-.rose-backimg2 {
-    background-image: url(../image/rose-image/3.jpg);
-}
-
-.rose-backimg2:hover {
-    background-image: url(../image/rose-image/3.1.jpg);
-}
-
-
-
-.rose-backimg3 {
-    background-image: url(../image/rose-image/4.jfif);
-}
-
-.rose-backimg3:hover {
-    background-image: url(../image/rose-image/4.1.jfif);
-}
-
-
-.rose-backimg4 {
-    background-image: url(../image/rose-image/5.jfif);
-}
-
-.rose-backimg4:hover {
-    background-image: url(../image/rose-image/5.1.jfif);
-}
-
-
-
-
-.rose-backimg5 {
-    background-image: url(../image/rose-image/6.jfif);
-}
-
-.rose-backimg5:hover {
-    background-image: url(../image/rose-image/6.1.jfif);
-}
-
-
-.rose-backimg6 {
-    background-image: url(../image/rose-image/7.jfif);
-}
-
-.rose-backimg6:hover {
-    background-image: url(../image/rose-image/7.1.jfif);
-}
-
-
-.rose-backimg7 {
-    background-image: url(../image/rose-image/8.jfif);
-}
-
-.rose-backimg7:hover {
-    background-image: url(../image/rose-image/8.1.jfif);
-}
-
 
 .lilie-backimg {
     /* border: 2px solid; */
@@ -1016,7 +955,81 @@ input[type=submit]:hover {
     background-image: url(../image/Lilies-image/6.jfif);
 }
 
+.orchids-backimg {
+    /* border: 2px solid; */
+    height: 300px;
+    background-image: url(../image/orchid/1.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.8s;
 
+}
+
+.orchids-backimg1 {
+    background-image: url(../image/orchid/3.jfif);
+}
+
+.orchids-backimg2 {
+    background-image: url(../image/orchid/2.jfif);
+}
+
+.orchids-backimg3 {
+    background-image: url(../image/orchid/4.jfif);
+}
+
+.orchids-backimg4 {
+    background-image: url(../image/orchid/5.jfif);
+}
+
+.orchids-backimg5 {
+    background-image: url(../image/orchid/6.jfif);
+}
+
+.orchids-backimg6 {
+    background-image: url(../image/orchid/7.jfif);
+}
+
+.orchids-backimg7 {
+    background-image: url(../image/orchid/8.jfif);
+}
+
+.sunflo-backimg {
+    /* border: 2px solid; */
+    height: 300px;
+    background-image: url(../image/Sunflower/1.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.8s;
+
+}
+
+.sunflo-backimg1 {
+    background-image: url(../image/Sunflower/2.jfif);
+}
+
+.sunflo-backimg2 {
+    background-image: url(../image/Sunflower/3.jfif);
+}
+
+.sunflo-backimg3 {
+    background-image: url(../image/Sunflower/4.jfif);
+}
+
+.sunflo-backimg4 {
+    background-image: url(../image/Sunflower/5.jfif);
+}
+
+.sunflo-backimg5 {
+    background-image: url(../image/Sunflower/6.1.jfif);
+}
+
+.sunflo-backimg6 {
+    background-image: url(../image/Sunflower/1.1.jfif);
+}
+
+.sunflo-backimg7 {
+    background-image: url(../image/Sunflower/3.1.jfif);
+}
 
 
 
@@ -1571,25 +1584,26 @@ input[type=submit]:hover {
 
 /* Login Page */
 .con {
-    /* border: 2px solid; */
+    border: 2px solid;
     background-image: url(../image/login-page/bgg.avif);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-    /* margin-top: 0; */
+    margin-top: 0;
 }
 
 .login-body {
-    border: 2px solid;
+    /* border: 2px solid; */
     width: 30%;
     height: 400px;
     margin: 0 auto;
     margin-top: 80px;
-    padding-left: 30px;
-    padding-right: 20px;
+    /* padding-left: 30px;
+    padding-right: 20px; */
+    padding: 10px 20px;
     color: white;
-    background-color: #912480;
-    box-shadow: -3px -1px 20px 10px rgb(83, 59, 146);
+    background-color:rgb(230, 101, 144);
+    box-shadow: -3px -1px 20px 10px #912480;
     border-radius: 10px;
 }
 
@@ -1635,7 +1649,50 @@ input[type=submit]:hover {
 
 /* Register Page */
 .re-con {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     height: 580px;
-    margin-top: 30px;
+    margin-top: 30px
+}
+
+
+/* ================= CARD IMAGE WRAPPER ================= */
+.card-image-wrapper {
+    /* border: 2px solid; */
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* ================= BOTH IMAGES ================= */
+.card-image-wrapper img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+
+}
+
+/* ================= MAIN IMAGE ================= */
+.main-img {
+    opacity: 1;
+
+}
+
+/* ================= HOVER IMAGE ================= */
+.hover-img {
+    opacity: 0;
+
+}
+
+/* ================= ON CARD HOVER ================= */
+.card-des:hover .main-img {
+    opacity: 0;
+
+}
+
+.card-des:hover .hover-img {
+    opacity: 1;
 }

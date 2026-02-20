@@ -140,43 +140,58 @@ let updateCategoryCount = () => {
 
 // ================= PRODUCT PAGE =================
 
-// Get update button
+// Get the update button element from HTML
 let updateBtn = document.getElementById("updateBtn");
 
-// Function to load product data into table
+
+
+// ================= LOAD PRODUCT DATA =================
 let loadData = () => {
 
-    // Get products from localStorage
+    // Get product data from localStorage
     let products = JSON.parse(localStorage.getItem("products")) || [];
 
-    // Get table body
+    // Get table body element
     let tbody = document.getElementById("tableBody");
 
-    // If table not found, stop function
+    // Stop if table body not found
     if (!tbody) return;
 
-    // Clear existing rows
+    // Clear old table rows
     tbody.innerHTML = "";
 
-    // Check if products exist
+    // If products available
     if (products.length > 0) {
 
-        // Loop through products
+        // Loop through each product
         products.forEach((p, i) => {
 
-            // Add row to table
+            // Insert table row
             tbody.innerHTML += `
             <tr>
-                <td>${i + 1}</td>
-                <td><img src="${p.url}" width="60"></td>
-                <td>${p.name}</td>
-                <td>${p.price}</td>
-                <td>${p.stock}</td>
-                <td>${p.offer}</td>
+                <td>${i + 1}</td> <!-- Serial number -->
+
+                <td>
+                    <img src="${p.url}" width="60">
+                </td> <!-- Main image -->
+
+                <td>
+                    <img src="${p.hoverUrl}" width="60">
+                </td> <!-- Hover image -->
+
+                <td>${p.name}</td> <!-- Product name -->
+
+                <td>${p.price}</td> <!-- Product price -->
+
+                <td>${p.stock}</td> <!-- Product stock -->
+
+                <td>${p.offer}</td> <!-- Product offer -->
+
                 <td>
                     <button onclick="setSelectedPro(${p.id})">
                         <i class="fa fa-pencil-square-o"></i>
                     </button>
+
                     <button onclick="deletePro(${p.id})">
                         <i class="fa fa-trash-o"></i>
                     </button>
@@ -186,178 +201,279 @@ let loadData = () => {
 
     } else {
 
-        // Show message if no data
+        // If no products
         tbody.innerHTML = `
         <tr>
-            <td colspan="7" align="center">No Record Found</td>
+            <td colspan="8" align="center">No Record Found</td>
         </tr>`;
     }
 };
 
 
-// Function to add product
+
+
+// ================= ADD PRODUCT =================
 let addProduct = () => {
 
-    // Get existing products
+    // Get products array
     let products = JSON.parse(localStorage.getItem("products")) || [];
 
-    // Add new product object
+    // Push new product
     products.push({
+
         id: Date.now(), // Unique ID
-        url: url.value, // Image URL
-        name: PName.value, // Product name
-        price: Number(price.value), // Product price
-        stock: Number(stock.value), // Product stock
-        offer: offer.value // Offer details
+        url: url.value, // Main image
+        hoverUrl: hoverUrl.value, // Hover image
+        name: PName.value,
+        price: Number(price.value),
+        stock: Number(stock.value),
+        offer: offer.value
     });
 
-    // Save products to localStorage
+    // Save to localStorage
     localStorage.setItem("products", JSON.stringify(products));
 
-    // Reset form fields
+    // Reset form
     resetForm();
 
-    // Reload table data
+    // Reload table
     loadData();
 };
 
-// Function to select product for editing
+
+// ================= SELECT PRODUCT FOR UPDATE =================
 let setSelectedPro = (id) => {
 
-    // Get products from localStorage
+    // Get products
     let products = JSON.parse(localStorage.getItem("products")) || [];
 
-    // Find product using id
+    // Find product
     let p = products.find(x => x.id === id);
 
-    // If product not found, stop function
+    // Stop if not found
     if (!p) return;
 
-    // Set hidden product id input
+    // Set hidden id
     pid.value = p.id;
 
-    // Set image URL in input field
+    // Set values to form
     url.value = p.url;
-
-    // Set product name in input field
+    hoverUrl.value = p.hoverUrl; // Hover image
     PName.value = p.name;
-
-    // Set price in input field
     price.value = p.price;
-
-    // Set stock in input field
     stock.value = p.stock;
-
-    // Set offer in input field
     offer.value = p.offer;
 
-    // Hide Add button
+    // Hide submit
     document.querySelector(".pbtn").style.display = "none";
 
-    // Show Update button
+    // Show update
     updateBtn.style.display = "inline";
+
 };
 
 
+// ================= UPDATE PRODUCT =================
 
-// Function to update existing product
 let updateForm = () => {
 
-    // Get products from localStorage
+    // Get products
     let products = JSON.parse(localStorage.getItem("products")) || [];
 
-    // Convert id value into number
+    // Get ID
     let id = Number(pid.value);
 
-    // Update product using map
+    // Update using map
     products = products.map(p =>
-        p.id === id ?
-        {
-            id: id, // Keep same id
-            url: url.value, // Update image URL
-            name: PName.value, // Update product name
-            price: Number(price.value), // Update price
-            stock: Number(stock.value), // Update stock
-            offer: offer.value // Update offer
+        p.id === id ? {
+            id: id,
+            url: url.value, // Main image
+            hoverUrl: hoverUrl.value, // Hover image
+            name: PName.value,
+            price: Number(price.value),
+            stock: Number(stock.value),
+            offer: offer.value
         } :
         p
     );
 
-    // Save updated products into localStorage
+
+
+    // Save updated list
     localStorage.setItem("products", JSON.stringify(products));
 
-    // Reset form fields
+
+    // Reset form
     resetForm();
 
-    // Reload table data
+    // Reload table
     loadData();
 };
 
-// Function to handle form submit
+
+// ================= DELETE PRODUCT =================
+let deletePro = (id) => {
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+        title: "Are you sure?",
+        text: "You want to delete this product!!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire({
+                title: "Deleted!",
+                text: "Your product has been deleted.",
+                icon: "success"
+            });
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "Your Product is may safe!!",
+                icon: "error"
+            });
+        }
+    });
+
+    // Get all products from localStorage
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    // Remove the selected product using filter
+    products = products.filter(p => p.id !== id);
+
+    // Save updated product list back to localStorage
+    localStorage.setItem("products", JSON.stringify(products));
+
+    // Reload product table after delete
+    loadData();
+
+
+};
+
+// ================= FORM SUBMIT FUNCTION =================
 let sub = (ev) => {
 
-    // Stop page refresh
-    ev.preventDefault();
 
-    // Validation flag
-    let valid = true;
+    ev.preventDefault(); // Stop page refresh when form submits
 
-    // Input field ids
-    let arrid = ["url", "PName", "price", "stock", "offer"];
+    let valid = true; // Validation flag (assume form is valid)
 
-    // Error span ids
-    let arrerr = ["urlerror", "nameerror", "Priceerror", "Stockerror", "Offerror"];
+    // Array of input field IDs
+    let arrid = ["url", "hoverUrl", "PName", "price", "stock", "offer"];
 
-    // Loop through inputs
+    // Array of corresponding error span IDs
+    let arrerr = ["urlerror", "hoverurlerror", "nameerror", "Priceerror", "Stockerror", "Offerror"];
+
+    // Loop through each input field
     for (let i = 0; i < arrid.length; i++) {
 
         // Get input element
         let input = document.getElementById(arrid[i]);
 
-        // Get error element
+        // Get corresponding error span
         let error = document.getElementById(arrerr[i]);
 
-        // Check if empty
+        // Check if input is empty
         if (input.value.trim() === "") {
 
-            // Show error message
-            error.innerText = "Please fill the field";
+            error.innerText = "Please fill this field"; // Show error message
 
-            // Set red border
-            input.style.border = "2px solid red";
+            input.style.border = "2px solid red"; // Red border for error
 
-            // Set red color
-            error.style.color = "red"
+            error.style.color = "red"; // Error text color
 
-            // Set validation false
-            valid = false;
+            valid = false; // Set validation flag to false
 
         } else {
 
-            // Clear error message
-            error.innerText = "";
+            error.innerText = ""; // Clear error message
 
-            // Set green border
-            input.style.border = "2px solid green";
+            input.style.border = "2px solid green"; // Green border if valid
         }
     }
 
-    // Stop if validation failed
+    // Stop execution if validation failed
     if (!valid) return;
 
-    // Check negative values
+    // Check if price or stock is negative
     if (price.value < 0 || stock.value < 0) {
 
-        // Show alert message
-        alert("Price and Stock cannot be negative");
+        alert("Price & Stock cannot be negative"); // Show alert
 
-        // Stop function
-        return;
+        return; // Stop function
     }
 
-    // If id empty → Add product, else Update product
-    pid.value === "" ? addProduct() : updateForm();
+    // IMPORTANT CONDITION
+    if (pid.value === "") {
+
+        addProduct(); // Call add function if new product
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Form Submited Successfully!!",
+            showConfirmButton: false,
+            timer: 2500
+        });
+
+    } else {
+
+        updateForm(); // Call update function if editing product
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Form Updated Successfully!!",
+            showConfirmButton: false,
+            timer: 2500
+        });
+    }
 };
+
+
+// ================= RESET FORM FUNCTION =================
+let resetForm = () => {
+
+    // Reset all form input fields
+    document.getElementById("productForm").reset();
+
+    // Clear hidden product ID
+    pid.value = "";
+
+    // Show Add button again
+    document.querySelector(".pbtn").style.display = "inline";
+
+    // Hide Update button
+    updateBtn.style.display = "none";
+
+    // Reset all input borders to default
+    let inputs = document.querySelectorAll("#productForm input");
+
+    inputs.forEach(input => {
+
+        input.style.border = "1px solid #ccc"; // Default border style
+    });
+
+    // Clear all error messages
+    let errors = document.querySelectorAll("#productForm span");
+
+    errors.forEach(error => {
+
+        error.innerText = ""; // Remove error text
+    });
+};
+
 
 
 
@@ -496,15 +612,14 @@ let updateCategory = () => {
 
     // Update category using map
     categories = categories.map(cat =>
-        cat.id === id ?
-        {
+        cat.id === id ? {
             id, // Keep same ID
             url: curl.value, // Update image URL
             name: CName.value // Update category name
         } :
         cat
     );
-
+    alert("Form updated success!!")
     // Save updated categories
     localStorage.setItem("categories", JSON.stringify(categories));
 
@@ -530,8 +645,14 @@ let updateCategory = () => {
 // Function to delete category
 let deleteCategory = (id) => {
 
-    // Ask confirmation before delete
-    if (!confirm("Delete this category?")) return;
+    // Ask confirmation before deleting the product
+    let confirmDelete = confirm("Do you want to delete this category?");
+
+    // If user clicks Cancel, stop function
+    if (!confirmDelete) {
+        alert("You are safe")
+        return;
+    }
 
     // Get categories from localStorage
     let categories = JSON.parse(localStorage.getItem("categories")) || [];
@@ -598,6 +719,13 @@ let categorysubmit = (ev) => {
         }
     }
 
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Form Submited Successfully!!",
+        showConfirmButton: false,
+        timer: 2500
+    });
     // If validation fails, stop
     if (!valid) return;
 
@@ -668,7 +796,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ============================== CUSTOMER PAGE END =============================================
-// ================= PAGE LOAD =================
+
+// ================= PAGE LOAD ==================================
 
 // Run functions when page loads
 window.onload = () => {
@@ -679,3 +808,49 @@ window.onload = () => {
     updateCategoryCount(); // Update category count
     updateTotalStock(); // Update total stock
 };
+
+
+// ================= LOGOUT PAGE =================
+let logout = (log) => {
+    // alert("HELLO")
+    log.preventDefault()
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+        title: "Are you sure?",
+        text: "You want to Logout!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes,logout Me!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire({
+                title: "Logout!",
+                text: "You Logout successfully!!.",
+                icon: "success"
+            });
+
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "You may safe here!!",
+                icon: "error"
+            });
+        }
+        setInterval(() => {
+            window.location.href = "http://127.0.0.1:5502/index.html"
+        }, 5000);
+    });
+
+}

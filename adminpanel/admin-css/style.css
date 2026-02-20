@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+    font-family: "DM Sans", sans-serif;
 }
 
 body {
@@ -23,6 +23,8 @@ header {
     border-bottom: 2px solid;
     display: flex;
     justify-content: end;
+    background-color: #f4f6f9;
+
 }
 
 aside {
@@ -38,12 +40,15 @@ main {
     grid-area: main;
     overflow: auto;
     padding: 20px;
+    background-color: #f4f6f9;
+
 
 }
 
 footer {
     grid-area: footer;
     border-top: 2px solid;
+    background-color: #f4f6f9;
 }
 
 .company-name {
@@ -247,20 +252,16 @@ footer {
 }
 
 .product-form {
-    /* border: 2px solid;*/
-    width: 380px;
-    height: 450px;
+    /* border: 2px solid; */
+    width: 400px;
+    /* height: 485px; */
     background-color: teal;
     color: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: -6px 6px 20px 0px black;
     margin-top: 10px;
     margin: 25px;
-}
-
-.cate-from {
-    height: 250px;
 }
 
 .product-form input {
@@ -269,7 +270,7 @@ footer {
     border-radius: 5px;
     border: none;
     padding: 5px;
-    margin: 5px;
+    margin: 2px;
 }
 
 .product-form label {
@@ -345,7 +346,8 @@ td img {
     margin-top: 10px;
     /* border-collapse: collapse; */
 }
-.customer-data{
+
+.customer-data {
     /* border: 2px solid yellow; */
     width: 700px;
     padding: 10px;
@@ -356,14 +358,15 @@ td img {
 
 .c-table th,
 td {
-    border: 2px solid ;
+    border: 2px solid;
     width: 150px;
     height: 50px;
     /* width: 50px;
     height: 70px;
     padding: 5px; */
 }
-.c-table th{
+
+.c-table th {
     background-color: #1591a5;
     color: white;
     border: 2px solid black;
@@ -376,9 +379,14 @@ td {
     height: 40px;
     text-align: center;
 }
-.footer .clickme{
+
+.footer .clickme {
     text-decoration: none;
 }
+
+
+
+
 
 @media screen and (max-width:768px) {
 

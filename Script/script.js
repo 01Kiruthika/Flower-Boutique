@@ -12,10 +12,10 @@ function addToCart(btn) {
     let card = btn.closest(".card-des");
 
     // Get product details from data attributes
-    let id = Number(card.dataset.id);       // product id
-    let name = card.dataset.name;           // product name
+    let id = Number(card.dataset.id); // product id
+    let name = card.dataset.name; // product name
     let price = Number(card.dataset.price); // product price
-    let img = card.dataset.img;             // product image
+    let img = card.dataset.img; // product image
 
     // Check if product already exists in cart
     let existing = cart.find(p => p.id === id);
@@ -90,14 +90,14 @@ function renderCart() {
 
         // Create cart item UI
         container.innerHTML += `
-            <div class="cart-card">
-                <img src="${item.img}" width="100">
+            <div class="card-des">
+                <img src="${item.img}">
 
-                <div>
+                <div class="inside-2">
                     <h5>${item.name}</h5>
                     <p>Rs.${item.price}</p>
 
-                    <button onclick="decreaseQty(${item.id})">-</button>
+                    <button onclick="decreaseQty(${item.id})" >-</button>
                     <span>${item.qty}</span>
                     <button onclick="increaseQty(${item.id})">+</button>
 
@@ -244,3 +244,298 @@ window.addEventListener("scroll", () => {
         headSection.querySelector(".line").classList.remove("active");
     }
 });
+
+
+// ================= LOAD PRODUCTS FROM ADMIN PANEL =================
+
+// Function to load products from admin panel (localStorage) to shop page
+let loadShopProducts = () => {
+
+    // Get the container where products will be displayed
+    let container = document.getElementById("shopProducts");
+
+    // Get products array from localStorage, if not found use empty array
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    // Clear old product cards
+    container.innerHTML = "";
+
+    // ---------------- NO PRODUCTS CONDITION ----------------
+    if (products.length === 0) {
+        container.innerHTML = `
+            <div style="text-align:center; width:100%; padding:30px;">
+                <h3>No Products Found</h3>
+            </div>`;
+        return;
+    }
+
+    // ---------------- LOOP THROUGH PRODUCTS ----------------
+    products.forEach(p => {
+
+        container.innerHTML += `
+
+<div class="col-lg-3 col-md-6 col-sm-12">
+
+    <div class="card-des"
+         data-id="${p.id}"
+         data-name="${p.name}"
+         data-price="${p.price}"
+         data-img="${p.url}">
+
+        <!-- Image wrapper -->
+        <div class="card-image-wrapper">
+
+            <!-- Main image -->
+            <img src="${p.url}" class="main-img">
+
+            <!-- Hover image -->
+            <img src="${p.hoverUrl}" class="hover-img">
+
+        </div>
+
+        <div class="c-inside-1 inside-2">
+
+            <div class="star-icon">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
+
+            <h5>${p.name}</h5>
+            <h6>Rs.${p.price}</h6>
+
+        </div>
+
+        <div class="c-foot">
+            <button type="button"
+                    class="btnn"
+                    onclick="addToCart(this)">
+                Add To Cart
+            </button>
+        </div>
+
+    </div>
+</div>
+`;
+
+    })
+}
+
+
+// ================= CALL ON PAGE LOAD =================
+
+// When the page is fully loaded
+document.addEventListener("DOMContentLoaded", loadShopProducts);
+
+
+
+// ================= REGISTER USER FUNCTION =================
+
+let registerUser = (ev) => {
+
+    ev.preventDefault() // Stop page reload
+
+    // Get input values
+    let name = document.getElementById("user-name").value.trim();
+    let email = document.getElementById("user-email").value.trim();
+    let password = document.getElementById("user-password").value.trim();
+    let cpassword = document.getElementById("user-conform-password").value.trim();
+
+    // Get error span elements
+    let ename = document.getElementById("ename");
+    let eemail = document.getElementById("eemail");
+    let epass = document.getElementById("epass");
+    let ecpass = document.getElementById("ecpass");
+
+    // Clear old error messages
+    ename.innerHTML = "";
+    eemail.innerHTML = "";
+    epass.innerHTML = "";
+    ecpass.innerHTML = "";
+
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    let isValid = true;
+
+    // Name validation
+    if (name === "") {
+        ename.innerHTML = "Name is required";
+        ename.style.color = "red"
+        ename.style.fontSize = "15px"
+        isValid = false;
+    }
+
+    // Email validation
+    if (email === "") {
+        eemail.innerHTML = "Email is required";
+        eemail.style.color = "red"
+        eemail.style.fontSize = "15px"
+        isValid = false;
+    } else if (!email.match(emailPattern)) {
+        eemail.innerHTML = "Enter valid email";
+        isValid = false;
+    }
+
+    // Password validation
+    if (password === "") {
+        epass.innerHTML = "Password is required";
+        epass.style.color = "red"
+        epass.style.fontSize = "15px"
+        isValid = false;
+    } else if (password.length < 8) {
+        epass.innerHTML = "Password must be at least 8 characters";
+        epass.style.color = "red"
+        epass.style.fontSize = "15px"
+        isValid = false;
+    }
+
+    // Confirm password validation
+    if (cpassword === "") {
+        ecpass.innerHTML = "Confirm password is required";
+        ecpass.style.color = "red"
+        ecpass.style.fontSize = "15px"
+        isValid = false;
+    } else if (password !== cpassword) {
+        ecpass.innerHTML = "Passwords do not match";
+        ecpass.style.color = "red"
+        ecpass.style.fontSize = "15px"
+        isValid = false;
+    }
+
+    if (!isValid) return;
+
+    // Store user in localStorage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    users.push({
+        name: name,
+        email: email,
+        password: password
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Registration Successful!");
+    window.location.href = "index.html";
+}
+
+
+
+
+// ================= LOGIN FUNCTION =================
+function loginpage(event) {
+
+    event.preventDefault(); // Stop reload
+
+    let email = document.getElementById("user-email").value.trim();
+    let password = document.getElementById("user-password").value.trim();
+
+    let erEmail = document.getElementById("er-email");
+    let erPass = document.getElementById("er-pass");
+
+    erEmail.innerHTML = "";
+    erPass.innerHTML = "";
+
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    let isValid = true;
+
+    // Email validation
+    if (email === "") {
+        erEmail.innerHTML = "Email is required";
+        erEmail.style.color = "red"
+        erEmail.style.fontSize = "15px"
+        isValid = false;
+    } else if (!email.match(emailPattern)) {
+        erEmail.innerHTML = "Enter valid email";
+        erEmail.style.color = "red"
+        erEmail.style.fontSize = "15px"
+        isValid = false;
+    }
+
+    // Password validation
+    if (password === "") {
+        erPass.innerHTML = "Password is required";
+        erPass.style.color = "red"
+        erPass.style.fontSize = "15px"
+        isValid = false;
+    } else if (password.length < 8) {
+        erPass.innerHTML = "Password must be at least 8 characters";
+        erPass.style.color = "red"
+        erPass.style.fontSize = "15px"
+        isValid = false;
+    }
+
+    if (!isValid) return;
+
+    // Check user in localStorage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    let foundUser = users.find(user =>
+        user.email === email && user.password === password
+    );
+
+    if (foundUser) {
+        alert("Login Successful!");
+        window.location.href = "home.html";
+    } else {
+        alert("Invalid Email or Password");
+    }
+}
+
+
+
+
+
+// ================= ADMIN LOGIN PAGE =================
+
+
+
+let adminLogin = (ev) => {
+
+    // Stop page reload
+    ev.preventDefault();
+
+    // Get admin inputs
+    let email = document.getElementById("admin-email");
+    let pass = document.getElementById("admin-password");
+
+    // Get error spans
+    let erEmail = document.getElementById("er-email");
+    let erPass = document.getElementById("er-pass");
+
+    // Clear errors
+    erEmail.innerText = "";
+    erPass.innerText = "";
+
+    // Validation
+    if (email.value.trim() === "") {
+        erEmail.innerText = "Enter admin email";
+        erEmail.style.color = "red"
+        erEmail.style.fontSize = "15px"
+    }
+
+    if (pass.value.trim() === "") {
+        erPass.innerText = "Enter admin password";
+        erPass.style.color = "red"
+        erPass.style.fontSize = "15px"
+        return;
+    }
+
+    // Check admin credentials
+    if (email.value === "kiruthika@gmail.com" && pass.value === "admin2004") {
+
+        // Save admin login status
+        localStorage.setItem("adminLogin", "true");
+
+        alert("Admin login successful");
+
+        // Redirect to admin dashboard
+        window.location.href = "dashboard.html";
+
+    } else {
+        alert("Invalid admin credentials");
+    }
+}
