@@ -1,190 +1,212 @@
-// Add to cart
-let cart1 = JSON.parse(localStorage.getItem("cart")) || [];
-
-function addToCart(btn) {
-    debugger;
-
-    let card = btn.closest(".card-des");
-
-    let id = Number(card.dataset.id);
-    let name = card.dataset.name;
-    let price = Number(card.dataset.price);
-    let img = card.dataset.img;
-
-    let existing = cart.find(p => p.id === id);
-
-    if (existing) {
-        existing.qty += 1;
-    } else {
-        cart1.push({
-            id,
-            name,
-            price,
-            img,
-            qty: 1
-        });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart1));
-    updateCartCount();
-}
-
-function updateCartCount() {
-    let count = cart1.reduce((sum, p) => sum + p.qty, 0);
-    let el = document.getElementById("cartCount");
-    if (el) el.innerText = count;
-}
-
-
 // ================= CART DATA =================
+
+// Get cart data from localStorage
+// If cart is not found, create empty array
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 // ================= ADD TO CART =================
-function addtocart(product) {
-    let existing = cart.find(item => item.id === product.id);
+function addToCart(btn) {
+
+    // Select the parent card of clicked button
+    let card = btn.closest(".card-des");
+
+    // Get product details from data attributes
+    let id = Number(card.dataset.id);       // product id
+    let name = card.dataset.name;           // product name
+    let price = Number(card.dataset.price); // product price
+    let img = card.dataset.img;             // product image
+
+    // Check if product already exists in cart
+    let existing = cart.find(p => p.id === id);
 
     if (existing) {
+        // If product exists, increase quantity
         existing.qty += 1;
     } else {
+        // If product not exists, add new product
         cart.push({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            img: product.img,
+            id: id,
+            name: name,
+            price: price,
+            img: img,
             qty: 1
         });
     }
 
+    // Save updated cart to localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Update cart count in navbar
     updateCartCount();
-    alert("Product added to cart");
 }
 
 
 // ================= UPDATE CART COUNT =================
 function updateCartCount() {
-    let countEl = document.getElementById("cartCount");
-    if (!countEl) return;
 
+    // Calculate total quantity of all products
     let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-    countEl.innerText = totalQty;
+
+    // Get cart count element
+    let el = document.getElementById("cartCount");
+
+    // If element exists, show count
+    if (el) el.innerText = totalQty;
 }
 
 
-// ================= LOAD CART PAGE =================
+// ================= RENDER CART PAGE =================
 function renderCart() {
+
+    // Get cart container element
     let container = document.getElementById("cartContainer");
+
+    // Get total amount element
     let totalEl = document.getElementById("totalAmount");
 
+    // If cart page not available, stop function
     if (!container) return;
 
+    // Clear previous cart content
     container.innerHTML = "";
 
+    // If cart is empty
     if (cart.length === 0) {
-        container.innerHTML = `
-            <h3 style="color:white;text-align:center">
-                No records found
-            </h3>
-        `;
+        container.innerHTML = `<h3 style="text-align:center">No records found</h3>`;
         if (totalEl) totalEl.innerText = "0";
         updateCartCount();
         return;
     }
 
+    // Variable to store total amount
     let total = 0;
 
+    // Loop through each cart item
     cart.forEach(item => {
+
+        // Calculate total price
         total += item.price * item.qty;
 
+        // Create cart item UI
         container.innerHTML += `
-            <div class="card-des">
-                <img src="${item.img}" alt="${item.name}">
-                
-                <div class="inside-2">
-                    <h5>${item.name}</h5>
-                    <h6>Rs.${item.price}</h6>
+            <div class="cart-card">
+                <img src="${item.img}" width="100">
 
-                    <div>
-                        <button onclick="decreaseQty(${item.id})">-</button>
-                        <span>${item.qty}</span>
-                        <button onclick="increaseQty(${item.id})">+</button>
-                        <button onclick="removeItem(${item.id})">Delete</button>
-                    </div>
+                <div>
+                    <h5>${item.name}</h5>
+                    <p>Rs.${item.price}</p>
+
+                    <button onclick="decreaseQty(${item.id})">-</button>
+                    <span>${item.qty}</span>
+                    <button onclick="increaseQty(${item.id})">+</button>
+
+                    <button onclick="removeItem(${item.id})">Delete</button>
                 </div>
             </div>
         `;
     });
 
+    // Show total amount
     if (totalEl) totalEl.innerText = total;
+
+    // Update cart count
     updateCartCount();
 }
 
 
-// ================= INCREASE QTY =================
+// ================= INCREASE QUANTITY =================
 function increaseQty(id) {
+
+    // Find product using id
     let item = cart.find(p => p.id === id);
+
     if (item) {
+        // Increase quantity
         item.qty += 1;
+
+        // Save updated cart
         saveCart();
     }
 }
 
 
-// ================= DECREASE QTY =================
+// ================= DECREASE QUANTITY =================
 function decreaseQty(id) {
+
+    // Find product using id
     let item = cart.find(p => p.id === id);
 
+    // If product not found, stop
     if (!item) return;
 
     if (item.qty > 1) {
+        // If quantity more than 1, decrease it
         item.qty -= 1;
     } else {
+        // If quantity is 1, remove product
         removeItem(id);
         return;
     }
 
+    // Save updated cart
     saveCart();
 }
 
 
 // ================= REMOVE ITEM =================
 function removeItem(id) {
+
+    // Ask confirmation before delete
     let confirmDelete = confirm("Do you want to delete this product?");
     if (!confirmDelete) return;
 
+    // Remove selected product from cart
     cart = cart.filter(item => item.id !== id);
+
+    // Save updated cart
     saveCart();
 }
 
 
 // ================= SAVE CART =================
 function saveCart() {
+
+    // Save cart to localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Re-render cart page
     renderCart();
 }
 
 
 // ================= BUY NOW =================
 function buyNow() {
+
+    // Check if cart is empty
     if (cart.length === 0) {
         alert("Your cart is empty!");
         return;
     }
 
-    let total = cart.reduce(
-        (sum, item) => sum + item.price * item.qty,
-        0
-    );
+    // Calculate total amount
+    let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
+    // Ask purchase confirmation
     let confirmBuy = confirm(
         "Do you want to purchase?\n\nTotal Amount: Rs." + total
     );
 
     if (confirmBuy) {
         alert("Thank you for your purchase");
+
+        // Clear cart from localStorage
         localStorage.removeItem("cart");
+
+        // Reset cart array
         cart = [];
+
+        // Update UI
         renderCart();
     }
 }
@@ -192,388 +214,33 @@ function buyNow() {
 
 // ================= PAGE LOAD =================
 window.addEventListener("DOMContentLoaded", () => {
+
+    // Load cart count in navbar
     updateCartCount();
+
+    // Load cart page
     renderCart();
 });
 
 
+// ================= SCROLL LINE ANIMATION =================
 
-// Redirect to Shop page
-let shoppage = () => {
-    // alert("Hello")
-    window.location.href = "http://127.0.0.1:5502/shop.html";
-}
-
-
-
-//About page
-let aboutpage = () => {
-    // alert("Hello")
-    window.location.href = "http://127.0.0.1:5502/about.html"
-}
-debugger;
-let images = [
-    "image/About-page/scroll-1.jpg",
-    "image/About-page/scroll-2.jpg",
-    "image/About-page/scroll-3.jpg"
-];
-
-let imgIndex = 0;
-let img = document.getElementById("scrollImg");
-let lastScrollY = window.scrollY;
+// Select product heading section
+let headSection = document.querySelector(".productHead");
 
 window.addEventListener("scroll", () => {
-    let currentScroll = window.scrollY;
 
-    // Scroll DOWN
-    if (currentScroll > lastScrollY) {
-        imgIndex++;
-        if (imgIndex >= images.length) {
-            imgIndex = images.length - 1;
-        }
-    }
-    // Scroll UP
-    else {
-        imgIndex--;
-        if (imgIndex < 0) {
-            imgIndex = 0;
-        }
-    }
+    // Get distance of section from top
+    let sectionTop = headSection.getBoundingClientRect().top;
 
-    img.src = images[imgIndex];
-    lastScrollY = currentScroll;
+    // Set animation trigger point
+    let triggerPoint = window.innerHeight / 1.2;
+
+    if (sectionTop < triggerPoint) {
+        // When section enters screen, add animation class
+        headSection.querySelector(".line").classList.add("active");
+    } else {
+        // When section leaves screen, remove animation class
+        headSection.querySelector(".line").classList.remove("active");
+    }
 });
-
-//admin page
-// debugger;
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    document.querySelector("form").addEventListener("submit", adminpage);
-
-    function adminpage(event) {
-        event.preventDefault();
-
-        let isvalid = true;
-
-        let aemailInput = document.querySelector("#admin-email");
-        let apassInput = document.querySelector("#admin-password");
-
-        let erEmail = document.querySelector("#er-email");
-        let erPass = document.querySelector("#er-pass");
-
-        let aemail = aemailInput.value.trim();
-        let apass = apassInput.value.trim();
-
-        let mailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        // Reset errors
-        erEmail.innerText = "";
-        erPass.innerText = "";
-
-        // Email validation
-        if (aemail === "") {
-            erEmail.innerText = "Please enter admin email";
-            erEmail.style.color = "red";
-            aemailInput.style.border = "2px solid red";
-            isvalid = false;
-        } else if (!mailPattern.test(aemail)) {
-            erEmail.innerText = "Invalid email format";
-            erEmail.style.color = "red";
-            aemailInput.style.border = "2px solid red";
-            isvalid = false;
-        } else {
-            aemailInput.style.border = "2px solid green";
-        }
-
-        // Password validation
-        if (apass === "") {
-            erPass.innerText = "Please enter password";
-            erPass.style.color = "red";
-            apassInput.style.border = "2px solid red";
-            isvalid = false;
-        } else if (apass.length < 8) {
-            erPass.innerText = "Password must be at least 8 characters";
-            erPass.style.color = "red";
-            apassInput.style.border = "2px solid red";
-            isvalid = false;
-        } else {
-            apassInput.style.border = "2px solid green";
-        }
-
-        if (!isvalid) return;
-
-        // Admin credentials check
-        if (aemail === "kiruthika@gmail.com" && apass === "admin2004") {
-            alert("Admin Login Successful!!");
-            window.location.href = "dashboard.html";
-        } else {
-            alert("Only Admin is allowed to login!");
-        }
-    }
-
-});
-
-
-
-
-
-///login page
-debugger
-let loginpage = (ev) => {
-    // alert("hello")
-    debugger;
-    ev.preventDefault();
-
-    let isvalid = true;
-    let arrid = ["user-email", "user-password"];
-    let arrerr = ["er-email", "er-pass"];
-
-    let emailInput = document.getElementById("user-email");
-    let passwordInput = document.getElementById("user-password");
-
-    // Validation
-    for (let i = 0; i < arrid.length; i++) {
-        let input = document.getElementById(arrid[i]);
-        let error = document.getElementById(arrerr[i]);
-
-        if (input.value === "") {
-            error.innerText = "Please fill the " + arrid[i];
-            error.style.color = "red";
-            input.style.border = "2px solid red";
-            isvalid = false;
-        } else {
-            if (arrid[i] === "user-email") {
-                let mailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                if (!mailPattern.test(input.value)) {
-                    error.innerText = "Email id is Invalid";
-                    error.style.color = "red";
-                    input.style.border = "2px solid red";
-                    isvalid = false;
-                } else {
-                    error.innerText = "";
-                    input.style.border = "2px solid green";
-                }
-            }
-
-            if (arrid[i] === "user-password") {
-                if (input.value.length < 8) {
-                    error.innerText = "Password must be at least 8 characters";
-                    error.style.color = "red";
-                    input.style.border = "2px solid red";
-                    isvalid = false;
-                } else {
-                    error.innerText = "";
-                    input.style.border = "2px solid green";
-                }
-            }
-        }
-    }
-
-    if (!isvalid) return;
-
-    // ✅ NORMALIZE INPUT
-    let email = emailInput.value.trim().toLowerCase();
-    let pass = passwordInput.value.trim();
-
-    let users = JSON.parse(localStorage.getItem("users"));
-
-    if (!users || users.length === 0) {
-        alert("Register data not found. Please register first!");
-        return;
-    }
-
-    // Match email & password
-    let validUser = users.find(
-        user =>
-        user.email.toLowerCase() === email &&
-        user.password === pass
-    );
-    localStorage.removeItem("loggedInUser");
-    if (validUser) {
-        alert("Login Successfully!!");
-
-        // Get existing logged-in users
-        let loggedUsers = localStorage.getItem("loggedInUser");
-
-        // Parse it safely
-        try {
-            loggedUsers = JSON.parse(loggedUsers);
-        } catch {
-            loggedUsers = null; // in case localStorage has invalid data
-        }
-
-        // Make sure loggedUsers is an array
-        if (loggedUsers === null || typeof loggedUsers !== "object") {
-            loggedUsers = [];
-        } else if (loggedUsers.id !== undefined) {
-            // old single object format -> wrap into array
-            loggedUsers = [loggedUsers];
-        }
-
-        // Push the new logged-in user
-        loggedUsers.push(validUser);
-
-        // Save back to localStorage
-        localStorage.setItem("loggedInUser", JSON.stringify(loggedUsers));
-
-        // Redirect
-        window.location.href = "index.html";
-    } else {
-        alert("Invalid Email or Password");
-    }
-
-
-
-
-};
-
-
-// register page
-let registerUser = (evnt) => {
-    evnt.preventDefault();
-
-    let isvalid = true;
-
-    let uname = document.getElementById("user-name");
-    let uemail = document.getElementById("user-email");
-    let upass = document.getElementById("user-password");
-    let ucpass = document.getElementById("user-conform-password");
-
-    let ename = document.getElementById("ename");
-    let eemail = document.getElementById("eemail");
-    let epass = document.getElementById("epass");
-    let ecpass = document.getElementById("ecpass");
-
-    if (uname.value === "") {
-        ename.innerText = "Please fill the name";
-        ename.style.color = "red";
-        uname.style.border = "2px solid red";
-        isvalid = false;
-    } else {
-        ename.innerText = "";
-    }
-
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (uemail.value === "") {
-        eemail.innerText = "Please fill the email";
-        eemail.style.color = "red";
-        uemail.style.border = "2px solid red";
-        isvalid = false;
-    } else if (!emailPattern.test(uemail.value)) {
-        eemail.innerText = "Invalid Email";
-        eemail.style.color = "red";
-        uemail.style.border = "2px solid red";
-        isvalid = false;
-    } else {
-        eemail.innerText = "";
-    }
-
-    if (upass.value === "") {
-        epass.innerText = "Please fill the password";
-        epass.style.color = "red";
-        upass.style.border = "2px solid red";
-        isvalid = false;
-    } else if (upass.value.length < 8) {
-        epass.innerText = "Password must be at least 8 characters";
-        epass.style.color = "red";
-        upass.style.border = "2px solid red";
-        isvalid = false;
-    } else {
-        epass.innerText = "";
-    }
-
-    if (ucpass.value === "") {
-        ecpass.innerText = "Please fill the confirm password";
-        ecpass.style.color = "red";
-        ucpass.style.border = "2px solid red";
-        isvalid = false;
-    } else if (upass.value !== ucpass.value) {
-        ecpass.innerText = "Passwords do not match";
-        ecpass.style.color = "red";
-        ucpass.style.border = "2px solid red";
-        isvalid = false;
-    } else {
-        ecpass.innerText = "";
-    }
-
-    if (!isvalid) return;
-
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    // ✅ NORMALIZE EMAIL
-    let email = uemail.value.trim().toLowerCase();
-
-    let exists = users.some(user => user.email.toLowerCase() === email);
-    if (exists) {
-        alert("User already registered. Please login!");
-        return;
-    }
-
-    let newUser = {
-        name: uname.value.trim(),
-        email: email,
-        password: upass.value.trim()
-    };
-
-    users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
-
-    alert("Registration Successful. Please Login");
-};
-
-
-
-// ================= LOAD PRODUCTS FROM ADMIN PANEL =================
-let loadShopProducts = () => {
-    let container = document.getElementById("shopProducts");
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-
-    container.innerHTML = "";
-
-    // NO PRODUCTS CASE
-    if (products.length === 0) {
-        container.innerHTML = `
-            <div style="text-align:center; width:100%; padding:30px;">
-                <h3>No Products Found</h3>
-            </div>`;
-        return;
-    }
-
-    products.forEach(p => {
-        container.innerHTML += `
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card-des"
-                data-id="${p.id}"
-                data-name="${p.name}"
-                data-price="${p.price}"
-                data-img="${p.url}">
-
-                <div class="c-inside-1 card-backimg"
-                     style="background-image:url('${p.url}')">
-                </div>
-
-                <div class="c-inside-1 inside-2">
-                    <div class="star-icon">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <h5>${p.name}</h5>
-                    <h6>Rs.${p.price}</h6>
-                </div>
-
-                <div class="c-foot">
-                    <button type="button" class="btnn" onclick="addToCart(this)">
-                        Add To Cart
-                    </button>
-                </div>
-            </div>
-        </div>`;
-    });
-};
-
-// ================= CALL ON PAGE LOAD =================
-document.addEventListener("DOMContentLoaded", loadShopProducts);

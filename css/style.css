@@ -194,23 +194,22 @@ nav ul li a {
 }
 
 /*  Card Design   */
-
 .line {
-    /* border: 2px solid; */
     padding: 10px;
 }
 
 .line hr {
-    /* border: 2px solid; */
     width: 90px;
     margin: 0 auto;
-    color: #b12016;
-    transition: 1s;
+    border: 2px solid #b12016;
+    transition: 0.8s ease;
 }
 
-.line:hover hr {
+/* This will activate when scrolling */
+.line.active hr {
     width: 150px;
 }
+
 
 
 .c-body {
