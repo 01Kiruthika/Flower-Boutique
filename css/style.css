@@ -223,19 +223,19 @@ nav ul li a {
 .card-des {
     /* border: 2px solid black; */
     padding: 5px;
-    height: 480px;
     margin: 10px;
     padding: 0;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(180deg, #ff8fb1, #ff6f91);
     color: #fff;
-    box-shadow: 1px 7px 25px rgb(0 0 0 / 66%);
-    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(255, 111, 145, 0.35);
+    border-radius: 18px;
+
 }
 
 
 
 .card-backimg {
-    /* border: 2px solid; */
+    /* border: 2px solid yellow; */
     height: 280px;
     background-image: url(../image/card-image/1.jpg);
     background-repeat: no-repeat;
@@ -320,11 +320,6 @@ nav ul li a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.inside-2 {
-    height: 110px;
-    padding: 10px;
 }
 
 .star-icon {
@@ -1561,24 +1556,16 @@ input[type=submit]:hover {
     }
 
     .login-body {
-        /* border: 2px solid; */
-        width: 500px;
-        height: 50px;
+        width: 70%;
+        height: auto;
+        margin-top: 60px;
     }
 
     .login-body input {
-        width: 30px;
-        margin: 5px;
-        padding: 2px;
+        width: 100%;
     }
 
-
-
 }
-
-
-
-
 
 
 
@@ -1601,10 +1588,11 @@ input[type=submit]:hover {
     /* padding-left: 30px;
     padding-right: 20px; */
     padding: 10px 20px;
-    color: white;
-    background-color:rgb(230, 101, 144);
-    box-shadow: -3px -1px 20px 10px #912480;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    color: #ffffff
 }
 
 .login-body h3 {
@@ -1620,6 +1608,7 @@ input[type=submit]:hover {
     /* border: 2px solid; */
     margin: 5px;
     padding: 2px;
+
 }
 
 .sub button {
@@ -1655,7 +1644,7 @@ input[type=submit]:hover {
 }
 
 
-/* ================= CARD IMAGE WRAPPER ================= */
+
 .card-image-wrapper {
     /* border: 2px solid; */
     position: relative;
@@ -1665,7 +1654,7 @@ input[type=submit]:hover {
     border-radius: 12px;
 }
 
-/* ================= BOTH IMAGES ================= */
+
 .card-image-wrapper img {
     position: absolute;
     width: 100%;
@@ -1675,19 +1664,16 @@ input[type=submit]:hover {
 
 }
 
-/* ================= MAIN IMAGE ================= */
 .main-img {
     opacity: 1;
 
 }
 
-/* ================= HOVER IMAGE ================= */
 .hover-img {
     opacity: 0;
 
 }
 
-/* ================= ON CARD HOVER ================= */
 .card-des:hover .main-img {
     opacity: 0;
 
@@ -1695,4 +1681,49 @@ input[type=submit]:hover {
 
 .card-des:hover .hover-img {
     opacity: 1;
+}
+
+
+
+
+@media (max-width: 576px) {
+
+    .con {
+        width: auto;
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .login-body {
+        width: 90%;
+        height: auto;
+        margin-top: 40px;
+        padding: 15px;
+    }
+
+    .login-body h3 {
+        font-size: 18px;
+        
+    }
+
+    .login-body label {
+        font-size: 13px;
+        
+    }
+
+    .login-body input {
+        width: 100%;
+    }
+
+    .sub button {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .acc {
+        flex-direction: column;
+        text-align: center;
+        font-size: 13px;
+    }
 }

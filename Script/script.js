@@ -113,8 +113,6 @@ function renderCart() {
     // Update cart count
     updateCartCount();
 }
-
-
 // ================= INCREASE QUANTITY =================
 function increaseQty(id) {
 
@@ -129,7 +127,6 @@ function increaseQty(id) {
         saveCart();
     }
 }
-
 
 // ================= DECREASE QUANTITY =================
 function decreaseQty(id) {
@@ -211,7 +208,6 @@ function buyNow() {
     }
 }
 
-
 // ================= PAGE LOAD =================
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -222,25 +218,30 @@ window.addEventListener("DOMContentLoaded", () => {
     renderCart();
 });
 
-
 // ================= SCROLL LINE ANIMATION =================
 
-// Select product heading section
+// Select the product heading section from the page
 let headSection = document.querySelector(".productHead");
 
+// Add scroll event to the window
 window.addEventListener("scroll", () => {
+    debugger;
 
-    // Get distance of section from top
+    // Get the distance of product section from top of screen
     let sectionTop = headSection.getBoundingClientRect().top;
 
-    // Set animation trigger point
-    let triggerPoint = window.innerHeight / 1.2;
+    // Get full height of the visible screen
+    let triggerPoint = window.innerHeight;
 
-    if (sectionTop < triggerPoint) {
-        // When section enters screen, add animation class
+    // Check if product section comes inside the screen
+    if (sectionTop <= triggerPoint) {
+
+        // Add "active" class to the line element to start animation
         headSection.querySelector(".line").classList.add("active");
+
     } else {
-        // When section leaves screen, remove animation class
+
+        // Remove "active" class when section is not visible
         headSection.querySelector(".line").classList.remove("active");
     }
 });

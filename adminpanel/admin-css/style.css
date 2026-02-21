@@ -20,15 +20,15 @@ body {
 
 header {
     grid-area: header;
-    border-bottom: 2px solid;
+    /* border-bottom: 2px solid; */
     display: flex;
     justify-content: end;
-    background-color: #f4f6f9;
-
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #ffffff;
 }
 
 aside {
-    border: 2px solid white;
+    /* border: 2px solid white; */
     grid-area: sidemenu;
     /* background: #3784d1; */
     background-image: url(../admin-images/bg-1.avif);
@@ -40,15 +40,17 @@ main {
     grid-area: main;
     overflow: auto;
     padding: 20px;
-    background-color: #f4f6f9;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #ffffff;
 
 
 }
 
 footer {
     grid-area: footer;
-    border-top: 2px solid;
-    background-color: #f4f6f9;
+    /* border-top: 2px solid; */
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #ffffff;
 }
 
 .company-name {
@@ -255,11 +257,12 @@ footer {
     /* border: 2px solid; */
     width: 400px;
     /* height: 485px; */
-    background-color: teal;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: -6px 6px 20px 0px black;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
     margin-top: 10px;
     margin: 25px;
 }
@@ -367,9 +370,9 @@ td {
 }
 
 .c-table th {
-    background-color: #1591a5;
+    /* background-color: #1591a5; */
     color: white;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 
 }
 
@@ -382,6 +385,7 @@ td {
 
 .footer .clickme {
     text-decoration: none;
+    color: red;
 }
 
 
@@ -392,7 +396,7 @@ td {
 
     body {
         display: grid;
-        height: 100vh;
+        /* height: 100vh; */
         grid-template-columns: auto;
         grid-template-areas: 'header'
             'main'
@@ -403,15 +407,16 @@ td {
     }
 
     aside {
-
+        /* border: 2px solid yellow; */
         grid-area: sidemenu;
         background: url(../admin-images/bg-1.avif);
         position: absolute;
-        width: 250px;
+        width: 200px;
         left: -250px;
         margin-top: 60px;
-        height: calc(100% - 60px);
+        height: auto;
         transition: 1s;
+        z-index: 15;
     }
 
     header {
@@ -419,20 +424,22 @@ td {
     }
 
     .admin-options ul li a {
-        gap: 15px;
+        /* border: 2px solid; */
+        gap: 10px;
+        width: max-content;
     }
 
     .admin-logo {
         font-size: 50px;
         /* border: 2px solid; */
         margin: 10px;
-        padding: 10px;
+        /* padding: 10px; */
         text-align: center;
     }
 
     .company-name {
-        /* border: 2px solid; */
-        width: 50px;
+        border: 2px solid;
+        width: auto;
         /* position: relative; */
         align-self: center;
     }
@@ -452,18 +459,25 @@ td {
 
     .head-icons {
         /* border: 2px solid; */
-        width: 40%;
+        width: 60%;
         /* justify-content:space-between; */
         padding: 8px;
     }
 
     .head-icons .fa {
-        margin: 0 6px;
-        font-size: 16px;
+        margin: 0 auto;
+        font-size: 10px;
     }
 
     .time {
-        font-size: 18px;
+        font-size: 10px;
+        display: inline;
+    }
+
+    .box {
+        /* border: 2px solid black; */
+        margin: 10px;
+
     }
 
     .product-main {
@@ -475,7 +489,26 @@ td {
     .product-form {
         /* border: 2px solid; */
         margin: 0 auto;
-        margin-bottom: 50px;
+        /* margin-bottom: 50px; */
+        width: auto;
+        height: auto;
+        font-size: 15px;
+        padding: 15px 25px;
+    }
+
+    .product-form input {
+        width: 100%;
+    }
+
+    table {
+        border: 2px solid blue;
+        width: 80%
+    }
+
+    tr,
+    th {
+        border: 2px solid;
+        width: 50%;
     }
 
     .category-main {
@@ -486,9 +519,17 @@ td {
     }
 
     .cate-from {
-        /* border: 2px solid; */
+        /* border: 2px solid yellow; */
         margin: 0 auto;
         margin-bottom: 50px;
-        height: 300px;
+        /* height: 300px; */
+    }
+
+    .customer-data {
+        /* border: 2px solid yellow; */
+        width: auto;
+        margin-left: 0;
+        padding: 0;
+      
     }
 }

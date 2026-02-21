@@ -57,9 +57,7 @@ setInterval(() => {
     showtime();
 }, 1000);
 
-
 // ================= DASHBOARD =================
-
 // Function to update product count
 let updateProductCount = () => {
 
@@ -75,7 +73,6 @@ let updateProductCount = () => {
     // Show total number of products
     el.innerText = products.length;
 };
-
 // Function to update user count
 let updateUserCount = () => {
 
@@ -137,14 +134,10 @@ let updateCategoryCount = () => {
     el.innerText = categories.length;
 };
 
-
 // ================= PRODUCT PAGE =================
 
 // Get the update button element from HTML
 let updateBtn = document.getElementById("updateBtn");
-
-
-
 // ================= LOAD PRODUCT DATA =================
 let loadData = () => {
 
@@ -172,11 +165,11 @@ let loadData = () => {
                 <td>${i + 1}</td> <!-- Serial number -->
 
                 <td>
-                    <img src="${p.url}" width="60">
+                    <img src="${p.url}">
                 </td> <!-- Main image -->
 
                 <td>
-                    <img src="${p.hoverUrl}" width="60">
+                    <img src="${p.hoverUrl}">
                 </td> <!-- Hover image -->
 
                 <td>${p.name}</td> <!-- Product name -->
@@ -296,9 +289,6 @@ let updateForm = () => {
         } :
         p
     );
-
-
-
     // Save updated list
     localStorage.setItem("products", JSON.stringify(products));
 
@@ -816,41 +806,37 @@ let logout = (log) => {
     log.preventDefault()
 
     const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: "btn btn-success",
-            cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-    });
+  customClass: {
+    confirmButton: "btn btn-success",
+    cancelButton: "btn btn-danger"
+  },
+  buttonsStyling: false
+});
+swalWithBootstrapButtons.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "Yes, delete it!",
+  cancelButtonText: "No, cancel!",
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
     swalWithBootstrapButtons.fire({
-        title: "Are you sure?",
-        text: "You want to Logout!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes,logout Me!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            swalWithBootstrapButtons.fire({
-                title: "Logout!",
-                text: "You Logout successfully!!.",
-                icon: "success"
-            });
-
-        } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire({
-                title: "Cancelled",
-                text: "You may safe here!!",
-                icon: "error"
-            });
-        }
-        setInterval(() => {
-            window.location.href = "http://127.0.0.1:5502/index.html"
-        }, 5000);
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
     });
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire({
+      title: "Cancelled",
+      text: "Your imaginary file is safe :)",
+      icon: "error"
+    });
+  }
+});
 
 }
