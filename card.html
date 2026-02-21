@@ -20,18 +20,15 @@
                     #ffd1dc);
         }
 
-        /* CART CONTAINER */
         #cartContainer {
             display: flex;
             flex-wrap: wrap;
-            /* allow 2 per row */
             gap: 20px;
         }
 
-        /* CARD */
+        
         .card-des {
             width: calc(50% - 20px);
-            /* 2 cards in one row */
             height: 220px;
             display: flex;
             align-items: center;
@@ -43,18 +40,17 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
         }
 
-        /* IMAGE FIX */
+
         .card-des img {
             width: 120px;
             height: 120px;
             object-fit: cover;
-            /* image stays neat */
             border-radius: 10px;
             flex-shrink: 0;
-            /* prevents image distortion */
+            
         }
 
-        /* CONTENT */
+        
         .inside-2 {
             flex: 1;
         }
@@ -68,7 +64,7 @@
             margin-bottom: 10px;
         }
 
-        /* BUTTONS */
+     
         .inside-2 button {
             border: 1px solid white;
             padding: 4px 10px;
@@ -88,7 +84,7 @@
             color: black;
         }
 
-        /* FIXED TOTAL + BUY NOW */
+    
         .ca-foot {
             position: fixed;
             right: 0;
@@ -99,9 +95,10 @@
             width: 260px;
             box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
             border-radius: 10px 0 0 10px;
+            z-index: 50;
         }
 
-        /* BUTTON */
+        
         #buyNowBtn {
             width: 100%;
             margin-top: 15px;

@@ -218,35 +218,6 @@ window.addEventListener("DOMContentLoaded", () => {
     renderCart();
 });
 
-// ================= SCROLL LINE ANIMATION =================
-
-// Select the product heading section from the page
-let headSection = document.querySelector(".productHead");
-
-// Add scroll event to the window
-window.addEventListener("scroll", () => {
-    debugger;
-
-    // Get the distance of product section from top of screen
-    let sectionTop = headSection.getBoundingClientRect().top;
-
-    // Get full height of the visible screen
-    let triggerPoint = window.innerHeight;
-
-    // Check if product section comes inside the screen
-    if (sectionTop <= triggerPoint) {
-
-        // Add "active" class to the line element to start animation
-        headSection.querySelector(".line").classList.add("active");
-
-    } else {
-
-        // Remove "active" class when section is not visible
-        headSection.querySelector(".line").classList.remove("active");
-    }
-});
-
-
 // ================= LOAD PRODUCTS FROM ADMIN PANEL =================
 
 // Function to load products from admin panel (localStorage) to shop page

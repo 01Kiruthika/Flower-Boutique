@@ -136,6 +136,7 @@ nav ul li a {
 .head {
     /* border: 2px solid red; */
     padding: 30px;
+    margin: 0;
 }
 
 .head h3 {
@@ -197,28 +198,44 @@ nav ul li a {
     background-color: black;
 }
 
-/*  Card Design   */
-.line {
-    padding: 10px;
+.head {
+    text-align: center;
+    margin: 0px;
 }
+
+
+
+.line {
+    /* border: 2px solid; */
+    display: flex;
+    justify-content: center;
+}
+
 
 .line hr {
-    width: 90px;
-    margin: 0 auto;
-    border: 2px solid #b12016;
-    transition: 0.8s ease;
+    width: 0;
+    height: 4px;
+    padding: 3px;
+    border: none;
+    background-color: rgb(74, 250, 5);
+    /* Scroll animation */
+    animation: growLine linear;
+    animation-timeline: view();
+    animation-range: entry 60% cover 85%;
+    border-radius: 5px;
 }
 
-/* This will activate when scrolling */
-.line.active hr {
-    width: 150px;
+/* Keyframes */
+@keyframes growLine {
+    from {
+        width: 50px;
+    }
+
+    to {
+        width: 200px;
+    }
 }
 
-
-
-.c-body {
-    gap: 20px;
-}
 
 .card-des {
     /* border: 2px solid black; */
@@ -478,6 +495,7 @@ h6 {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    overflow: hidden;
 }
 
 .blog-card {
@@ -488,6 +506,7 @@ h6 {
     color: #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
+    cursor: pointer;
 }
 
 .blog-img {
@@ -517,6 +536,39 @@ h6 {
     text-align: center;
 }
 
+/* .con-5 {
+    overflow: hidden;
+    padding: 40px 0;
+} */
+
+.blog-slider {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+
+    animation: slideLeft 25s linear infinite;
+}
+
+.blog-img img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+
+.blog-card:hover~.blog-card,
+.blog-slider:hover {
+    animation-play-state: paused;
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
 
 /* Contact */
 .f-body {
@@ -1703,12 +1755,12 @@ input[type=submit]:hover {
 
     .login-body h3 {
         font-size: 18px;
-        
+
     }
 
     .login-body label {
         font-size: 13px;
-        
+
     }
 
     .login-body input {

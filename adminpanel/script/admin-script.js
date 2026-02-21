@@ -162,7 +162,7 @@ let loadData = () => {
             // Insert table row
             tbody.innerHTML += `
             <tr>
-                <td>${i + 1}</td> <!-- Serial number -->
+                <td>${p.id}</td> <!-- Serial number -->
 
                 <td>
                     <img src="${p.url}">
@@ -304,36 +304,20 @@ let updateForm = () => {
 // ================= DELETE PRODUCT =================
 let deletePro = (id) => {
 
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: "btn btn-success",
-            cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
+    Swal.fire({
         title: "Are you sure?",
-        text: "You want to delete this product!!",
+        text: "You want to delete this product!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete its!"
     }).then((result) => {
         if (result.isConfirmed) {
-            swalWithBootstrapButtons.fire({
+            Swal.fire({
                 title: "Deleted!",
                 text: "Your product has been deleted.",
                 icon: "success"
-            });
-        } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire({
-                title: "Cancelled",
-                text: "Your Product is may safe!!",
-                icon: "error"
             });
         }
     });
@@ -609,7 +593,7 @@ let updateCategory = () => {
         } :
         cat
     );
-    alert("Form updated success!!")
+
     // Save updated categories
     localStorage.setItem("categories", JSON.stringify(categories));
 
@@ -709,18 +693,35 @@ let categorysubmit = (ev) => {
         }
     }
 
-    Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Form Submited Successfully!!",
-        showConfirmButton: false,
-        timer: 2500
-    });
+
     // If validation fails, stop
     if (!valid) return;
 
     // If ID empty → Add category else Update category
-    pid.value === "" ? addCategory() : updateCategory();
+    // IMPORTANT CONDITION
+    if (pid.value === "") {
+
+        addCategory(); // Call add function if new category
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Category Submited Successfully!!",
+            showConfirmButton: false,
+            timer: 2500
+        });
+
+    } else {
+
+        updateCategory(); // Call update function if editing category
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Category Updated Successfully!!",
+            showConfirmButton: false,
+            timer: 2500
+        });
+    }
+
 };
 
 // ============================= CATEGORY PAGE END ===========================================
@@ -806,37 +807,41 @@ let logout = (log) => {
     log.preventDefault()
 
     const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: "btn btn-success",
-    cancelButton: "btn btn-danger"
-  },
-  buttonsStyling: false
-});
-swalWithBootstrapButtons.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonText: "Yes, delete it!",
-  cancelButtonText: "No, cancel!",
-  reverseButtons: true
-}).then((result) => {
-  if (result.isConfirmed) {
-    swalWithBootstrapButtons.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success"
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
     });
-  } else if (
-    /* Read more about handling dismissals below */
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
     swalWithBootstrapButtons.fire({
-      title: "Cancelled",
-      text: "Your imaginary file is safe :)",
-      icon: "error"
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "Your imaginary file is safe :)",
+                icon: "error"
+            });
+        }
     });
-  }
-});
+
+
+
+    window.location.href="http://127.0.0.1:5502/adminpanel/index.html"
 
 }
