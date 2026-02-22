@@ -73,7 +73,7 @@ function renderCart() {
 
     // If cart is empty
     if (cart.length === 0) {
-        container.innerHTML = `<h3 style="text-align:center">No records found</h3>`;
+        container.innerHTML = `<h3 style="text-align:center">No Products found</h3>`;
         if (totalEl) totalEl.innerText = "0";
         updateCartCount();
         return;
@@ -238,7 +238,7 @@ let loadShopProducts = () => {
     if (products.length === 0) {
         container.innerHTML = `
             <div style="text-align:center; width:100%; padding:30px;">
-                <h3>No Products Found</h3>
+                <h3>  </h3>
             </div>`;
         return;
     }
