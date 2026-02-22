@@ -9,7 +9,7 @@
 
 body {
     display: grid;
-    /* height: 100vh; */
+    height: 100vh;
     grid-template-columns: 270px auto;
     grid-template-areas: ' sidemenu header'
         'sidemenu main'
@@ -49,7 +49,7 @@ main {
     grid-area: main;
     overflow: auto;
     padding: 20px;
-   background-color: rgb(187, 182, 182);
+    background: linear-gradient(135deg, #1e3b72b0, #2a5298d7);
     color: #ffffff;
 
 
@@ -259,7 +259,7 @@ footer {
     /* border: 2px solid; */
     width: 400px;
     /* height: 485px; */
-    background: teal;
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(15px);
     border-radius: 16px;
     padding: 20px 25px;

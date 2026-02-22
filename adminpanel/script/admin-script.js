@@ -303,7 +303,6 @@ let updateForm = () => {
 
 // ================= DELETE PRODUCT =================
 let deletePro = (id) => {
-
     Swal.fire({
         title: "Are you sure?",
         text: "You want to delete this product!",
@@ -311,9 +310,22 @@ let deletePro = (id) => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete its!"
+        confirmButtonText: "Yes, delete it!"
     }).then((result) => {
         if (result.isConfirmed) {
+
+            // Get all products
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+
+            // Remove selected product
+            products = products.filter(p => p.id !== id);
+
+            // Save back to localStorage
+            localStorage.setItem("products", JSON.stringify(products));
+
+            // Reload table
+            loadData();
+
             Swal.fire({
                 title: "Deleted!",
                 text: "Your product has been deleted.",
@@ -321,20 +333,6 @@ let deletePro = (id) => {
             });
         }
     });
-
-    // Get all products from localStorage
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-
-    // Remove the selected product using filter
-    products = products.filter(p => p.id !== id);
-
-    // Save updated product list back to localStorage
-    localStorage.setItem("products", JSON.stringify(products));
-
-    // Reload product table after delete
-    loadData();
-
-
 };
 
 // ================= FORM SUBMIT FUNCTION =================
@@ -618,27 +616,38 @@ let updateCategory = () => {
 
 // Function to delete category
 let deleteCategory = (id) => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You want to delete this product!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
 
-    // Ask confirmation before deleting the product
-    let confirmDelete = confirm("Do you want to delete this category?");
 
-    // If user clicks Cancel, stop function
-    if (!confirmDelete) {
-        alert("You are safe")
-        return;
-    }
+            // Get categories from localStorage
+            let categories = JSON.parse(localStorage.getItem("categories")) || [];
 
-    // Get categories from localStorage
-    let categories = JSON.parse(localStorage.getItem("categories")) || [];
+            // Remove selected category
+            categories = categories.filter(c => c.id !== id);
 
-    // Remove selected category
-    categories = categories.filter(c => c.id !== id);
+            // Save updated categories
+            localStorage.setItem("categories", JSON.stringify(categories));
 
-    // Save updated categories
-    localStorage.setItem("categories", JSON.stringify(categories));
+            // Reload category table
+            loadCategoryData();
 
-    // Reload category table
-    loadCategoryData();
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your product has been deleted.",
+                icon: "success"
+            });
+        }
+    });
+
 };
 
 
@@ -806,42 +815,25 @@ let logout = (log) => {
     // alert("HELLO")
     log.preventDefault()
 
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: "btn btn-success",
-            cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
+    Swal.fire({
         title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        text: "You want to Logout!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, logout Me!"
     }).then((result) => {
         if (result.isConfirmed) {
-            swalWithBootstrapButtons.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-            });
-        } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire({
-                title: "Cancelled",
-                text: "Your imaginary file is safe :)",
-                icon: "error"
-            });
+            setInterval(() => {
+                window.location.href = "http://127.0.0.1:5502/adminpanel/index.html"
+            }, 2000);
+
+
         }
     });
 
-
-
-    window.location.href="http://127.0.0.1:5502/adminpanel/index.html"
-
 }
+
+
+

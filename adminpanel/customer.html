@@ -88,47 +88,7 @@
     </footer>
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-            console.log("Customer JS loaded");
-
-            let tableBody = document.getElementById("customerTable");
-            console.log("Table body:", tableBody);
-
-            let users = JSON.parse(localStorage.getItem("users"));
-            console.log("Users:", users);
-
-            if (!tableBody) {
-                alert("customerTable not found in HTML");
-                return;
-            }
-
-            tableBody.innerHTML = "";
-
-            if (!users || users.length === 0) {
-                tableBody.innerHTML = `
-            <tr>
-                <td colspan="3">No Customers Found</td>
-            </tr>
-        `;
-                return;
-            }
-
-            users.forEach((cust, index) => {
-                let tr = document.createElement("tr");
-
-                tr.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${cust.name}</td>
-                     <td>${cust.email}</td>
-                   `;
-
-                tableBody.appendChild(tr);
-            });
-        });
-    </script>
-
+    
 
     <script src="script/admin-script.js" async></script>
 </body>

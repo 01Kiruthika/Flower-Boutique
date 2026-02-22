@@ -218,6 +218,7 @@ window.addEventListener("DOMContentLoaded", () => {
     renderCart();
 });
 
+
 // ================= LOAD PRODUCTS FROM ADMIN PANEL =================
 
 // Function to load products from admin panel (localStorage) to shop page
@@ -378,27 +379,50 @@ let registerUser = (ev) => {
 
     if (!isValid) return;
 
-    // Store user in localStorage
+    // Get users from localStorage
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    users.push({
-        name: name,
-        email: email,
-        password: password
-    });
+    // Check if email already exists
+    let userExists = users.find(user => user.email === email);
 
-    localStorage.setItem("users", JSON.stringify(users));
+    if (userExists) {
+        Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: "User already exists! Please login.",
+            showConfirmButton: false,
+            timer: 2500
+        });
 
-    alert("Registration Successful!");
-    window.location.href = "index.html";
+    } else {
+
+        // Store new user
+        users.push({
+            name: name,
+            email: email,
+            password: password
+        });
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Registration Successful... Please Login!",
+            showConfirmButton: false,
+            timer: 2000
+        });
+
+        // window.location.href = "index.html";
+    }
 }
 
 
 
 
 // ================= LOGIN FUNCTION =================
-function loginpage(event) {
-
+let loginpage = (event) => {
+    // debugger;
     event.preventDefault(); // Stop reload
 
     let email = document.getElementById("user-email").value.trim();
@@ -442,18 +466,40 @@ function loginpage(event) {
 
     if (!isValid) return;
 
-    // Check user in localStorage
+    // Get users from localStorage
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    let foundUser = users.find(user =>
-        user.email === email && user.password === password
-    );
 
-    if (foundUser) {
-        alert("Login Successful!");
-        window.location.href = "home.html";
+    let userByEmail = users.find(user => user.email === email);
+
+
+    if (!userByEmail) {
+        Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: "New User,,,,,please register first!!",
+            showConfirmButton: false,
+            timer: 2500
+        });
+    } else if (userByEmail.password !== password) {
+        Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: "Invalid Email or Password",
+            showConfirmButton: false,
+            timer: 2500
+        });
     } else {
-        alert("Invalid Email or Password");
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Login Successfully!!",
+            showConfirmButton: false,
+        });
+
+        setTimeout(() => {
+            window.location.href = "home.html";
+        }, 2000);
     }
 }
 
@@ -502,12 +548,25 @@ let adminLogin = (ev) => {
         // Save admin login status
         localStorage.setItem("adminLogin", "true");
 
-        alert("Admin login successful");
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Admin Login Successfully!!",
+            showConfirmButton: false,
+        });
 
-        // Redirect to admin dashboard
-        window.location.href = "dashboard.html";
+        setTimeout(() => {
+            window.location.href = "http://127.0.0.1:5502/adminpanel/dashboard.html";
+        }, 2000);
 
     } else {
-        alert("Invalid admin credentials");
+        
+        Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: "Invalid admin credentials",
+            showConfirmButton: false,
+            timer: 2500
+        });
     }
 }

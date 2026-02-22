@@ -668,12 +668,14 @@ input[type=submit]:hover {
 
 
 .foot2 {
+    /* border: 2px solid; */
     padding: 10px;
+    place-items: center;
 }
 
 .foot2 ul {
     list-style: none;
-    padding-left: 0;
+    /* padding-left: 0; */
 }
 
 
