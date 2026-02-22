@@ -66,10 +66,13 @@ nav ul li a {
 #cartCount {
     /* border: 2px solid seagreen; */
     position: fixed;
-    right: 70px;
+    right: 60px;
     top: 10px;
 }
 
+.fa-sign-out {
+    color: black !important;
+}
 
 
 /* Image */
@@ -502,11 +505,12 @@ h6 {
     /* border: 2px solid black; */
     width: 380px;
     height: 400px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(180deg, #ff8fb1, #ff6f91);
     color: #fff;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 25px rgba(255, 111, 145, 0.35);
     border-radius: 12px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .blog-img {
@@ -543,9 +547,9 @@ h6 {
 
 .blog-slider {
     display: flex;
+    flex-wrap: nowrap;
     gap: 30px;
     width: max-content;
-
     animation: slideLeft 25s linear infinite;
 }
 
@@ -708,9 +712,11 @@ input[type=submit]:hover {
     margin-top: 10px;
 }
 
-.foot {
+.copy-foot {
+    /* border: 2px solid red; */
     color: rgba(255, 255, 255, 0.555);
     text-align: center;
+    padding: 0;
 }
 
 
@@ -897,48 +903,6 @@ input[type=submit]:hover {
 }
 
 
-/* Contact Page */
-.contact-box {
-    /* border: 2px solid yellow; */
-    width: 350px;
-    height: 200px;
-    margin: 25px;
-    background-color: #eff4f3;
-    display: flex;
-    align-items: end;
-}
-
-.contact-img {
-    /* border: 2px solid blue; */
-    width: 100px;
-    height: 100px;
-    background-color: #b6736d;
-    border-radius: 50%;
-    position: absolute;
-    top: -10px;
-}
-
-.contact-img1 {
-    left: 180px;
-}
-
-.contact-img2 {
-    left: 615px;
-}
-
-.contact-img3 {
-    left: 1050px;
-}
-
-.contact-content {
-    /* border: 2px solid; */
-    width: 350px;
-    height: 100px;
-    text-align: center;
-    /* padding-bottom: 100px; */
-    margin: 20px;
-}
-
 .catt-body {
     /* border: 2px solid blue; */
     display: block;
@@ -1094,7 +1058,121 @@ input[type=submit]:hover {
     /* padding: 10px; */
 }
 
-/* Amount Page */
+
+
+/* Login Page */
+.con {
+    border: 2px solid;
+    background-image: url(../image/login-page/bgg.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin-top: 0;
+}
+
+.login-body {
+    /* border: 2px solid; */
+    width: 30%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 80px;
+    /* padding-left: 30px;
+    padding-right: 20px; */
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    color: #ffffff
+}
+
+.login-body h3 {
+    text-align: center;
+    margin: 10px;
+}
+
+.login-body input {
+    border: none;
+    width: 330px;
+    outline: none;
+    border-radius: 5px;
+    /* border: 2px solid; */
+    margin: 5px;
+    padding: 2px;
+
+}
+
+.sub button {
+    width: 95%;
+    padding: 5px 25px;
+    margin-top: 20px;
+    background-color: rgb(84, 84, 206);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.acc {
+    /* border: 2px solid; */
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    /* margin: 10px; */
+    width: max-content;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.acc a {
+    text-decoration: none;
+}
+
+/* Register Page */
+.re-con {
+    /* border: 2px solid blue; */
+    height: 580px;
+    margin-top: 30px
+}
+
+
+
+.card-image-wrapper {
+    /* border: 2px solid; */
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+
+.card-image-wrapper img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+
+}
+
+.main-img {
+    opacity: 1;
+
+}
+
+.hover-img {
+    opacity: 0;
+
+}
+
+.card-des:hover .main-img {
+    opacity: 0;
+
+}
+
+.card-des:hover .hover-img {
+    opacity: 1;
+}
 
 
 @media screen and (max-width:768px) {
@@ -1102,7 +1180,7 @@ input[type=submit]:hover {
     /* Header */
     header {
         /* border: 2px solid gold; */
-        width: 329px;
+        width: 100%;
         position: fixed;
         top: 0;
         z-index: 100;
@@ -1148,7 +1226,7 @@ input[type=submit]:hover {
         position: fixed;
         top: 80px;
         right: -500px;
-        width: 200px;
+        width: 100px;
         height: 300px;
         background-color: rgba(199, 99, 182, 0.863);
         transition: 1s;
@@ -1258,17 +1336,6 @@ input[type=submit]:hover {
 
 
 
-    /* Cards
-    .c-body {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .card-des {
-        width: 100%;
-    } */
-
     .star-icon i {
         font-size: 14px;
     }
@@ -1355,20 +1422,12 @@ input[type=submit]:hover {
 
     /* Blog cards */
     .blog-card {
-        /* border: 2px solid black; */
-        width: auto;
-        height: auto;
+        width: 300px;
+        height: 360px;
     }
 
-    .blog-card img {
-        width: 100%;
-        height: auto;
-    }
-
-    .blog-content {
-        width: auto;
-        height: auto;
-        text-align: center;
+    .blog-slider {
+        animation-duration: 35s;
     }
 
     .blog-content h5 {
@@ -1441,6 +1500,13 @@ input[type=submit]:hover {
     .foot3 h6 {
         font-size: 13px;
     }
+
+    .foot4 {
+        /* border: 2px solid red; */
+        text-align: center;
+        margin: 0 auto;
+    }
+
 
     .foot h6 {
         font-size: 10px;
@@ -1564,50 +1630,7 @@ input[type=submit]:hover {
     }
 
 
-    /* contact */
 
-    .contact-box {
-        /* border: 2px solid; */
-        width: auto;
-        height: auto;
-        margin: 5px 0;
-    }
-
-    .contact-img {
-        border: 2px solid;
-        width: 40px;
-        height: 40px;
-        left: 120px;
-    }
-
-    .contact-img1 {
-        top: -10px;
-    }
-
-    .contact-img2 {
-        top: 125px;
-    }
-
-    .contact-img3 {
-        top: 255px;
-    }
-
-
-    .contact-content h4 {
-        font-size: 15px;
-    }
-
-    .contact-content {
-        /* border: 2px solid teal; */
-        width: 350px;
-        height: 50px;
-        text-align: center;
-        margin: 20px;
-    }
-
-    .contact-content p {
-        font-size: 13px;
-    }
 
     .login-body {
         width: 70%;
@@ -1623,124 +1646,31 @@ input[type=submit]:hover {
 
 
 
-/* Login Page */
-.con {
-    border: 2px solid;
-    background-image: url(../image/login-page/bgg.avif);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    margin-top: 0;
-}
-
-.login-body {
-    /* border: 2px solid; */
-    width: 30%;
-    height: 400px;
-    margin: 0 auto;
-    margin-top: 80px;
-    /* padding-left: 30px;
-    padding-right: 20px; */
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(15px);
-    border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-    color: #ffffff
-}
-
-.login-body h3 {
-    text-align: center;
-    margin: 10px;
-}
-
-.login-body input {
-    border: none;
-    width: 330px;
-    outline: none;
-    border-radius: 5px;
-    /* border: 2px solid; */
-    margin: 5px;
-    padding: 2px;
-
-}
-
-.sub button {
-    width: 95%;
-    padding: 5px 25px;
-    margin-top: 20px;
-    background-color: rgb(84, 84, 206);
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
-.acc {
-    /* border: 2px solid; */
-    display: flex;
-    gap: 5px;
-    padding: 10px;
-    /* margin: 10px; */
-    width: max-content;
-    margin: 0 auto;
-    margin-top: 10px;
-}
-
-.acc a {
-    text-decoration: none;
-}
-
-/* Register Page */
-.re-con {
-    /* border: 2px solid blue; */
-    height: 580px;
-    margin-top: 30px
-}
-
-
-
-.card-image-wrapper {
-    /* border: 2px solid; */
-    position: relative;
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-
-.card-image-wrapper img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.5s ease-in-out;
-
-}
-
-.main-img {
-    opacity: 1;
-
-}
-
-.hover-img {
-    opacity: 0;
-
-}
-
-.card-des:hover .main-img {
-    opacity: 0;
-
-}
-
-.card-des:hover .hover-img {
-    opacity: 1;
-}
-
-
-
-
 @media (max-width: 576px) {
+
+
+    .blog-slider {
+        display: flex;
+        flex-wrap: nowrap;
+        width: max-content;
+        animation: slideLeft 45s linear infinite;
+    }
+
+    .blog-card {
+        width: 260px;
+        height: 340px;
+        flex-shrink: 0;
+    }
+
+    .blog-img {
+        width: 260px;
+        height: 220px;
+    }
+
+    .blog-content {
+        font-size: 14px;
+    }
+
 
     .con {
         width: auto;

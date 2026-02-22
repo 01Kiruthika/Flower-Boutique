@@ -24,11 +24,11 @@ header {
     width: 100%;
     display: flex;
     justify-content: end;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    background: #1f3b6f;
     color: #ffffff;
     position: fixed;
     top: 0;
-    z-index: 20 ;
+    z-index: 20;
 }
 
 aside {
@@ -49,8 +49,10 @@ main {
     grid-area: main;
     overflow: auto;
     padding: 20px;
-    background: linear-gradient(135deg, #1e3b72b0, #2a5298d7);
-    color: #ffffff;
+    /* background-color: #f4f7fb; */
+    background-color: #f5f7fa;
+    /* background: linear-gradient(135deg, #1e3b72b0, #2a5298d7); */
+    /* color: #ffffff; */
 
 
 }
@@ -58,7 +60,7 @@ main {
 footer {
     grid-area: footer;
     /* border-top: 2px solid; */
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    background: #1f3b6f;
     color: #ffffff;
 }
 
@@ -155,7 +157,9 @@ footer {
     width: 250px;
     /* height: 130px; */
     color: white;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 
 }
 
@@ -259,14 +263,16 @@ footer {
     /* border: 2px solid; */
     width: 400px;
     /* height: 485px; */
-    background: rgba(255, 255, 255, 0.08);
+    /* background:#e3f2fd; */
+    background-color: #1f2a3a;
+    /* background-color: #f0f2f8; */
     backdrop-filter: blur(15px);
     border-radius: 16px;
     padding: 20px 25px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     color: #ffffff;
     /* margin-top: 10px; */
-    margin:  0 auto;
+    margin: 0 auto;
 }
 
 .product-form input {
@@ -311,7 +317,7 @@ footer {
     width: 600px;
     display: flex;
     align-self: center;
-    margin:0 auto;
+    margin: 0 auto;
     margin-top: 15px;
 
 }
@@ -319,6 +325,12 @@ footer {
 table {
     width: 100%;
     border-collapse: collapse;
+}
+
+.p-table thead th {
+    border: 2px solid black;
+    background-color: #1f2a3a;
+    color: white;
 }
 
 .p-table th,
@@ -362,24 +374,22 @@ td img {
     margin-left: 50px;
     /* display: flex;
     justify-content: center; */
-}
 
+}
+.c-table th{
+    border: 2px solid black;
+    color: white;
+    background-color:  #1f2a3a;
+}
 .c-table th,
 td {
-    border: 2px solid;
+    /* border: 2px solid; */
     width: 150px;
     height: 50px;
-    /* width: 50px;
-    height: 70px;
-    padding: 5px; */
 }
 
-.c-table th {
-    /* background-color: #1591a5; */
-    color: white;
-    /* border: 2px solid black; */
 
-}
+
 
 /* Footer */
 .footer {
@@ -390,7 +400,7 @@ td {
 
 .footer .clickme {
     text-decoration: none;
-    color:wheat;
+    color: wheat;
 }
 
 
@@ -401,7 +411,7 @@ td {
 
     body {
         display: grid;
-        /* height: 100vh; */
+        height: auto;
         grid-template-columns: auto;
         grid-template-areas: 'header'
             'main'
@@ -419,7 +429,7 @@ td {
         width: 200px;
         left: -250px;
         margin-top: 60px;
-        height: auto;
+        height: 450px;
         transition: 1s;
         z-index: 15;
     }
@@ -536,6 +546,6 @@ td {
         width: auto;
         margin-left: 0;
         padding: 0;
-      
+
     }
 }

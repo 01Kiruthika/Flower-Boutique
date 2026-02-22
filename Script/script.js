@@ -88,23 +88,24 @@ function renderCart() {
         // Calculate total price
         total += item.price * item.qty;
 
-        // Create cart item UI
         container.innerHTML += `
-            <div class="card-des">
-                <img src="${item.img}">
+    <div class="card-des">
+        <img src="${item.img}">
 
-                <div class="inside-2">
-                    <h5>${item.name}</h5>
-                    <p>Rs.${item.price}</p>
+        <div class="inside-2">
+            <h5>${item.name}</h5>
+            <p>Rs.${item.price}</p>
 
-                    <button onclick="decreaseQty(${item.id})" >-</button>
-                    <span>${item.qty}</span>
-                    <button onclick="increaseQty(${item.id})">+</button>
+            <button onclick="decreaseQty(${item.id})">-</button>
+            <span>${item.qty}</span>
+            <button onclick="increaseQty(${item.id})">+</button>
 
-                    <button onclick="removeItem(${item.id})">Delete</button>
-                </div>
-            </div>
-        `;
+            <button onclick="removeItem(${item.id})" class="delete-btn">
+                <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    </div>
+`;
     });
 
     // Show total amount
@@ -560,7 +561,7 @@ let adminLogin = (ev) => {
         }, 2000);
 
     } else {
-        
+
         Swal.fire({
             position: "top-end",
             icon: "warning",
@@ -569,4 +570,30 @@ let adminLogin = (ev) => {
             timer: 2500
         });
     }
+}
+
+
+// ================= LOGOUT PAGE =================
+let weblogout = (log) => {
+    // alert("HELLO")
+    log.preventDefault()
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You want to Logout!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, logout Me!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            setInterval(() => {
+                window.location.href = "http://127.0.0.1:5502/index.html"
+            }, 2000);
+
+
+        }
+    });
+
 }

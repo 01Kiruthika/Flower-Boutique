@@ -24,12 +24,12 @@
                     <li><a href="home.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="shop.html">Shop</a></li>
-                    <li><a href="contact.html">Contacts</a></li>
+                    <li><a href="" onclick="weblogout(event)" button="submit"><i class="fa fa-sign-out"
+                                aria-hidden="true"></i>
+                            Logout</i>
+                        </a></li>
                     <li><a href="card.html"><span id="cartCount">0</span></a></li>
                     <li><a href="card.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        </a></li>
-
-                    <li><a href=""><i class="fa fa-heart-o" aria-hidden="true"></i>
                         </a></li>
                 </ul>
             </nav>
@@ -59,205 +59,209 @@
                     <h2>SunFlower Category</h2>
 
                 </div>
-                <div class="Container">
-                    <div class="body c-body ">
-                        <div class="row ">
-                            <div class="col-lg-3 col-md-6 col-sm-12  ">
-                                <div class="card-des">
-                                    <div class="c-inside-1 sunflo-backimg">
-                                        <!-- <img src="image/card-image/1.jpg" alt="" > -->
-                                        <!-- <img src="image/card-image/1.1.jpg" alt="" class="img-hover"> -->
-                                    </div>
-
-                                    <div class="c-inside-1 inside-2">
-                                        <div class="star-icon">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        </div>
-                                        <h5>Stem sunflower bouquet</h5>
-                                        <h6>Rs.300</h6>
-                                    </div>
-                                    <div class="c-foot">
-                                        <button type="button" onclick="addToCart()" class="btnn">Add To
-                                            Cart</button>
-                                    </div>
-
-                                </div>
+                <div class="row ">
+                    <div class="col-lg-3 col-md-6 col-sm-12  ">
+                        <div class="card-des" data-id="101" data-name="Stem sunflower bouquet" data-price="300"
+                            data-img="image/Sunflower/1.jfif">
+                            <div class="c-inside-1 sunflo-backimg">
+                                <!-- <img src="image/card-image/1.jpg" alt="" > -->
+                                <!-- <img src="image/card-image/1.1.jpg" alt="" class="img-hover"> -->
                             </div>
 
-                            <!-- Card 2 -->
-                            <div class="col-lg-3 col-md-6 col-sm-12 ">
-                                <div class="card-des">
-                                    <div class="c-inside-1 sunflo-backimg sunflo-backimg1">
-                                        <!-- <img src="image/card-image/2.jpg" alt=""> -->
-                                    </div>
-                                    <div class="c-inside-1 inside-2">
-                                        <div class="star-icon">
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </div>
-                                        <h5>Sunshine Sunflower Bouquet</h5>
-                                        <h6>Rs.500</h6>
-                                    </div>
-                                    <div class="c-foot">
-                                        <button type="button" onclick="addToCart()" class="btnn">Add To
-                                            Cart</button>
-                                    </div>
+                            <div class="c-inside-1 inside-2">
+                                <div class="star-icon">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
                                 </div>
+                                <h5>Stem sunflower bouquet</h5>
+                                <h6>Rs.300</h6>
                             </div>
-                            <!-- Card 3 -->
-                            <div class="col-lg-3  col-md-6 col-sm-12 ">
-                                <div class="card-des">
-                                    <div class="c-inside-1 sunflo-backimg sunflo-backimg2">
-                                        <!-- <img src="image/card-image/3.jpg" alt=""> -->
-                                    </div>
-                                    <div class="c-inside-1 inside-2">
-                                        <div class="star-icon">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-
-                                        </div>
-                                        <h5>Bouquet of Sunflowers</h5>
-                                        <h6>Rs.400</h6>
-
-                                    </div>
-                                    <div class="c-foot">
-                                        <button type="button" onclick="addToCart()" class="btnn">Add To
-                                            Cart</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- Card 4 -->
-                            <div class="col-lg-3  col-md-6 col-sm-12 ">
-                                <div class="card-des">
-                                    <div class="c-inside-1 sunflo-backimg sunflo-backimg3">
-                                        <!-- <img src="image/card-image/4.jpg" alt=""> -->
-                                    </div>
-                                    <div class="c-inside-1 inside-2">
-                                        <div class="star-icon">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </div>
-                                        <h5>Fresh Sunflower Bouquet</h5>
-                                        <h6>Rs.250</h6>
-                                    </div>
-                                    <div class="c-foot">
-                                        <button type="button" onclick="addToCart()" class="btnn">Add To
-                                            Cart</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <!-- Card 5 -->
-                            <div class="col-lg-3  col-md-6 col-sm-12 ">
-                                <div class="card-des">
-                                    <div class="c-inside-1 sunflo-backimg sunflo-backimg4">
-                                        <!-- <img src="image/card-image/5.jpg" alt=""> -->
-                                    </div>
-                                    <div class="c-inside-1 inside-2">
-                                        <div class="star-icon">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </div>
-                                        <h5>Sunflower Smile Bouquet</h5>
-                                        <h6>Rs.700</h6>
-                                    </div>
-                                    <div class="c-foot">
-                                        <button type="button" onclick="addToCart()" class="btnn">Add To
-                                            Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Card 6 -->
-                            <div class="col-lg-3  col-md-6 col-sm-12 ">
-                                <div class="card-des">
-                                    <div class="c-inside-1 sunflo-backimg sunflo-backimg5">
-                                        <!-- <img src="image/card-image/6.jpg" alt=""> -->
-                                    </div>
-                                    <div class="c-inside-1 inside-2">
-                                        <div class="star-icon">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </div>
-                                        <h5>"Bright Love" Bouquet Of Sunflowers</h5>
-                                        <h6>Rs.350</h6>
-                                    </div>
-                                    <div class="c-foot">
-                                        <button type="button" onclick="addToCart()" class="btnn">Add To
-                                            Cart</button>
-                                    </div>
-
-                                </div>
+                            <div class="c-foot">
+                                <button type="button" onclick="addToCart(this)" class="btnn">Add To
+                                    Cart</button>
                             </div>
 
-                            <!-- Card 7 -->
-                            <div class="col-lg-3  col-md-6 col-sm-12 ">
-                                <div class="card-des">
-                                    <div class="c-inside-1 sunflo-backimg sunflo-backimg6">
-                                        <!-- <img src="image/card-image/7.jpg" alt=""> -->
-                                    </div>
-                                    <div class="c-inside-1 inside-2">
-                                        <div class="star-icon">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                        </div>
-                                        <h5>Fresh Sunflower Bouquet</h5>
-                                        <h6>Rs.600</h6>
-                                    </div>
-                                    <div class="c-foot">
-                                        <button type="button" onclick="addToCart()" class="btnn">Add To
-                                            Cart</button>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12 ">
+                          <div class="card-des" data-id="102" data-name="Sunshine sunflower bouquet" data-price="500"
+                            data-img="image/Sunflower/2.jfif">
+                            <div class="c-inside-1 sunflo-backimg sunflo-backimg1">
+                                <!-- <img src="image/card-image/2.jpg" alt=""> -->
                             </div>
-                            <!-- Card 8 -->
-                            <div class="col-lg-3  col-md-6 col-sm-12 ">
-                                <div class="card-des">
-                                    <div class="c-inside-1 sunflo-backimg sunflo-backimg7">
-                                        <!-- <img src="image/card-image/8.jpg" alt=""> -->
-                                    </div>
-                                    <div class="c-inside-1 inside-2">
-                                        <div class="star-icon">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </div>
-                                        <h5>Sunburst Sunflowers Bouquet</h5>
-                                        <h6>Rs.550</h6>
-                                    </div>
-                                    <div class="c-foot">
-                                        <button type="button" onclick="addToCart()" class="btnn">Add To
-                                            Cart</button>
-                                    </div>
+                            <div class="c-inside-1 inside-2">
+                                <div class="star-icon">
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
                                 </div>
+                                <h5>Sunshine Sunflower Bouquet</h5>
+                                <h6>Rs.500</h6>
                             </div>
-                            <div class="foot">
+                            <div class="c-foot">
+                                <button type="button" onclick="addToCart(this)" class="btnn">Add To
+                                    Cart</button>
                             </div>
                         </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="col-lg-3  col-md-6 col-sm-12 ">
+                          <div class="card-des" data-id="103" data-name="Bouquet of Sunflowers" data-price="400"
+                            data-img="image/Sunflower/3.jfif">
+                            <div class="c-inside-1 sunflo-backimg sunflo-backimg2">
+                                <!-- <img src="image/card-image/3.jpg" alt=""> -->
+                            </div>
+                            <div class="c-inside-1 inside-2">
+                                <div class="star-icon">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+
+                                </div>
+                                <h5>Bouquet of Sunflowers</h5>
+                                <h6>Rs.400</h6>
+
+                            </div>
+                            <div class="c-foot">
+                                <button type="button" onclick="addToCart(this)" class="btnn">Add To
+                                    Cart</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="col-lg-3  col-md-6 col-sm-12 ">
+                        <div class="card-des" data-id="104" data-name="Fresh Sunflower Bouquet" data-price="250"
+                            data-img="image/Sunflower/4.jfif">
+                            <div class="c-inside-1 sunflo-backimg sunflo-backimg3">
+                                <!-- <img src="image/card-image/4.jpg" alt=""> -->
+                            </div>
+                            <div class="c-inside-1 inside-2">
+                                <div class="star-icon">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                                <h5>Fresh Sunflower Bouquet</h5>
+                                <h6>Rs.250</h6>
+                            </div>
+                            <div class="c-foot">
+                                <button type="button" onclick="addToCart(this)" class="btnn">Add To
+                                    Cart</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="col-lg-3  col-md-6 col-sm-12 ">
+                        <div class="card-des" data-id="105" data-name="Sunflower Smile Bouquet" data-price="700"
+                            data-img="image/Sunflower/5.jfif">
+                            <div class="c-inside-1 sunflo-backimg sunflo-backimg4">
+                                <!-- <img src="image/card-image/5.jpg" alt=""> -->
+                            </div>
+                            <div class="c-inside-1 inside-2">
+                                <div class="star-icon">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                                <h5>Sunflower Smile Bouquet</h5>
+                                <h6>Rs.700</h6>
+                            </div>
+                            <div class="c-foot">
+                                <button type="button" onclick="addToCart(this)" class="btnn">Add To
+                                    Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="col-lg-3  col-md-6 col-sm-12 ">
+                        <div class="card-des" data-id="106" data-name="'Bright Love' Bouquet Of Sunflowers" data-price="750"
+                            data-img="image/Sunflower/6.1.jfif">
+                            <div class="c-inside-1 sunflo-backimg sunflo-backimg5">
+                                <!-- <img src="image/card-image/6.jpg" alt=""> -->
+                            </div>
+                            <div class="c-inside-1 inside-2">
+                                <div class="star-icon">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                                <h5>"Bright Love" Bouquet Of Sunflowers</h5>
+                                <h6>Rs.750</h6>
+                            </div>
+                            <div class="c-foot">
+                                <button type="button" onclick="addToCart(this)" class="btnn">Add To
+                                    Cart</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="col-lg-3  col-md-6 col-sm-12 ">
+                        <div class="card-des" data-id="107" data-name="Fresh Sunflower Bouquet" data-price="600"
+                            data-img="image/Sunflower/1.1.jfif">
+                            <div class="c-inside-1 sunflo-backimg sunflo-backimg6">
+                                <!-- <img src="image/card-image/7.jpg" alt=""> -->
+                            </div>
+                            <div class="c-inside-1 inside-2">
+                                <div class="star-icon">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                                <h5>Fresh Sunflower Bouquet</h5>
+                                <h6>Rs.600</h6>
+                            </div>
+                            <div class="c-foot">
+                                <button type="button" onclick="addToCart(this)" class="btnn">Add To
+                                    Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 8 -->
+                    <div class="col-lg-3  col-md-6 col-sm-12 ">
+                        <div class="card-des" data-id="108" data-name="Sunburst Sunflowers Bouquet" data-price="550"
+                            data-img="image/Sunflower/3.1.jfif">
+                            <div class="c-inside-1 sunflo-backimg sunflo-backimg7">
+                                <!-- <img src="image/card-image/8.jpg" alt=""> -->
+                            </div>
+                            <div class="c-inside-1 inside-2">
+                                <div class="star-icon">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                                <h5>Sunburst Sunflowers Bouquet</h5>
+                                <h6>Rs.550</h6>
+                            </div>
+                            <div class="c-foot">
+                                <button type="button" onclick="addToCart(this)" class="btnn">Add To
+                                    Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foot">
                     </div>
                 </div>
 
@@ -267,29 +271,6 @@
 
             </div>
         </div>
-        <!-- <div class="Container">
-        <div class="head">
-
-        </div>
-        <div class="body">
-
-        </div>
-        <div class="foot">
-
-        </div>
-    </div> -->
-        <!-- <div class="Container">
-        <div class="head">
-
-        </div>
-        <div class="body">
-
-        </div>
-        <div class="foot">
-
-        </div>
-    </div> -->
-
 
         <footer>
             <div class="Container con-7">
@@ -342,7 +323,7 @@
 
                 </div>
 
-                <div class="foot">
+                <div class="foot copy-foot">
                     <h6>Copyrights © 2025 SK Floral Shop- All Rights Reserved by Kiruthika. Guided by Skill Development
                         Learning Center-Trichy.</h6>
                 </div>
@@ -354,6 +335,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script/script.js"></script>
 </body>
 
 </html>
