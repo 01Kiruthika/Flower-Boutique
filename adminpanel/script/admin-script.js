@@ -1,14 +1,14 @@
-let gotoproductpage=(event)=>{
+let gotoproductpage = (event) => {
     event.preventDefault()
     window.location.href = "product.html"
 }
 
-let gocustomerpage =(event)=>{
+let gocustomerpage = (event) => {
     event.preventDefault()
     window.location.href = "customer.html"
 }
 
-let gotocategorypage=(event)=>{
+let gotocategorypage = (event) => {
     event.preventDefault()
     window.location.href = "category.html"
 }
@@ -401,7 +401,7 @@ let sub = (ev) => {
         let error = document.getElementById(arrerr[i]);
 
         // Check if input is empty
-        if (input.value.trim() === "") {
+        if (input.value === "") {
 
             error.innerText = "Please fill this field"; // Show error message
 
@@ -423,12 +423,29 @@ let sub = (ev) => {
     if (!valid) return;
 
     // Check if price or stock is negative
-    if (price.value < 0 || stock.value < 0) {
+    if (price.value < 0) {
 
-        alert("Price & Stock cannot be negative"); // Show alert
+        alert("Price cannot be negative"); // Show alert
 
         return; // Stop function
     }
+
+    if (stock.value < 0) {
+
+        alert("Stock cannot be negative"); // Show alert
+
+        return; // Stop function
+    }
+
+    if (offer.value < 0) {
+
+        alert("offer cannot be negative"); // Show alert
+
+        return; // Stop function
+    }
+
+
+
 
     // IMPORTANT CONDITION
     if (pid.value === "") {

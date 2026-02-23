@@ -233,14 +233,34 @@ let removeItem = (id) => {
     // debugger;
 
     // Ask confirmation before delete
-    let confirmDelete = confirm("Do you want to delete this product?");
-    if (!confirmDelete) return;
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You want to delete this product!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
 
-    // Remove selected product from cart
-    cart = cart.filter(item => item.id !== id);
+            // Remove selected product from cart
+            cart = cart.filter(item => item.id !== id);
 
-    // Save updated cart
-    saveCart();
+            // Save updated cart
+            saveCart();
+
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your product has been deleted.",
+                icon: "success"
+            });
+        }
+    });
+    // let confirmDelete = confirm("Do you want to delete this product?");
+    // if (!confirmDelete) return;
+
+
 }
 
 
@@ -646,7 +666,7 @@ let adminLogin = (ev) => {
         });
 
         setTimeout(() => {
-            window.location.href = "http://127.0.0.1:5502/adminpanel/dashboard.html";
+            window.location.href = "dashboard.html";
         }, 2000);
 
     } else {
@@ -680,7 +700,7 @@ let weblogout = (log) => {
     }).then((result) => {
         if (result.isConfirmed) {
             setInterval(() => {
-                window.location.href = "http://127.0.0.1:5502/index.html"
+                window.location.href = "index.html"
             }, 2000);
 
 
