@@ -376,92 +376,109 @@ let deletePro = (id) => {
     });
 };
 
+
 // ================= FORM SUBMIT FUNCTION =================
 let sub = (ev) => {
-    //  alert("hello")
-    // debugger;
+    // alert("hii")
+    // debugger
 
-    ev.preventDefault(); // Stop page refresh when form submits
+    ev.preventDefault();
+    let valid = true;
 
-    let valid = true; // Validation flag (assume form is valid)
+    // -------- TEXT FIELDS --------
+    let arrid = ["url", "hoverUrl", "PName"];
+    let arrerr = ["urlerror", "hoverurlerror", "nameerror"];
 
-    // Array of input field IDs
-    let arrid = ["url", "hoverUrl", "PName", "price", "stock", "offer"];
-
-    // Array of corresponding error span IDs
-    let arrerr = ["urlerror", "hoverurlerror", "nameerror", "Priceerror", "Stockerror", "Offerror"];
-
-    // Loop through each input field
     for (let i = 0; i < arrid.length; i++) {
-
-        // Get input element
         let input = document.getElementById(arrid[i]);
-
-        // Get corresponding error span
         let error = document.getElementById(arrerr[i]);
 
-        // Check if input is empty
         if (input.value === "") {
-
-            error.innerText = "Please fill this field"; // Show error message
-
-            input.style.border = "2px solid red"; // Red border for error
-
-            error.style.color = "red"; // Error text color
-
-            valid = false; // Set validation flag to false
-
+            error.innerText = "Please fill this field";
+            error.style.color = "red"
+            input.style.border = "2px solid red";
+            valid = false;
         } else {
-
-            error.innerText = ""; // Clear error message
-
-            input.style.border = "2px solid green"; // Green border if valid
+            error.innerText = "";
+            input.style.border = "2px solid green";
         }
     }
 
-    // Stop execution if validation failed
+    // -------- NUMBER FIELDS --------
+    let price = document.getElementById("price");
+    let stock = document.getElementById("stock");
+    let offer = document.getElementById("offer");
+
+    let priceError = document.getElementById("Priceerror");
+    let stockError = document.getElementById("Stockerror");
+    let offerError = document.getElementById("Offerror");
+
+    // ----- PRICE -----
+    if (price.value === "") {
+        priceError.innerText = "Please fill this field";
+        priceError.style.color = "red"
+        price.style.border = "2px solid red";
+        valid = false;
+    } else if (price.value < 0) {
+        priceError.innerText = "Price cannot be negative";
+        priceError.style.color = "red"
+        price.style.border = "2px solid red";
+        valid = false;
+    } else {
+        priceError.innerText = "";
+        price.style.border = "2px solid green";
+    }
+
+    // ----- STOCK -----
+    if (stock.value === "") {
+        stockError.innerText = "Please fill this field";
+        stockError.style.color = "red"
+        stock.style.border = "2px solid red";
+        valid = false;
+    } else if (stock.value < 0) {
+        stockError.innerText = "Stock cannot be negative";
+        stockError.style.color = "red"
+        stock.style.border = "2px solid red";
+        valid = false;
+    } else {
+        stockError.innerText = "";
+        stock.style.border = "2px solid green";
+    }
+
+    // ----- OFFER -----
+    if (offer.value === "") {
+        offerError.innerText = "Please fill this field";
+        offerError.style.color = "red"
+        offer.style.border = "2px solid red";
+        valid = false;
+    } else if (offer.value < 0) {
+        offerError.innerText = "Offer cannot be negative";
+        offerError.style.color = "red"
+        offer.style.border = "2px solid red";
+        valid = false;
+    } else {
+        offerError.innerText = "";
+        offer.style.border = "2px solid green";
+    }
+
+    // STOP if any error
     if (!valid) return;
 
-    // Check if price or stock is negative
-    if (price.value < 0) {
-
-        alert("Price cannot be negative"); // Show alert
-
-        return; // Stop function
-    }
-
-    if (stock.value < 0) {
-
-        alert("Stock cannot be negative"); // Show alert
-
-        return; // Stop function
-    }
-
-    if (offer.value < 0) {
-
-        alert("offer cannot be negative"); // Show alert
-
-        return; // Stop function
-    }
 
 
+    let pid = document.getElementById("pid");
 
-
-    // IMPORTANT CONDITION
     if (pid.value === "") {
-
-        addProduct(); // Call add function if new product
+        addProduct();
         Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Form Submited Successfully!!",
+            title: "Form Submitted Successfully!!",
             showConfirmButton: false,
             timer: 2500
         });
-
     } else {
-
-        updateForm(); // Call update function if editing product
+        updateForm();
         Swal.fire({
             position: "top-end",
             icon: "success",
@@ -541,7 +558,6 @@ let loadCategoryData = () => {
             tbody.innerHTML += `
             <tr>
                 <td>${cat.id}</td>
-                <td><img src="${cat.url}"></td>
                 <td>${cat.name}</td>
                 <td>
                     <button onclick="setSelectedCategory(${cat.id})">
@@ -581,7 +597,6 @@ let addCategory = () => {
     // Push new category object
     categories.push({
         id: Date.now(), // Generate unique ID
-        url: curl.value, // Category image URL
         name: CName.value // Category name
     });
 
@@ -625,9 +640,6 @@ let setSelectedCategory = (id) => {
     // Set hidden ID field
     pid.value = cat.id;
 
-    // Set URL input value
-    curl.value = cat.url;
-
     // Set category name input value
     CName.value = cat.name;
 
@@ -656,7 +668,6 @@ let updateCategory = () => {
     categories = categories.map(cat =>
         cat.id === id ? {
             id, // Keep same ID
-            url: curl.value, // Update image URL
             name: CName.value // Update category name
         } :
         cat
@@ -691,7 +702,7 @@ let deleteCategory = (id) => {
 
     Swal.fire({
         title: "Are you sure?",
-        text: "You want to delete this product!",
+        text: "You want to delete this Category!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -715,7 +726,7 @@ let deleteCategory = (id) => {
 
             Swal.fire({
                 title: "Deleted!",
-                text: "Your product has been deleted.",
+                text: "Your category has been deleted.",
                 icon: "success"
             });
         }
@@ -738,10 +749,10 @@ let categorysubmit = (ev) => {
     let valid = true;
 
     // Input field IDs
-    let ids = ["curl", "CName"];
+    let ids = ["CName"];
 
     // Error span IDs
-    let errs = ["cate-urlerror", "cate-nameerror"];
+    let errs = ["cate-nameerror"];
 
     // Loop through fields
     for (let i = 0; i < ids.length; i++) {
@@ -811,66 +822,7 @@ let categorysubmit = (ev) => {
 // ============================= CATEGORY PAGE END ===========================================
 
 
-// ============================== CUSTOMER PAGE =============================================
 
-// Run code after HTML is fully loaded
-document.addEventListener("DOMContentLoaded", function () {
-
-    // Print message in console
-    console.log("Customer JS loaded");
-
-    // Get customer table body
-    let tableBody = document.getElementById("customerTable");
-
-    // Print table body in console
-    console.log("Table body:", tableBody);
-
-    // Get users data from localStorage
-    let users = JSON.parse(localStorage.getItem("users"));
-
-    // Print users data in console
-    console.log("Users:", users);
-
-    // If table body not found, stop execution
-    if (!tableBody) {
-        console.log("customerTable not found in HTML");
-        return;
-    }
-
-    // Clear existing table rows
-    tableBody.innerHTML = "";
-
-    // Check if users data empty or null
-    if (!users || users.length === 0) {
-
-        // Show no customer message
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan="3">No Customers Found</td>
-            </tr>
-        `;
-        return;
-    }
-
-    // Loop through each user
-    users.forEach((cust, index) => {
-
-        // Create new table row
-        let tr = document.createElement("tr");
-
-        // Add customer data into row
-        tr.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${cust.name}</td>
-            <td>${cust.email}</td>
-        `;
-
-        // Append row into table body
-        tableBody.appendChild(tr);
-    });
-});
-
-// ============================== CUSTOMER PAGE END =============================================
 
 // ================= PAGE LOAD ==================================
 
@@ -901,7 +853,7 @@ let logout = (log) => {
     }).then((result) => {
         if (result.isConfirmed) {
             setInterval(() => {
-                window.location.href = "http://127.0.0.1:5502/adminpanel/index.html"
+                window.location.href = "./adminpanel/index.html"
             }, 2000);
 
 

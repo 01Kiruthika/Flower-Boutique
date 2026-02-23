@@ -349,55 +349,63 @@ let loadShopProducts = () => {
     // ---------------- LOOP THROUGH PRODUCTS ----------------
     products.forEach(p => {
 
+        let offerHTML = "";
+
+        if (p.offer > 0) {
+            let discountPrice = p.price - (p.price * p.offer / 100);
+
+            offerHTML = `
+            <h6>
+                <span style="text-decoration:line-through;">
+                    Rs.${p.price}
+                </span>
+                <span style=" margin-left:6px;">
+                    Rs.${Math.round(discountPrice)}
+                </span>
+            </h6>
+        `;
+        } else {
+            offerHTML = `<h6>Rs.${p.price}</h6>`;
+        }
+
         container.innerHTML += `
+    <div class="col-lg-3 col-md-6 col-sm-12">
 
-<div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card-des"
+             data-id="${p.id}"
+             data-name="${p.name}"
+             data-price="${p.price}"
+             data-img="${p.url}">
 
-    <div class="card-des"
-         data-id="${p.id}"
-         data-name="${p.name}"
-         data-price="${p.price}"
-         data-img="${p.url}">
-
-        <!-- Image wrapper -->
-        <div class="card-image-wrapper">
-
-            <!-- Main image -->
-            <img src="${p.url}" class="main-img">
-
-            <!-- Hover image -->
-            <img src="${p.hoverUrl}" class="hover-img">
-
-        </div>
-
-        <div class="c-inside-1 inside-2">
-
-            <div class="star-icon">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+            <div class="card-image-wrapper">
+                <img src="${p.url}" class="main-img">
+                <img src="${p.hoverUrl}" class="hover-img">
             </div>
 
-            <h5>${p.name}</h5>
-            <h6>Rs.${p.price}</h6>
+            <div class="c-inside-1 inside-2">
+                <div class="star-icon">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+
+                <h5>${p.name}</h5>
+                ${offerHTML}
+            </div>
+
+            <div class="c-foot">
+                <button type="button" class="btnn" onclick="addToCart(this)">
+                    Add To Cart
+                </button>
+            </div>
 
         </div>
+    </div>`;
+    });
 
-        <div class="c-foot">
-            <button type="button"
-                    class="btnn"
-                    onclick="addToCart(this)">
-                Add To Cart
-            </button>
-        </div>
 
-    </div>
-</div>
-`;
-
-    })
 }
 
 
@@ -620,14 +628,14 @@ let loginpage = (event) => {
 
 let adminLogin = (ev) => {
     // alert("HELLO")
-    // debugger;
+    debugger;
 
 
     // Stop page reload
     ev.preventDefault();
 
     // Get admin inputs
-    let email = document.getElementById("admin-email");
+    let email = document.getElementById("admin-email").value;
     let pass = document.getElementById("admin-password");
 
     // Get error spans
@@ -638,22 +646,32 @@ let adminLogin = (ev) => {
     erEmail.innerText = "";
     erPass.innerText = "";
 
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
     // Validation
-    if (email.value === "") {
+    if (email === "") {
         erEmail.innerText = "Enter admin email";
         erEmail.style.color = "red"
         erEmail.style.fontSize = "15px"
+
+    } else if (!email.match(emailPattern)) {
+        erEmail.innerHTML = "Enter valid email";
+        erEmail.style.color = "red"
+        erEmail.style.fontSize = "15px"
+        isValid = false;
+
     }
 
     if (pass.value === "") {
         erPass.innerText = "Enter admin password";
         erPass.style.color = "red"
         erPass.style.fontSize = "15px"
-        return;
+        return
+
     }
 
     // Check admin credentials
-    if (email.value === "kiruthika@gmail.com" && pass.value === "admin2004") {
+    if (email == "admin@gmail.com" && pass.value === "admin123") {
 
         // Save admin login status
         localStorage.setItem("adminLogin", "true");
@@ -708,3 +726,4 @@ let weblogout = (log) => {
     });
 
 }
+

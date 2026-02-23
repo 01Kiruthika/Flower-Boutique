@@ -62,6 +62,9 @@ footer {
     /* border-top: 2px solid; */
     background: #1f3b6f;
     color: #ffffff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
 .company-name {
@@ -376,11 +379,13 @@ td img {
     justify-content: center; */
 
 }
-.c-table th{
+
+.c-table th {
     border: 2px solid black;
     color: white;
-    background-color:  #1f2a3a;
+    background-color: #1f2a3a;
 }
+
 .c-table th,
 td {
     /* border: 2px solid; */
@@ -436,6 +441,10 @@ td {
 
     header {
         display: flex;
+        position: static;
+    }
+
+    footer {
         position: static;
     }
 

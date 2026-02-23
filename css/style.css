@@ -679,7 +679,13 @@ input[type=submit]:hover {
 
 .foot2 ul {
     list-style: none;
-    /* padding-left: 0; */
+    padding-left: 0;
+}
+
+.foot2 ul li a {
+    text-decoration: none;
+    color: white;
+    padding-left: 0;
 }
 
 
@@ -1049,15 +1055,10 @@ input[type=submit]:hover {
 
 
 /* Shop Page */
-.shop-card-body {
-    /* border: 2px solid; */
-    display: grid;
-    grid-template-columns: repeat(3, 280px);
-    grid-template-rows: repeat(3, 550px);
-    /* gap: 10px; */
-    /* padding: 10px; */
-}
 
+.shop-card-body {
+    width: 100%;
+}
 
 
 /* Login Page */
@@ -1071,7 +1072,7 @@ input[type=submit]:hover {
 }
 
 .login-body {
-    /* border: 2px solid; */
+    border: 2px solid;
     width: 30%;
     height: 400px;
     margin: 0 auto;
@@ -1093,12 +1094,12 @@ input[type=submit]:hover {
 
 .login-body input {
     border: none;
-    width: 330px;
+    width: 345px;
     outline: none;
     border-radius: 5px;
     /* border: 2px solid; */
-    margin: 5px;
-    padding: 2px;
+    /* margin: 3px; */
+    padding: 3px;
 
 }
 

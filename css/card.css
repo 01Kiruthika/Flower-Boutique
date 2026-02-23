@@ -137,11 +137,17 @@
      place-items: center;
  }
 
- .foot2 ul {
-     list-style: none;
-     /* padding-left: 0; */
- }
+ 
+.foot2 ul {
+    list-style: none;
+    padding-left: 0;
+}
 
+.foot2 ul li a {
+    text-decoration: none;
+    color: white;
+    padding-left: 0;
+}
 
 
  .foot3 {
