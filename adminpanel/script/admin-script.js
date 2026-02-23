@@ -2,10 +2,12 @@ let gotoproductpage=(event)=>{
     event.preventDefault()
     window.location.href = "product.html"
 }
+
 let gocustomerpage =(event)=>{
     event.preventDefault()
     window.location.href = "customer.html"
 }
+
 let gotocategorypage=(event)=>{
     event.preventDefault()
     window.location.href = "category.html"
