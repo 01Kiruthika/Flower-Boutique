@@ -1,3 +1,67 @@
+// ================= REDIRECT TO SHOP PAGE =================
+
+let clickshoppage = (event) => {
+    // alert("hello")
+    event.preventDefault()
+    window.location.href = "shop.html"
+}
+
+// ================= REDIRECT TO ABOUT PAGE =================
+let aboutpage = (event) => {
+    // alert("hello")
+    event.preventDefault()
+    window.location.href = "about.html"
+}
+
+// ================= CONTACT FORM SUBMIT  =================
+let formsubmit = (event) => {
+    // alert("hello")
+    event.preventDefault()
+
+    let fname = document.getElementById("fname").value
+    let femail = document.getElementById("email").value
+    let fsubject = document.getElementById("subject").value
+
+    let fename = document.getElementById("fename")
+    let feemail = document.getElementById("feemail")
+    let fesubject = document.getElementById("fesubject")
+
+
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    let isValid = true;
+
+    if (fname == "") {
+        fename.innerHTML = "Name is required";
+        fename.style.color = "red"
+        fename.style.fontSize = "15px"
+        isValid = false;
+    }
+    if (femail == "") {
+        feemail.innerHTML = "Email is required";
+        feemail.style.color = "red"
+        feemail.style.fontSize = "15px"
+        isValid = false;
+    } else if (!femail.match(emailPattern)) {
+        feemail.innerHTML = "Enter valid email";
+        feemail.style.color = "red"
+        isValid = false;
+    }
+
+    if (fsubject == "") {
+        fesubject.innerHTML = "Subject is required";
+        fesubject.style.color = "red"
+        fesubject.style.fontSize = "15px"
+        isValid = false;
+    }
+
+
+    if (fname != "" && femail != "" && fsubject != "" && femail == femail.match(emailPattern)) {
+        alert("Message Sent Successufully!!!")
+    }
+}
+
+
 // ================= CART DATA =================
 
 // Get cart data from localStorage
@@ -6,7 +70,9 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 // ================= ADD TO CART =================
-function addToCart(btn) {
+let addToCart = (btn) => {
+    //  alert("hello")
+    // debugger;
 
     // Select the parent card of clicked button
     let card = btn.closest(".card-des");
@@ -43,7 +109,9 @@ function addToCart(btn) {
 
 
 // ================= UPDATE CART COUNT =================
-function updateCartCount() {
+let updateCartCount = () => {
+    //  alert("hello")
+    // debugger;
 
     // Calculate total quantity of all products
     let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -57,7 +125,10 @@ function updateCartCount() {
 
 
 // ================= RENDER CART PAGE =================
-function renderCart() {
+let renderCart = () => {
+
+    // alert("HELLO")
+    // debugger;
 
     // Get cart container element
     let container = document.getElementById("cartContainer");
@@ -115,7 +186,9 @@ function renderCart() {
     updateCartCount();
 }
 // ================= INCREASE QUANTITY =================
-function increaseQty(id) {
+let increaseQty = (id) => {
+    // alert("HELLO")
+    // debugger;
 
     // Find product using id
     let item = cart.find(p => p.id === id);
@@ -130,7 +203,9 @@ function increaseQty(id) {
 }
 
 // ================= DECREASE QUANTITY =================
-function decreaseQty(id) {
+let decreaseQty = (id) => {
+    // alert("HELLO")
+    // debugger;
 
     // Find product using id
     let item = cart.find(p => p.id === id);
@@ -153,7 +228,9 @@ function decreaseQty(id) {
 
 
 // ================= REMOVE ITEM =================
-function removeItem(id) {
+let removeItem = (id) => {
+    // alert("HELLO")
+    // debugger;
 
     // Ask confirmation before delete
     let confirmDelete = confirm("Do you want to delete this product?");
@@ -168,7 +245,9 @@ function removeItem(id) {
 
 
 // ================= SAVE CART =================
-function saveCart() {
+let saveCart = () => {
+    // alert("HELLO")
+    // debugger;
 
     // Save cart to localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -179,7 +258,9 @@ function saveCart() {
 
 
 // ================= BUY NOW =================
-function buyNow() {
+let buyNow = () => {
+    // alert("HELLO")
+    // debugger;
 
     // Check if cart is empty
     if (cart.length === 0) {
@@ -224,6 +305,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // Function to load products from admin panel (localStorage) to shop page
 let loadShopProducts = () => {
+    // alert("HELLO")
+    // debugger;
 
     // Get the container where products will be displayed
     let container = document.getElementById("shopProducts");
@@ -308,14 +391,16 @@ document.addEventListener("DOMContentLoaded", loadShopProducts);
 // ================= REGISTER USER FUNCTION =================
 
 let registerUser = (ev) => {
+    // alert("HELLO")
+    // debugger;
 
     ev.preventDefault() // Stop page reload
 
     // Get input values
-    let name = document.getElementById("user-name").value.trim();
-    let email = document.getElementById("user-email").value.trim();
-    let password = document.getElementById("user-password").value.trim();
-    let cpassword = document.getElementById("user-conform-password").value.trim();
+    let name = document.getElementById("user-name").value;
+    let email = document.getElementById("user-email").value;
+    let password = document.getElementById("user-password").value;
+    let cpassword = document.getElementById("user-conform-password").value;
 
     // Get error span elements
     let ename = document.getElementById("ename");
@@ -423,6 +508,7 @@ let registerUser = (ev) => {
 
 // ================= LOGIN FUNCTION =================
 let loginpage = (event) => {
+    // alert("HELLO")
     // debugger;
     event.preventDefault(); // Stop reload
 
@@ -513,6 +599,9 @@ let loginpage = (event) => {
 
 
 let adminLogin = (ev) => {
+    // alert("HELLO")
+    // debugger;
+
 
     // Stop page reload
     ev.preventDefault();
@@ -530,13 +619,13 @@ let adminLogin = (ev) => {
     erPass.innerText = "";
 
     // Validation
-    if (email.value.trim() === "") {
+    if (email.value === "") {
         erEmail.innerText = "Enter admin email";
         erEmail.style.color = "red"
         erEmail.style.fontSize = "15px"
     }
 
-    if (pass.value.trim() === "") {
+    if (pass.value === "") {
         erPass.innerText = "Enter admin password";
         erPass.style.color = "red"
         erPass.style.fontSize = "15px"
@@ -576,6 +665,8 @@ let adminLogin = (ev) => {
 // ================= LOGOUT PAGE =================
 let weblogout = (log) => {
     // alert("HELLO")
+    // debugger;
+
     log.preventDefault()
 
     Swal.fire({

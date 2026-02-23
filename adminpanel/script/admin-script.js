@@ -2,6 +2,8 @@
 
 // Function to show current time
 let showtime = () => {
+    //  alert("hello")
+    // debugger;
 
     // Create a new Date object to get current date and time
     let date = new Date();
@@ -61,6 +63,9 @@ setInterval(() => {
 // Function to update product count
 let updateProductCount = () => {
 
+    //  alert("hello")
+    // debugger;
+
     // Get product count element
     let el = document.querySelector("#productCount");
 
@@ -75,6 +80,8 @@ let updateProductCount = () => {
 };
 // Function to update user count
 let updateUserCount = () => {
+    //  alert("hello")
+    // debugger;
 
     // Get user count element
     let el = document.querySelector("#userCount");
@@ -91,6 +98,8 @@ let updateUserCount = () => {
 
 // Function to calculate total stock
 let updateTotalStock = () => {
+    //  alert("hello")
+    // debugger;
 
     // Get total stock element
     let el = document.querySelector("#totalStock");
@@ -120,6 +129,8 @@ let updateTotalStock = () => {
 
 // Function to update category count
 let updateCategoryCount = () => {
+    //  alert("hello")
+    // debugger;
 
     // Get category count element
     let el = document.getElementById("categoryCount");
@@ -140,6 +151,8 @@ let updateCategoryCount = () => {
 let updateBtn = document.getElementById("updateBtn");
 // ================= LOAD PRODUCT DATA =================
 let loadData = () => {
+    //  alert("hello")
+    // debugger;
 
     // Get product data from localStorage
     let products = JSON.parse(localStorage.getItem("products")) || [];
@@ -207,6 +220,8 @@ let loadData = () => {
 
 // ================= ADD PRODUCT =================
 let addProduct = () => {
+    //  alert("hello")
+    // debugger;
 
     // Get products array
     let products = JSON.parse(localStorage.getItem("products")) || [];
@@ -236,6 +251,8 @@ let addProduct = () => {
 
 // ================= SELECT PRODUCT FOR UPDATE =================
 let setSelectedPro = (id) => {
+    //  alert("hello")
+    // debugger;
 
     // Get products
     let products = JSON.parse(localStorage.getItem("products")) || [];
@@ -269,6 +286,8 @@ let setSelectedPro = (id) => {
 // ================= UPDATE PRODUCT =================
 
 let updateForm = () => {
+    //  alert("hello")
+    // debugger;
 
     // Get products
     let products = JSON.parse(localStorage.getItem("products")) || [];
@@ -303,6 +322,9 @@ let updateForm = () => {
 
 // ================= DELETE PRODUCT =================
 let deletePro = (id) => {
+    //  alert("hello")
+    // debugger;
+
     Swal.fire({
         title: "Are you sure?",
         text: "You want to delete this product!",
@@ -337,7 +359,8 @@ let deletePro = (id) => {
 
 // ================= FORM SUBMIT FUNCTION =================
 let sub = (ev) => {
-
+    //  alert("hello")
+    // debugger;
 
     ev.preventDefault(); // Stop page refresh when form submits
 
@@ -416,6 +439,8 @@ let sub = (ev) => {
 
 // ================= RESET FORM FUNCTION =================
 let resetForm = () => {
+    //  alert("hello")
+    // debugger;
 
     // Reset all form input fields
     document.getElementById("productForm").reset();
@@ -454,6 +479,9 @@ let resetForm = () => {
 
 // Function to load category data into table
 let loadCategoryData = () => {
+
+    //  alert("hello")
+    // debugger;
 
     // Get categories array from localStorage or empty array
     let categories = JSON.parse(localStorage.getItem("categories")) || [];
@@ -508,6 +536,8 @@ let loadCategoryData = () => {
 
 // Function to add new category
 let addCategory = () => {
+    //  alert("hello")
+    // debugger;
 
     // Get existing categories from localStorage
     let categories = JSON.parse(localStorage.getItem("categories")) || [];
@@ -534,6 +564,8 @@ let addCategory = () => {
 
 // Function to select category for update
 let setSelectedCategory = (id) => {
+    //  alert("hello")
+    // debugger;
 
     // Get categories from localStorage
     let categories = JSON.parse(localStorage.getItem("categories")) || [];
@@ -575,6 +607,8 @@ let setSelectedCategory = (id) => {
 
 // Function to update category
 let updateCategory = () => {
+    //  alert("hello")
+    // debugger;
 
     // Get categories from localStorage
     let categories = JSON.parse(localStorage.getItem("categories")) || [];
@@ -616,6 +650,9 @@ let updateCategory = () => {
 
 // Function to delete category
 let deleteCategory = (id) => {
+    //  alert("hello")
+    // debugger;
+
     Swal.fire({
         title: "Are you sure?",
         text: "You want to delete this product!",
@@ -655,6 +692,8 @@ let deleteCategory = (id) => {
 
 // Function for category form submit
 let categorysubmit = (ev) => {
+    //  alert("hello")
+    // debugger;
 
     // Stop form default refresh
     ev.preventDefault();
@@ -834,6 +873,3 @@ let logout = (log) => {
     });
 
 }
-
-
-

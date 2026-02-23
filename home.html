@@ -61,7 +61,7 @@
                     <h1>Stay It With Flowers</h1>
                 </div>
                 <div class="btn">
-                    <button onclick="shoppage()" class="shop">SHOP NOW</button>
+                    <button type="submit" onclick="clickshoppage(event)" class="shop">SHOP NOW</button>
                 </div>
             </div>
             <div class="carousel-item">
@@ -70,7 +70,7 @@
                     <h1>Exclusive Design By Best Florist</h1>
                 </div>
                 <div class="btn">
-                    <button onclick="shoppage()" class="shop">SHOP NOW</button>
+                    <button type="submit" onclick="clickshoppage(event)" class="shop">SHOP NOW</button>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
                     Calathea, often require specific care like increased humidity, regular fertilization, and proper
                     drainage. </h4>
                 <div class="c-foot box-foot">
-                    <button type="button" onclick="aboutpage()" class="btnn">More About Me</button>
+                    <button type="submit" onclick="aboutpage(event)" class="btnn">More About Me</button>
                 </div>
 
             </div>
@@ -525,15 +525,18 @@
                     <form action="">
                         <label for="fname">First Name</label>
                         <input type="text" id="fname" class="form-details" placeholder="Your name..">
+                        <span id="fename"></span><br>
 
                         <label for="country">Email:</label>
                         <input type="email" id="email" class="form-details" placeholder="Your Email..">
+                         <span id="feemail"></span><br>
 
                         <label for="subject">Subject</label>
                         <textarea id="subject" class="form-details" placeholder="Write something.."></textarea>
+                         <span id="fesubject"></span><br>
 
                         <div class="form-foot">
-                            <button type="submit" class="butt">Send Message</button>
+                            <button type="submit" class="butt" onclick="formsubmit(event)">Send Message</button>
                         </div>
 
 
