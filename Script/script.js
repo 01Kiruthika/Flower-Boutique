@@ -308,6 +308,8 @@ let buyNow = () => {
         // Update UI
         renderCart();
     }
+
+    
 }
 
 // ================= PAGE LOAD =================
