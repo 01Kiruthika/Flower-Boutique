@@ -416,7 +416,7 @@ td {
 
     body {
         display: grid;
-        height: auto;
+        /* height: auto; */
         grid-template-columns: auto;
         grid-template-areas: 'header'
             'main'
