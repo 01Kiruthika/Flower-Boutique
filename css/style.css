@@ -1,19 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
+:root {
+
+    --main-font: "DM Sans", sans-serif;
+
+    --header-bg: #ebdddd;
+    --primary-color: #deb5b2;
+    --secondary-color: #ff6f91;
+    --accent-color: #ca0274;
+
+    --white: #ffffff;
+    --black: #000000;
+
+    --btn-main: #eeaa9c;
+    --btn-hover: palevioletred;
+
+    --success: #04AA6D;
+
+    --section-bg: #eff4f3;
+
+    --gradient-card: linear-gradient(180deg, #ff8fb1, #ff6f91);
+
+    --shadow-soft: 0 6px 15px rgba(0, 0, 0, 0.2);
+    --shadow-card: 0 12px 25px rgba(255, 111, 145, 0.35);
+
+    --radius-small: 5px;
+    --radius-medium: 12px;
+    --radius-large: 18px;
+
+    --header-height: 80px;
+
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "DM Sans", sans-serif;
+    font-family: var(--main-font);
 }
 
 header {
-    /* border: 2px solid black; */
     width: 100%;
-    height: 80px;
+    height: var(--header-height);
     display: flex;
     justify-content: space-between;
-    background-color: #ebdddd;
+    background-color: var(--header-bg);
     position: fixed;
     top: 0;
     z-index: 100;
@@ -59,8 +90,7 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: black
-        /* padding: 5px; */
+    color: var(--black);
 }
 
 #cartCount {
@@ -77,7 +107,7 @@ nav ul li a {
 
 /* Image */
 .carousel {
-    margin-top: 80px;
+    margin-top: var(--header-height);
 }
 
 .carousel-item {
@@ -114,16 +144,15 @@ nav ul li a {
 
 .btn button {
     border: none;
-    /* text-decoration: none; */
-    color: white;
-    background-color: #eeaa9c;
+    color: var(--white);
+    background-color: var(--btn-main);
     border-radius: 25px;
     padding: 10px 22px;
 }
 
 .btn:hover button {
-    background-color: palevioletred;
-    color: white;
+    background-color: var(--btn-hover);
+    color: var(--white);
 }
 
 
@@ -198,7 +227,7 @@ nav ul li a {
 
 .box-foot .btnn {
     bottom: 10px;
-    background-color: black;
+    background-color: var(--black);
 }
 
 .head {
@@ -241,17 +270,13 @@ nav ul li a {
 
 
 .card-des {
-    /* border: 2px solid black; */
-    padding: 5px;
-    margin: 10px;
+    /* border: 2px solid; */
     padding: 0;
-    background: linear-gradient(180deg, #ff8fb1, #ff6f91);
-    color: #fff;
-    box-shadow: 0 12px 25px rgba(255, 111, 145, 0.35);
-    border-radius: 18px;
-
+    background: var(--gradient-card);
+    color: var(--white);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius-large);
 }
-
 
 
 .card-backimg {
@@ -349,7 +374,7 @@ nav ul li a {
 }
 
 .fa {
-    color: #ca0274;
+    color: var(--accent-color);
     display: flex;
     margin: 0 auto;
 }
@@ -370,30 +395,30 @@ h6 {
 .btnn {
     padding: 10px 35px;
     border: none;
-    background-color: #ffffff;
+    background-color: var(--white);
     color: #764ba2;
     transition: 1s;
     border-radius: 25px;
     font-weight: 600;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-soft);
 }
 
 .btnn:hover {
-    background-color: black;
+    background-color: var(--black);
 }
 
 .c-foot a {
     text-decoration: none;
     border: 2px solid;
     border: none;
-    color: white;
+    color:var(--white);
     background-color: #deb5b2;
     padding: 10px 25px;
     transition: 0.5s;
 }
 
 .c-foot:hover a {
-    background-color: black;
+    background-color: var(--black);
 }
 
 
@@ -446,8 +471,8 @@ h6 {
 
 .pos-butt {
     border: none;
-    background-color: black;
-    color: white;
+    background-color: var(--black);
+    color:var(--white);
     padding: 5px 15px;
     transition: 1s;
     border-radius: 25px;
@@ -475,7 +500,7 @@ h6 {
     /* border: 2px solid green; */
     width: 80px;
     height: 80px;
-    background-color: white;
+    background-color:var(--white);
 }
 
 .cus-content {
@@ -502,13 +527,13 @@ h6 {
 }
 
 .blog-card {
-    /* border: 2px solid black; */
+    /* border: 2px solid; */
     width: 380px;
     height: 400px;
-    background: linear-gradient(180deg, #ff8fb1, #ff6f91);
-    color: #fff;
-    box-shadow: 0 12px 25px rgba(255, 111, 145, 0.35);
-    border-radius: 12px;
+    background: var(--gradient-card);
+    color: var(--white);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius-medium);
     cursor: pointer;
     flex-shrink: 0;
 }
@@ -529,7 +554,7 @@ h6 {
     background-color: #deb5b2;
     border-radius: 12px;
     padding: 2px;
-    color: white;
+    color:var(--white);
     /* padding: 5px; */
     text-align: center;
 }
@@ -631,10 +656,10 @@ h6 {
 }
 
 .form-foot button {
-    /* border: 2px solid black; */
-    background-color: #04AA6D;
+    /* border: 2px solid; */
+    background-color: var(--success);
     border-radius: 25px;
-    color: white;
+    color: var(--white);
     padding: 10px 40px;
     border: none;
     cursor: pointer;
@@ -650,14 +675,14 @@ input[type=submit]:hover {
 
 /* Footer */
 .con-7 {
-    background-color: black;
+    background-color: var(--black);
 }
 
 .foot-box {
     /* border: 2px solid blue; */
     width: 400px;
     height: 200px;
-    color: white;
+    color: var(--white);
     text-align: left;
 }
 
@@ -684,14 +709,14 @@ input[type=submit]:hover {
 
 .foot2 ul li a {
     text-decoration: none;
-    color: white;
+    color:var(--white);
     padding-left: 0;
 }
 
 
 
 .foot3 {
-    color: white;
+    color: var(--white);
     text-align: center;
     padding: 20px 30px;
     padding-left: 0;
@@ -700,7 +725,7 @@ input[type=submit]:hover {
 .foot4 {
     /* border: 2px solid red; */
     padding: 20px;
-    color: white;
+    color: var(--white)e;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -747,14 +772,14 @@ input[type=submit]:hover {
     /* border: 2px solid yellowgreen; */
     width: 300px;
     height: 100px;
-    color: white;
+    color: var(--white);
     text-align: center;
     padding: 10px;
     align-items: center;
 }
 
 .about-body a {
-    color: white;
+    color:var(--white);
     text-decoration: none;
 }
 
@@ -816,7 +841,7 @@ input[type=submit]:hover {
 
 .ab-box-btn button {
     background-color: #deb5b2;
-    color: white;
+    color:var(--white);
     border: none;
     padding: 8px 20px;
 }
@@ -1077,14 +1102,12 @@ input[type=submit]:hover {
     height: 400px;
     margin: 0 auto;
     margin-top: 80px;
-    /* padding-left: 30px;
-    padding-right: 20px; */
     padding: 10px 20px;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(15px);
-    border-radius: 16px;
+    border-radius: var(--radius-large);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-    color: #ffffff
+    color: var(--white);
 }
 
 .login-body h3 {
@@ -1108,7 +1131,7 @@ input[type=submit]:hover {
     padding: 5px 25px;
     margin-top: 20px;
     background-color: rgb(84, 84, 206);
-    color: white;
+    color: var(--white);
     border: none;
     border-radius: 5px;
 }
@@ -1211,7 +1234,7 @@ input[type=submit]:hover {
         right: 20px;
         top: 22px;
         font-size: 28px;
-        color: white;
+        color:var(--white);
         cursor: pointer;
         z-index: 100;
         display: block;
@@ -1327,7 +1350,7 @@ input[type=submit]:hover {
     .box-foot .btnn {
         /* bottom: 10px; */
         padding: 5px;
-        background-color: black;
+        background-color: var(--black);
     }
 
     .box img {
@@ -1463,7 +1486,7 @@ input[type=submit]:hover {
     .form-foot button {
         /* border: 2px solid black; */
         background-color: #04AA6D;
-        color: white;
+        color: var(--white);
         padding: 10px;
         border: none;
         border-radius: 4px;
@@ -1482,7 +1505,7 @@ input[type=submit]:hover {
         /* border: 2px solid blue; */
         width: auto;
         height: auto;
-        color: white;
+        color:var(--white);
         text-align: left;
     }
 
@@ -1507,7 +1530,8 @@ input[type=submit]:hover {
         text-align: center;
         margin: 0 auto;
     }
-    .foot4 ul{
+
+    .foot4 ul {
         padding-left: 0;
     }
 
