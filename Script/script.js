@@ -276,40 +276,85 @@ let saveCart = () => {
     renderCart();
 }
 
+// ================= EMAIL JS =================
+
+// Initialize EmailJS
+(function () {
+    emailjs.init("pfrXZSK8hfAwFsZWA");
+})();
+
+function sendOrderEmail(total) {
+
+    //  Get user from localStorage (login)
+    let name = localStorage.getItem("username") || "Customer";
+    let userEmail = localStorage.getItem("email");
+    let message = "Thank you for your purchase!";
+    let date = new Date().toLocaleDateString();
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let itemsList = "";
+
+    cart.forEach(item => {
+        itemsList += item.name + " (₹" + item.price + " x " + item.qty + ")\n";
+    });
+
+    emailjs.send("service_nqwi4b2", "template_11py3sj", {
+            name: name,
+            email: userEmail,
+            items: itemsList,
+            total: total,
+            message: message
+        })
+        .then(function () {
+
+            Swal.fire({
+                icon: "success",
+                title: "Order Placed!",
+                text: "Email sent successfully!!",
+                confirmButtonColor: "#3085d6"
+            }).then(() => {
+
+                // Clear cart from storage
+                localStorage.removeItem("cart");
+
+                // Force reload page (BEST FIX)
+                window.location.reload();
+
+            });
+
+        }, function (error) {
+
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Email sending failed!!"
+            });
+
+            console.log(error);
+
+        });
+}
 
 // ================= BUY NOW =================
 let buyNow = () => {
-    // alert("HELLO")
-    // debugger;
 
-    // Check if cart is empty
     if (cart.length === 0) {
         alert("Your cart is empty!");
         return;
     }
 
-    // Calculate total amount
     let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-    // Ask purchase confirmation
     let confirmBuy = confirm(
         "Do you want to purchase?\n\nTotal Amount: Rs." + total
     );
 
     if (confirmBuy) {
-        alert("Thank you for your purchase");
 
-        // Clear cart from localStorage
-        localStorage.removeItem("cart");
-
-        // Reset cart array
-        cart = [];
-
-        // Update UI
-        renderCart();
+        // Call email function
+        sendOrderEmail(total);
     }
-
-    
 }
 
 // ================= PAGE LOAD =================
@@ -420,7 +465,8 @@ document.addEventListener("DOMContentLoaded", loadShopProducts);
 
 // ================= REGISTER USER FUNCTION =================
 
-let registerUser = (ev) => {
+function registerUser(ev) {
+
     // alert("HELLO")
     // debugger;
 
@@ -496,8 +542,7 @@ let registerUser = (ev) => {
         ecpass.style.color = "red"
         ecpass.style.fontSize = "15px"
         isValid = false;
-    }
-    else if (password !== cpassword) {
+    } else if (password !== cpassword) {
         ecpass.innerHTML = "Passwords do not match";
         ecpass.style.color = "red"
         ecpass.style.fontSize = "15px"
@@ -548,7 +593,7 @@ let registerUser = (ev) => {
 
 
 // ================= LOGIN FUNCTION =================
-let loginpage = (event) => {
+function loginpage(event) {
     // alert("HELLO")
     // debugger;
     event.preventDefault(); // Stop reload
@@ -625,12 +670,16 @@ let loginpage = (event) => {
             showConfirmButton: false,
         });
 
+        // 🔥 SAVE USER DATA (VERY IMPORTANT)
+        localStorage.setItem("username", userByEmail.name);
+        localStorage.setItem("email", userByEmail.email);
+
         setTimeout(() => {
             window.location.href = "home.html";
         }, 2000);
+
     }
 }
-
 
 
 

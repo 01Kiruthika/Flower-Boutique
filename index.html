@@ -19,7 +19,7 @@
 
     <div class="con">
         <div class="login-body">
-            <form action="">
+            <form onsubmit="loginpage(event)">
                 <h3>Login</h3>
                 <label for="">User Email:</label><br>
                 <input type="email" id="user-email" placeholder="abc@gmail.com"><br>
@@ -28,7 +28,8 @@
                 <input type="password" id="user-password" placeholder="password"><br>
                 <span id="er-pass"></span>
                 <div class="sub">
-                    <button type="submit" onclick="loginpage(event)">Login</button>
+
+                    <button type="submit">Login</button>
                 </div>
                 <div class="acc">
                     <h6>Don't have an account?</h6>
@@ -45,8 +46,9 @@
     </div>
 
 
-    <script src="Script/script.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script/script.js"></script>
 </body>
 
 </html>
