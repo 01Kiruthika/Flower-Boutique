@@ -670,7 +670,7 @@ function loginpage(event) {
             showConfirmButton: false,
         });
 
-        // 🔥 SAVE USER DATA (VERY IMPORTANT)
+        // SAVE USER DATA (VERY IMPORTANT)
         localStorage.setItem("username", userByEmail.name);
         localStorage.setItem("email", userByEmail.email);
 
@@ -689,7 +689,7 @@ function loginpage(event) {
 
 
 let adminLogin = (ev) => {
-    // alert("HELLO")
+    alert("HELLO")
     debugger;
 
 
