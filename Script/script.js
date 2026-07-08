@@ -279,9 +279,9 @@ let saveCart = () => {
 // ================= EMAIL JS =================
 
 // Initialize EmailJS
-(function () {
-    emailjs.init("XMihwLP-9sBPoH2IL");
-})();
+// (function () {
+//     emailjs.init("XMihwLP-9sBPoH2IL");
+// })();
 
 function sendOrderEmail(total) {
 
