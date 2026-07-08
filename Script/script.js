@@ -695,7 +695,7 @@ function loginpage(event) {
 let adminLogin = (event) => {
     event.preventDefault();
 
-    alert("HELLO")
+    // alert("HELLO")
     debugger;
 
     // Get admin inputs
