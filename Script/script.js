@@ -377,6 +377,10 @@ let loadShopProducts = () => {
 
     // Get the container where products will be displayed
     let container = document.getElementById("shopProducts");
+    
+    if (!container) {
+        return; // Stop if this page doesn't have the shopProducts element
+    }
 
     // Get products array from localStorage, if not found use empty array
     let products = JSON.parse(localStorage.getItem("products")) || [];
