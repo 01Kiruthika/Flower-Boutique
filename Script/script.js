@@ -377,7 +377,7 @@ let loadShopProducts = () => {
 
     // Get the container where products will be displayed
     let container = document.getElementById("shopProducts");
-    
+
     if (!container) {
         return; // Stop if this page doesn't have the shopProducts element
     }
@@ -692,13 +692,11 @@ function loginpage(event) {
 
 
 
-let adminLogin = (ev) => {
+let adminLogin = (event) => {
+    event.preventDefault();
+
     alert("HELLO")
     debugger;
-
-
-    // Stop page reload
-    ev.preventDefault();
 
     // Get admin inputs
     let email = document.getElementById("admin-email").value;
