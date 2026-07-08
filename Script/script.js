@@ -280,7 +280,7 @@ let saveCart = () => {
 
 // Initialize EmailJS
 (function () {
-    emailjs.init("pfrXZSK8hfAwFsZWA");
+    emailjs.init("XMihwLP-9sBPoH2IL");
 })();
 
 function sendOrderEmail(total) {
@@ -299,7 +299,7 @@ function sendOrderEmail(total) {
         itemsList += item.name + " (₹" + item.price + " x " + item.qty + ")\n";
     });
 
-    emailjs.send("service_nqwi4b2", "template_11py3sj", {
+    emailjs.send("service_b0g7m1j", "template_0b15xj5", {
             name: name,
             email: userEmail,
             items: itemsList,
