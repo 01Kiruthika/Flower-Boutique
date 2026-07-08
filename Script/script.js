@@ -696,7 +696,7 @@ let adminLogin = (event) => {
     event.preventDefault();
 
     // alert("HELLO")
-    debugger;
+    // debugger;
 
     // Get admin inputs
     let email = document.getElementById("admin-email").value;
